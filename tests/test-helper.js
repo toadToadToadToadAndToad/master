@@ -1,6 +1,6 @@
-const jsdom = require('jsdom');
-const chai = require('chai');
-const chaiImmutable = require('chai-immutable');
+import jsdom from 'jsdom';
+import chai from 'chai';
+import chaiImmutable from 'chai-immutable';
 
 chai.should();
 chai.use(chaiImmutable);
