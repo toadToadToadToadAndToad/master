@@ -7,7 +7,7 @@ import SigninContainer from '../containers/SigninContainer';
 import DashboardContainer from '../containers/DashboardContainer';
 import JobSearchContainer from '../containers/JobSearchContainer';
 import AddJobContainer from '../containers/AddJobContainer';
-import JobViewContainer from '../containers/JobViewContainer';
+import JobViewContainer from '../containers/JobViewContainer'; 
 
 const routes = (
   <Router history={browserHistory}>
