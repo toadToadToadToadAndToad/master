@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback",
     "prod": "webpack -p",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js  --recursive",
+    "test": "mocha --compilers js:babel-core/register,css:./test/css-null-compiler.js --require ./test/test-helper.js  --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Ian Akers, Tim Dang, Michael Dziedzic, Aimee Rosato, Fanny Vasquez",
@@ -35,6 +35,7 @@
     "html-webpack-plugin": "^2.7.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
