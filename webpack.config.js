@@ -1,4 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
@@ -8,17 +10,31 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: [
     'babel-polyfill',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
     './app/index.js'
   ],
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + './dist',
     filename: "index_bundle.js"
   },
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-      {test: /\.css$/, loader: "style-loader!css-loader" }
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "react-hot!babel"},
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader" }
     ]
   },
-  plugins: [HTMLWebpackPluginConfig]
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
+  plugins: [
+    HTMLWebpackPluginConfig,
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
