@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/route-transition.css';
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import customMaterialTheme from '../styles/material-customizations';
 
 //classes for container in es6
 class AppContainer extends Component {
@@ -9,6 +11,13 @@ class AppContainer extends Component {
     super();
     this.state = {};
   }
+
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(customMaterialTheme)
+    };
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -21,6 +30,10 @@ class AppContainer extends Component {
       </div>
     );
   }
+};
+
+AppContainer.childContextTypes = {
+  muiTheme: React.PropTypes.object
 };
 
 export default AppContainer;
