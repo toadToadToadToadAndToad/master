@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
-class SigninContainer extends Component { 
+import SignIn from '../components/signin/signIn'
+
+class SignInContainer extends Component {
   constructor() {
     super();
     this.state = {};
   }
+
+  goToDashboard() {
+    browserHistory.push('/dashboard');
+  }
+
   render() {
     return (
       <div>
-        <div>Signin Container</div>
-        <Link to="/dashboard">Dashboard</Link>
+        <SignIn goToDashboard={this.goToDashboard} />
       </div>
     );
   }
 };
 
-export default SigninContainer;
+export default SignInContainer;
