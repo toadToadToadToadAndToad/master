@@ -11,7 +11,7 @@ const tableSettings = {
   fixedFooter: true,
   stripedRows: false,
   showRowHover: true,
-  selectable: true,
+  selectable: false,
   multiSelectable: false,
   enableSelectAll: false,
   deselectOnClickaway: true,
