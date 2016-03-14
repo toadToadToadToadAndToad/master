@@ -1,14 +1,13 @@
 import React from 'react';
 
-function SiteSelectComponent (props) { 
-  return  (
+function SiteSelectComponent(props) {
+  return (
     <div>
       <select>
-        <option value=''>
+        <option value="">
         Github
         </option>
       </select>
-
     </div>
   );
 }
