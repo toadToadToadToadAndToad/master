@@ -4,10 +4,8 @@ import '../styles/route-transition.css';
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';
 
-//classes for container in es6
 class AppContainer extends Component {
   constructor() {
-    //call my parent's constructor - Component (React thing...React.Component)
     super();
     this.state = {};
   }
