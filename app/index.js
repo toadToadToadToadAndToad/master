@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Map } from 'immutable';
 
 import reducer from './config/reducer';
-import createRoutes from './config/createRoutes';
+import routes from './config/routes';
 
 // the window.devToolsExtension... stuff is needed for the google
 // chrome redux dev tools to work
@@ -50,6 +50,6 @@ store.dispatch({
 
 ReactDOM.render((
   <Provider store={store}>
-    {createRoutes()}
+    {routes}
   </Provider>
 ), document.getElementById('app'));
