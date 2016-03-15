@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
 import RaisedButton from 'material-ui/lib/raised-button';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
 
 class DashboardContainer extends Component {
   constructor() {
@@ -37,13 +38,14 @@ class DashboardContainer extends Component {
         <br />
         <RaisedButton 
           containerElement={<Link to="/addjob" />}
-          label="Add Search" />
+          label="Add Job" />
         <br />
         <RaisedButton 
           containerElement={<Link to="/jobview" />}
           label="Job View" />
         <br />
         <br />
+        <PageHeader>Dashboard</PageHeader>
         <JobsTableData
           jobs={this.props.jobs}
           onRowClick={(event) => this.handleRowClick(event)}
