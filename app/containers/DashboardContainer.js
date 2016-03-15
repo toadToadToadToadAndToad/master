@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
+import RaisedButton from 'material-ui/lib/raised-button';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
 
 class DashboardContainer extends Component {
   constructor() {
@@ -30,13 +32,25 @@ class DashboardContainer extends Component {
   render() {
     return (
       <div>
-        <Link to="/jobsearch">Job Search</Link> <br />
-        <Link to="/addjob">Add Job</Link> <br />
-        <Link to="/jobview">Job View</Link><br /><br />
+        <RaisedButton
+          containerElement={<Link to="/jobsearch" />}
+          label="Job Search" />
+        <br />
+        <RaisedButton 
+          containerElement={<Link to="/addjob" />}
+          label="Add Job" />
+        <br />
+        <RaisedButton 
+          containerElement={<Link to="/jobview" />}
+          label="Job View" />
+        <br />
+        <br />
+        <PageHeader>Dashboard</PageHeader>
         <JobsTableData
           jobs={this.props.jobs}
           onRowClick={(event) => this.handleRowClick(event)}
-        /><br /><br />
+        />
+        <br /><br />
         <EventsTableData
           events={this.props.events}
           onRowClick={(event) => this.handleRowClick(event)}
