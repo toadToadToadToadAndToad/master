@@ -49,7 +49,8 @@ class DashboardContainer extends Component {
         <JobsTableData
           jobs={this.props.jobs}
           onRowClick={(event) => this.handleRowClick(event)}
-        /><br /><br />
+        />
+        <br /><br />
         <EventsTableData
           events={this.props.events}
           onRowClick={(event) => this.handleRowClick(event)}
