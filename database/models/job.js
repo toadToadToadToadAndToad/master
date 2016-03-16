@@ -1,5 +1,5 @@
 import thinky from 'thinky';
-let type = thinky.type;
+const type = thinky.type;
 
 var Job = thinky.createModel("Job", {
   id: type.string(),
@@ -13,7 +13,7 @@ var User = thinky.createModel("User", {
   username: type.string(),
   email: type.string(),
   password: type.string(),
-});.
+});
 
 User.hasMany(Job, "")
 
