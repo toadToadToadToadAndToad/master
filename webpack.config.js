@@ -24,14 +24,15 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "react-hot!babel"},
+        loader: "babel-loader"
+      },
       {
         test: /\.css$/,
         loader: "style-loader!css-loader" }
     ]
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: '/dist',
     hot: true
   },
   plugins: [
