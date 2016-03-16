@@ -1,0 +1,20 @@
+2016-03-16T16:48:51.181573000 0.563226s notice: Recursively removing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/rethinkdb_data/tmp
+2016-03-16T16:48:51.183154000 0.564811s notice: Initializing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/rethinkdb_data
+2016-03-16T16:48:51.183264000 0.564916s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/aimeerosato/hackreactor/thesis/numbers-game/rethinkdb_data' did not already exist or is empty.)
+2016-03-16T16:48:51.183337000 0.564989s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-16T16:48:51.301117000 0.682771s notice: Running on Darwin 15.3.0 x86_64
+2016-03-16T16:48:51.301199000 0.682851s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/rethinkdb_data
+2016-03-16T16:48:52.281735000 1.663410s info: Automatically using cache size of 100 MB
+2016-03-16T16:48:52.281744000 1.663419s warn: Cache size does not leave much memory for server and query overhead (available memory: 654 MB).
+2016-03-16T16:48:52.281749000 1.663425s warn: Cache size is very low and may impact performance.
+2016-03-16T16:48:52.282779000 1.664455s notice: Listening for intracluster connections on port 29015
+2016-03-16T16:48:52.284285000 1.665961s notice: Listening for client driver connections on port 28015
+2016-03-16T16:48:52.284533000 1.666209s notice: Listening for administrative HTTP connections on port 8080
+2016-03-16T16:48:52.284538000 1.666213s notice: Listening on addresses: 127.0.0.1, ::1
+2016-03-16T16:48:52.284539000 1.666214s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-03-16T16:48:52.284543000 1.666218s notice: Server ready, "Aimees_MBP_3sw" 33722451-e24c-4a9c-9e96-c296ca57909a
+2016-03-16T18:04:10.978479000 2840.143458s notice: Server got SIGINT from pid 518, uid 501; shutting down...
+2016-03-16T18:04:10.978666000 2840.143645s notice: Shutting down client connections...
+2016-03-16T18:04:10.978862000 2840.143841s notice: All client connections closed.
+2016-03-16T18:04:10.978870000 2840.143849s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-16T18:04:11.049068000 2840.214047s notice: Storage engine shut down.

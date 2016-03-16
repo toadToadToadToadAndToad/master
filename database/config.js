@@ -1,12 +1,12 @@
-export const config ={
+export const config = {
   rethinkdb: {
-      host: "localhost",
-      port: 28015,
-      authKey: "",
-      db: "jobs"
+    host: 'localhost',
+    port: 28015,
+    authKey: '',
+    db: 'jobs',
   },
   express: {
-      port: 3000
-  }
+    port: 3000,
+  },
 };
 
