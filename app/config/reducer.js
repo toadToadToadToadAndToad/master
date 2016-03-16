@@ -17,7 +17,9 @@ export default function reducer(state = Map(), action) {
         return Map(event);
       })));
     case 'SET_CONTACTS':
-      return state.set('contacts', List(action.contacts));
+      return state.set('contacts', List(action.contacts.map((contact) => {
+        return Map(contact);
+      })));
     case 'SET_USERINFO':
       return state.set('userInfo', Map(action.userInfo));
 
