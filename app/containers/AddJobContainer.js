@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import AddJobComponent from '../components/addjob/addjob';
 
-class AddJobContainer extends Component { 
-  constructor() {
-    super();
-    this.state = {};
-  }
-  render() {
-    return (
+const handleSubmit = (event, dispatch) => {
+  console.log("handleSubmit");
+    event.preventDefault();
+
+    let children = event.target.children;
+    let job = {
+    title: children.title.value,
+    company: children.company.value,
+    description: children.description.value,
+    type: children.type.value,
+    location: children.location.value,
+    url: children.location.url,
+    how_to_apply: children['how-to-apply'].value
+  };
+  console.log(job);
+  dispatch({type: 'ADD_JOB', job: job});
+}
+
+
+
+let  AddJobContainer = ({dispatch}) => {
+  return (
       <div>
-        <div>Add Job Container</div>
+        <AddJobComponent
+        handleChange={((event) => handleChange(event, dispatch))}
+        handleSubmit={((event) => handleSubmit(event, dispatch))} />
         <Link to="/dashboard">Back to Dashboard</Link>
       </div>
-    );
-  }
+  )
 };
 
+
+AddJobContainer = connect()(AddJobContainer);
 export default AddJobContainer;
