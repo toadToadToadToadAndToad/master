@@ -1,5 +1,6 @@
 import expect from 'chai';
 import Job from '../../database/models/job';
+import thinky from '../../database/models/thinkylocal.js';
 
 describe('Job Model Testing', () => {
   it('should create a job', () => {

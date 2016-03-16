@@ -1,5 +1,6 @@
 import expect from 'chai';
 import User from '../../database/models/user';
+import thinky from '../../database/models/thinkylocal.js';
 
 describe('User Model Testing', () => {
   it('should create a user', () => {
