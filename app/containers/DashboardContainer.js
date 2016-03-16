@@ -5,6 +5,7 @@ import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
+import { toJS } from 'immutable';
 
 class DashboardContainer extends Component {
   constructor() {
@@ -30,19 +31,23 @@ class DashboardContainer extends Component {
   }
 
   render() {
+    console.log(this.props.jobs);
     return (
       <div>
         <RaisedButton
           containerElement={<Link to="/jobsearch" />}
-          label="Job Search" />
+          label="Job Search"
+        />
         <br />
-        <RaisedButton 
+        <RaisedButton
           containerElement={<Link to="/addjob" />}
-          label="Add Job" />
+          label="Add Job"
+        />
         <br />
-        <RaisedButton 
+        <RaisedButton
           containerElement={<Link to="/jobview" />}
-          label="Job View" />
+          label="Job View"
+        />
         <br />
         <br />
         <PageHeader>Dashboard</PageHeader>
@@ -62,17 +67,15 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    jobs: state.get('jobs').toArray(),
-    events: state.get('events').toArray(),
+    jobs: state.get('jobs').toJS(),
+    events: state.get('events').toJS()
   };
 };
 
 
 DashboardContainer.propTypes = {
-  jobs: PropTypes.array.isRequired,
-  events: PropTypes.array.isRequired,
+  // jobs: PropTypes.array.isRequired,
+  // events: PropTypes.array.isRequired,
 };
 
-DashboardContainer = connect(mapStateToProps)(DashboardContainer);
-
-export default DashboardContainer;
+export default connect(mapStateToProps)(DashboardContainer);

@@ -1,14 +1,23 @@
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import * as coreFuncs from './core';
 
 export default function reducer(state = Map(), action) {
 
   switch (action.type) {
 
+    case 'SET_STATE':
+      return state.merge(action.state);
+
     case 'SET_JOBS':
-      return coreFuncs.setJobs(state, action.jobs);
+      return state.set('jobs', List(action.jobs.map((job) => {
+        return Map(job);
+      })));
+
     case 'SET_EVENTS':
-      return coreFuncs.setEvents(state, action.events);
+      return state.set('events', List(action.events.map((event) => {
+        return Map(event);
+      })));
+
     case 'SET_CONTACTS':
       return coreFuncs.setContacts(state, action.contacts);
     case 'SET_USERINFO':
