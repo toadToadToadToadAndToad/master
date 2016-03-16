@@ -74,8 +74,8 @@ const mapStateToProps = (state) => {
 
 
 DashboardContainer.propTypes = {
-  // jobs: PropTypes.array.isRequired,
-  // events: PropTypes.array.isRequired,
+  jobs: PropTypes.array.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps)(DashboardContainer);
