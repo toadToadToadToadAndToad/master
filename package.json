@@ -26,7 +26,9 @@
     "react-dom": "^0.14.6",
     "react-redux": "^4.4.1",
     "react-router": "^2.0.0-rc5",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "rethinkdb": "^2.2.2",
+    "thinky": "^2.2.5"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
