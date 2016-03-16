@@ -2,9 +2,16 @@ import { List, Map } from 'immutable';
 
 // setters to load initial data into redux store
 
-export function setJobs(state, jobs) {
-  return state.set('jobs', List(jobs));
+export function setState(state, newState) {
+  return state.merge(newState);
 }
+
+export function setJobs(state, jobs) {
+  return state.set('jobs', List(jobs.map((job) => {
+    return Map(job);
+  })));
+}
+
 export function setEvents(state, events) {
   return state.set('events', List(events));
 }
