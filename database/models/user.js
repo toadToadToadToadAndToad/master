@@ -1,4 +1,4 @@
-import thinky from './thinkylocal.js';
+import thinky from './thinkylocal';
 const type = thinky.type;
 // import Job from './job';
 
