@@ -3,13 +3,11 @@ import React from 'react';
 function SearchBarComponent(props) {
   return (
     <div>
-      <form>
+      <form onSubmit={props.handleSearchSubmit}>
         <input
           type="text"
           placeholder="Search"
-          // value={this.props.filterText}
-          // ref='filterTextInput'
-          // onChange={this.props.handleChange} />
+          ref="filterTextInput"
         />
       </form>
     </div>
