@@ -4,6 +4,8 @@ import axios from 'axios';
 import SearchBarComponent from '../components/jobsearch/searchBarComponent';
 import SiteSelectionComponent from '../components/jobsearch/siteSelectComponent';
 import ResultsViewComponent from '../components/jobsearch/resultsViewComponent';
+import RaisedButton from 'material-ui/lib/raised-button';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
 
 class JobSearchContainer extends Component {
   constructor() {
@@ -25,8 +27,13 @@ class JobSearchContainer extends Component {
   render() {
     return (
       <div>
-        <div>Job Search Container</div>
-        <Link to="/dashboard">Back to Dashboard</Link>
+        <RaisedButton
+          containerElement={<Link to="/dashboard" />}
+          label="Dashboard"
+        />
+        <br /><br />
+        <PageHeader>Job Search</PageHeader>
+
         <SearchBarComponent
           handleSearch= {this.handleSearch}
         />
