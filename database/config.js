@@ -1,11 +1,11 @@
-export const config = {
+export default config = {
   rethinkdb: {
     host: 'localhost',
     port: 28015,
     authKey: '',
     db: 'jobs',
   },
-  express: {
+  koa: {
     port: 3000,
   },
 };

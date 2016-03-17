@@ -1,6 +1,6 @@
 import thinky from './thinkylocal';
 const type = thinky.type;
-// import Job from './job';
+import Job from './job';
 
 let User = thinky.createModel('User', {
   id: type.string(),
@@ -10,7 +10,8 @@ let User = thinky.createModel('User', {
 });
 
 // TODO: Determine relationship - might need to move into another file
-// circular reference error
-// User.hasMany(Job, '');
+// circular reference error...1-n relation?
+User.hasMany(Job, 'jobs', 'id', 'title', 'company');
+Job.belongsTo(User, 'users', 'id', 'username');
 
 export default User;
