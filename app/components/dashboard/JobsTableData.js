@@ -42,6 +42,8 @@ function JobsTableData(props) {
           >
             <TableHeaderColumn>Job Title</TableHeaderColumn>
             <TableHeaderColumn>Company</TableHeaderColumn>
+            <TableHeaderColumn>Type</TableHeaderColumn>
+            <TableHeaderColumn>Location</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody
@@ -56,8 +58,10 @@ function JobsTableData(props) {
                 // TODO: see comment above handleRowClick in DashboardContainer.js
                 onRowClick={props.onRowClick}
               >
-                <TableRowColumn>{job.jobTitle}</TableRowColumn>
+                <TableRowColumn>{job.title}</TableRowColumn>
                 <TableRowColumn>{job.company}</TableRowColumn>
+                <TableRowColumn>{job.type}</TableRowColumn>
+                <TableRowColumn>{job.location}</TableRowColumn>
               </TableRow>
             );
           })}

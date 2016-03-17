@@ -17,12 +17,9 @@ const store = createStore(reducer, Map(),
 
 store.dispatch({
   type: 'SET_JOBS',
-  jobs: [
-    { jobTitle: 'Software Engineer', company: 'Google' },
-    { jobTitle: 'Front-End Developer', company: 'Apple' },
-    { jobTitle: 'Hypnotoad', company: 'Facebook' },
-  ],
+  jobs: [],
 });
+
 store.dispatch({
   type: 'SET_EVENTS',
   events: [
