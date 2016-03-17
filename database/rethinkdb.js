@@ -1,20 +1,8 @@
-// import thinky from './thinkylocal';
-// // Create a model - the table is automatically created
-// const Show = thinky.createModel('tv_shows', {
-//   id: String,
-//   name: String,
-//   episodes: Number,
-// });
+import r from 'rethinkdb';
 
-// console.log('Show is', Show);
 
-// Show.getJoin()
-//   .run()
-//   .then((all) => {
-//     console.log(all);
-//     process.exit();
-//   });
-
-// function postJob (properties) {
-  
-// }
+let connection = null;
+r.connect({ host: 'localhost', port: 28015, db: 'test', }, (err, conn) => {
+  if (err) throw err;
+  connection = conn;
+});
