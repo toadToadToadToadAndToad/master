@@ -8,24 +8,30 @@ import ResultsViewComponent from '../components/jobsearch/resultsViewComponent';
 class JobSearchContainer extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      data: [],
+    };
   }
-  getJobs(apiInfo) {
-    axios.get(apiInfo).then((response) => response);
+  componentWillMount() {
+    axios.get('/api/jobs/javascript')
+      .then((response) => this.setState({ data: response.data.data }))
+      .catch((response) => console.log('error', response));
   }
-  getAllJobs() {
-    axios.all([getJobs(api1), getJobs(api2)]).then(function (data) {
-      this.setState({ data });
-    });
+  handleSearch(keywords) {
+    axios.get('/api/jobs/' + keywords)
+      .then((response) => this.setState({ data: response.data.data }))
+      .catch((response) => console.log('error', response));
   }
   render() {
     return (
       <div>
         <div>Job Search Container</div>
         <Link to="/dashboard">Back to Dashboard</Link>
-        <SearchBarComponent />
+        <SearchBarComponent
+          handleSearch= {this.handleSearch}
+        />
         <SiteSelectionComponent />
-        <ResultsViewComponent />
+        <ResultsViewComponent data={this.state.data} />
       </div>
     );
   }

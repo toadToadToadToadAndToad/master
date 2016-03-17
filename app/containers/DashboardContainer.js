@@ -31,7 +31,7 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    console.log(this.props.jobs);
+    // console.log(this.props.jobs);
     return (
       <div>
         <RaisedButton
