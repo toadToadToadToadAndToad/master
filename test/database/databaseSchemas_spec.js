@@ -8,18 +8,19 @@ let expect = chai.expect;
 
 describe('Database Model Testing', () => {
 
-  beforeEach((done) => {
-    let connection = null;
-    r.connect({ host: 'localhost', port: 28015, db: 'test', }, (err, conn) => {
-      if (err) throw err;
-      connection = conn;
-    });
-    done();
-  });
+  // Did NOT end up needed these for tests below, but may need for future db tests
+  // beforeEach((done) => {
+  //   let connection = null;
+  //   r.connect({ host: 'localhost', port: 28015, db: 'test', }, (err, conn) => {
+  //     if (err) throw err;
+  //     connection = conn;
+  //   });
+  //   done();
+  // });
 
-  afterEach(() => {
-    r.dbDrop('test');
-  });
+  // afterEach(() => {
+  //   r.dbDrop('test');
+  // });
 
   it('should create a user', () => {
     var user = new User({});
@@ -31,7 +32,6 @@ describe('Database Model Testing', () => {
     const email = 'bsmith@io.io';
     const password = 'fjalskdjf';
     const user = new User ({ username, email, password });
-    user.save().then((doc) => {});
     expect(user.username).to.equal('bsmith');
     expect(user.email).to.equal('bsmith@io.io');
     expect(user.password).to.equal('fjalskdjf');
