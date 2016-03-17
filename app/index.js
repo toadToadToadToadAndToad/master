@@ -17,7 +17,11 @@ const store = createStore(reducer, Map(),
 
 store.dispatch({
   type: 'SET_JOBS',
-  jobs: [],
+  jobs: [
+    { title: 'Software Engineer', company: 'Apple', type: 'Full Time', location: 'San Francisco' },
+    { title: 'Front-End Developer', company: 'Google', type: 'Full Time', location: 'San Francisco' },
+    { title: 'Bicyle Repairman', company: 'Royal Wheels', type: 'Part Time', location: 'Cambridgeshire' },
+  ],
 });
 
 store.dispatch({
