@@ -6,36 +6,34 @@ import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 
-class ResultsViewComponent extends Component {
-  render() {
-    const jobListing = this.props.data.map(function(job) {
-      return (
-        <TableRow key={job.id}>
-          <TableRowColumn>{job.company}</TableRowColumn>
-          <TableRowColumn>{job.title}</TableRowColumn>
-          <TableRowColumn>{job.type}</TableRowColumn>
-          <TableRowColumn>{job.location}</TableRowColumn>
-        </TableRow>
-      );
-    });
+function ResultsViewComponent(props) {
+  const jobListing = props.data.map(function(job) {
     return (
-      <div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn>Company Name</TableHeaderColumn>
-              <TableHeaderColumn>Job Title</TableHeaderColumn>
-              <TableHeaderColumn>Type</TableHeaderColumn>
-              <TableHeaderColumn>Location</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {jobListing}
-          </TableBody>
-        </Table>
-      </div>
+      <TableRow key={job.id}>
+        <TableRowColumn>{job.company}</TableRowColumn>
+        <TableRowColumn>{job.title}</TableRowColumn>
+        <TableRowColumn>{job.type}</TableRowColumn>
+        <TableRowColumn>{job.location}</TableRowColumn>
+      </TableRow>
     );
-  }
+  });
+  return (
+    <div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>Company Name</TableHeaderColumn>
+            <TableHeaderColumn>Job Title</TableHeaderColumn>
+            <TableHeaderColumn>Type</TableHeaderColumn>
+            <TableHeaderColumn>Location</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {jobListing}
+        </TableBody>
+      </Table>
+    </div>
+  );
 }
 
 ResultsViewComponent.propTypes = { data: React.PropTypes.array };
