@@ -1,6 +1,8 @@
-import thinky from './thinkylocal';
+'use strict';
+
+const thinky = require('../thinkylocal');
 const type = thinky.type;
-import Job from './job';
+const Job = require('./job');
 
 let User = thinky.createModel('User', {
   id: type.string(),
@@ -14,4 +16,4 @@ let User = thinky.createModel('User', {
 User.hasMany(Job, 'jobs', 'id', 'title', 'company');
 Job.belongsTo(User, 'users', 'id', 'username');
 
-export default User;
+module.exports = User;

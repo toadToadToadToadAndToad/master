@@ -1,4 +1,6 @@
-import thinky from './thinkylocal';
+'use strict';
+
+const thinky = require('../thinkylocal');
 const type = thinky.type;
 
 let Job = thinky.createModel('Job', {
@@ -6,7 +8,7 @@ let Job = thinky.createModel('Job', {
   title: type.string(),
   company: type.string(),
   location: type.string(),
-  type: type.string.enum(['fulltime', 'partime', 'contract']),
+  type: type.string(),
   description: type.string().max(200),
   url: type.string(),
   contact: {
@@ -15,4 +17,4 @@ let Job = thinky.createModel('Job', {
   },
 });
 
-export default Job;
+module.exports = Job;
