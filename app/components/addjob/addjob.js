@@ -24,7 +24,7 @@ import React from 'react'
             <input type='text-area' id='description' /><br />
             <label htmlFor='how-to-apply'>Application URL: </label>
             <input type='url' id='how-to-apply' /><br />
-            <label htmlFor='url'>Company: </label>
+            <label htmlFor='url'>URL: </label>
             <input type='url' id='url' /><br />
             <button type="submit">click</button>
           </form>
