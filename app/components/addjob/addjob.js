@@ -8,10 +8,10 @@ import React from 'react'
           <form
            onSubmit={props.handleSubmit}
             className='job-form'>
-            <label htmlFor='company'>Company: </label>
-            <input type='text-area' id='company' /><br />
             <label htmlFor='title'>Job title: </label>
             <input type='text' id='title' /><br />
+            <label htmlFor='company'>Company: </label>
+            <input type='text-area' id='company' /><br />
             <label htmlFor='location'>Location: </label>
             <input type='text' id='location' /><br />
             <label htmlFor='type'>Type: </label>
