@@ -33,8 +33,6 @@ function* closeConnection(next) {
 router.get('/api/jobs/:keywords/:city', job.list);
 router.get('/api/jobs/:keywords', job.list);
 
-// do i need to pass the requst on?  or does it just exist?
-
 router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
 

@@ -6,11 +6,14 @@ const http = require('http');
 const r = require('rethinkdb');
 
 module.exports.addUser = function* (next) {
+  this.type = 'application/json';
   try {
     // Create new instance of 'User' model
-    // let data = yield parse(this);
+    console.log("this ", this);
+    let data = yield parse(this);
+    console.log("data ", data);
     // TODO: Hash password here: data.password = hashhhhhh
-    const user = new User({ username: 'test', email: 'betsy@aimee.com', password: 'hiiii' });
+    const user = new User( data );
 
     // Check to see if user already exists
     const existing = yield User.filter({ email: user.email }).limit(1).run();
@@ -32,14 +35,11 @@ module.exports.addUser = function* (next) {
 
 module.exports.deleteUser = function* (next) {
   try {
-    // let user = yield parse(this);
-    // if ((user === null) || (user.id === null)) {
-    //     throw new Error("The user must have a field `id`.");
-    // }
-    // Can we do this without the this._rdbConn?  Without it, got weird Postman
-    // error but it did delete it.
-    // How do you write success messages in this style?
-    const result = yield User.get('ccd9ebda-a96d-4c96-92b2-dbe4c7edc181')
+    let user = yield parse(this);
+    if ((user === null) || (user.id === null)) {
+        throw new Error("The user must have a field `id`.");
+    }
+    const result = yield User.get(user.id)
                               .delete().run(this._rdbConn);
     // this.body = '';
   } catch (e) {

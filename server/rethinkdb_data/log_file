@@ -20,3 +20,27 @@
 2016-03-17T23:52:37.852630000 15.754044s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: This server is Raft leader for term 1. Latest log index is 0.
 2016-03-17T23:52:41.106985000 19.008434s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Configuration is changing.
 2016-03-17T23:52:41.215749000 19.117197s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: Configuration is changing.
+2016-03-18T13:30:02.590598000 17437.531342s notice: Removing file /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data/9f3f78b6-eefd-4bfe-a79a-228fe31f2650
+2016-03-18T13:30:02.590649000 17437.531394s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: Deleted the table.
+2016-03-18T13:30:26.248531000 17461.189727s notice: Server got SIGINT from pid 518, uid 501; shutting down...
+2016-03-18T13:30:26.248797000 17461.189993s notice: Shutting down client connections...
+2016-03-18T13:30:26.251825000 17461.193022s notice: All client connections closed.
+2016-03-18T13:30:26.251841000 17461.193036s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-18T13:30:26.449633000 17461.390830s notice: Storage engine shut down.
+2016-03-18T13:30:31.531091000 1.275337s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-18T13:30:32.056802000 1.801041s notice: Running on Darwin 15.3.0 x86_64
+2016-03-18T13:30:32.056878000 1.801115s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
+2016-03-18T13:30:32.699776000 2.444046s info: Automatically using cache size of 100 MB
+2016-03-18T13:30:32.699791000 2.444060s warn: Cache size does not leave much memory for server and query overhead (available memory: 477 MB).
+2016-03-18T13:30:32.699799000 2.444068s warn: Cache size is very low and may impact performance.
+2016-03-18T13:30:32.737045000 2.481315s notice: Listening for intracluster connections on port 29015
+2016-03-18T13:30:32.815705000 2.559975s notice: Listening for client driver connections on port 28015
+2016-03-18T13:30:32.816041000 2.560311s notice: Listening for administrative HTTP connections on port 8000
+2016-03-18T13:30:32.817575000 2.561845s notice: Listening on addresses: 127.0.0.1, 192.168.1.224, ::1, fe80::1%1, fe80::1240:f3ff:feec:3e2a%5, fe80::3ce7:d0ff:feec:7b67%9
+2016-03-18T13:30:32.817596000 2.561865s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-18T13:30:34.598949000 4.343251s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 2.
+2016-03-18T13:30:34.841061000 4.585363s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 2. Latest log index is 4.
+2016-03-18T13:30:51.243091000 20.987684s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Added replica on this server.
+2016-03-18T13:30:52.655847000 22.400473s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Starting a new Raft election for term 1.
+2016-03-18T13:30:52.994406000 22.739032s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: This server is Raft leader for term 1. Latest log index is 0.
+2016-03-18T13:30:54.748306000 24.492964s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Configuration is changing.
