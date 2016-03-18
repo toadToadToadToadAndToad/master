@@ -12,7 +12,7 @@ let User = thinky.createModel('User', {
 });
 
 // TODO: Determine relationship - might need to move into another file
-// circular reference error...1-n relation?
+// circular reference error.
 User.hasMany(Job, 'jobs', 'id', 'title', 'company');
 Job.belongsTo(User, 'users', 'id', 'username');
 

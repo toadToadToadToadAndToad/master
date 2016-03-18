@@ -1,40 +1,22 @@
-2016-03-17T16:13:03.679932000 0.726892s notice: Recursively removing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data/tmp
-2016-03-17T16:13:03.681323000 0.728288s notice: Initializing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
-2016-03-17T16:13:03.681435000 0.728395s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data' did not already exist or is empty.)
-2016-03-17T16:13:03.681494000 0.728454s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
-2016-03-17T16:13:03.735216000 0.782177s notice: Running on Darwin 15.3.0 x86_64
-2016-03-17T16:13:03.735329000 0.782289s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
-2016-03-17T16:13:04.581955000 1.628914s info: Automatically using cache size of 100 MB
-2016-03-17T16:13:04.581969000 1.628928s warn: Cache size does not leave much memory for server and query overhead (available memory: 483 MB).
-2016-03-17T16:13:04.581977000 1.628936s warn: Cache size is very low and may impact performance.
-2016-03-17T16:13:04.607963000 1.654923s notice: Listening for intracluster connections on port 29015
-2016-03-17T16:13:04.634059000 1.681019s notice: Listening for client driver connections on port 28015
-2016-03-17T16:13:04.763307000 1.810299s error: Could not bind to http port: The address at localhost:8080 is reserved or already in use.
-2016-03-17T16:16:32.794795000 0.583999s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
-2016-03-17T16:16:32.926957000 0.716158s notice: Running on Darwin 15.3.0 x86_64
-2016-03-17T16:16:32.927021000 0.716221s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
-2016-03-17T16:16:33.229618000 1.018818s info: Automatically using cache size of 100 MB
-2016-03-17T16:16:33.229630000 1.018829s warn: Cache size does not leave much memory for server and query overhead (available memory: 495 MB).
-2016-03-17T16:16:33.229636000 1.018835s warn: Cache size is very low and may impact performance.
-2016-03-17T16:16:33.231004000 1.020204s notice: Listening for intracluster connections on port 29015
-2016-03-17T16:16:33.233109000 1.022308s notice: Listening for client driver connections on port 28015
-2016-03-17T16:16:33.341986000 1.131186s error: Could not bind to http port: The address at localhost:8080 is reserved or already in use.
-2016-03-17T16:36:29.300065000 0.864694s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
-2016-03-17T16:36:29.485582000 1.050207s notice: Running on Darwin 15.3.0 x86_64
-2016-03-17T16:36:29.485651000 1.050274s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
-2016-03-17T16:36:29.831939000 1.396563s info: Automatically using cache size of 100 MB
-2016-03-17T16:36:29.831953000 1.396576s warn: Cache size does not leave much memory for server and query overhead (available memory: 488 MB).
-2016-03-17T16:36:29.831961000 1.396585s warn: Cache size is very low and may impact performance.
-2016-03-17T16:36:29.845902000 1.410526s notice: Listening for intracluster connections on port 29015
-2016-03-17T16:36:29.858511000 1.423135s notice: Listening for client driver connections on port 28015
-2016-03-17T16:36:29.858789000 1.423413s notice: Listening for administrative HTTP connections on port 8000
-2016-03-17T16:36:29.860097000 1.424720s notice: Listening on addresses: 127.0.0.1, 192.168.1.224, ::1, fe80::1%1, fe80::1240:f3ff:feec:3e2a%5, fe80::3ce7:d0ff:feec:7b67%9
-2016-03-17T16:36:29.860109000 1.424732s notice: Server ready, "Aimees_MBP_dlq" b1f3814f-cfee-453f-9550-ce031f0ea64a
-2016-03-17T18:04:07.389761000 5259.047449s info: Table 08a69c57-23cb-415f-a2e4-6ac716152ce6: Added replica on this server.
-2016-03-17T18:04:07.549659000 5259.207345s info: Table 7681e19e-2001-49bb-810a-2cce14011d9e: Added replica on this server.
-2016-03-17T18:04:08.701578000 5260.359263s info: Table 7681e19e-2001-49bb-810a-2cce14011d9e: Starting a new Raft election for term 1.
-2016-03-17T18:04:08.911964000 5260.569650s info: Table 08a69c57-23cb-415f-a2e4-6ac716152ce6: Starting a new Raft election for term 1.
-2016-03-17T18:04:09.061511000 5260.719232s info: Table 7681e19e-2001-49bb-810a-2cce14011d9e: This server is Raft leader for term 1. Latest log index is 0.
-2016-03-17T18:04:09.232400000 5260.890121s info: Table 08a69c57-23cb-415f-a2e4-6ac716152ce6: This server is Raft leader for term 1. Latest log index is 0.
-2016-03-17T18:04:11.207264000 5262.865020s info: Table 08a69c57-23cb-415f-a2e4-6ac716152ce6: Configuration is changing.
-2016-03-17T18:04:11.271353000 5262.929109s info: Table 7681e19e-2001-49bb-810a-2cce14011d9e: Configuration is changing.
+2016-03-17T23:52:22.716944000 0.618058s notice: Recursively removing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data/tmp
+2016-03-17T23:52:22.718960000 0.620077s notice: Initializing directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
+2016-03-17T23:52:22.719085000 0.620198s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data' did not already exist or is empty.)
+2016-03-17T23:52:22.719147000 0.620260s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-17T23:52:22.835737000 0.736851s notice: Running on Darwin 15.3.0 x86_64
+2016-03-17T23:52:22.835805000 0.736918s notice: Loading data from directory /Users/aimeerosato/hackreactor/thesis/numbers-game/server/rethinkdb_data
+2016-03-17T23:52:23.600941000 1.502087s info: Automatically using cache size of 100 MB
+2016-03-17T23:52:23.600952000 1.502098s warn: Cache size does not leave much memory for server and query overhead (available memory: 577 MB).
+2016-03-17T23:52:23.600958000 1.502104s warn: Cache size is very low and may impact performance.
+2016-03-17T23:52:23.631702000 1.532849s notice: Listening for intracluster connections on port 29015
+2016-03-17T23:52:23.633551000 1.534698s notice: Listening for client driver connections on port 28015
+2016-03-17T23:52:23.633846000 1.534992s notice: Listening for administrative HTTP connections on port 8000
+2016-03-17T23:52:23.635966000 1.537112s notice: Listening on addresses: 127.0.0.1, 192.168.1.224, ::1, fe80::1%1, fe80::1240:f3ff:feec:3e2a%5, fe80::3ce7:d0ff:feec:7b67%9
+2016-03-17T23:52:23.635984000 1.537129s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-17T23:52:35.729805000 13.631152s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Added replica on this server.
+2016-03-17T23:52:35.784309000 13.685656s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: Added replica on this server.
+2016-03-17T23:52:37.579040000 15.480422s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 1.
+2016-03-17T23:52:37.612042000 15.513424s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: Starting a new Raft election for term 1.
+2016-03-17T23:52:37.773900000 15.675282s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 1. Latest log index is 0.
+2016-03-17T23:52:37.852630000 15.754044s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: This server is Raft leader for term 1. Latest log index is 0.
+2016-03-17T23:52:41.106985000 19.008434s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Configuration is changing.
+2016-03-17T23:52:41.215749000 19.117197s info: Table 9f3f78b6-eefd-4bfe-a79a-228fe31f2650: Configuration is changing.
