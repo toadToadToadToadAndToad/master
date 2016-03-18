@@ -4,12 +4,12 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Map } from 'immutable';
 
-import reducer from './config/reducer';
 import routes from './config/routes';
+import { numbersGameApp } from './config/reducer';
 
 // the window.devToolsExtension... stuff is needed for the google
 // chrome redux dev tools to work
-const store = createStore(reducer, Map(),
+const store = createStore(numbersGameApp, Map(),
   window.devToolsExtension ? window.devToolsExtension() : undefined
 );
 
@@ -18,7 +18,6 @@ const store = createStore(reducer, Map(),
 store.dispatch({
   type: 'SET_JOBS',
   jobs: [
-    { title: 'Software Engineer', company: 'Apple', type: 'Full Time', location: 'San Francisco' },
     { title: 'Front-End Developer', company: 'Google', type: 'Full Time', location: 'San Francisco' },
     { title: 'Bicyle Repairman', company: 'Royal Wheels', type: 'Part Time', location: 'Cambridgeshire' },
   ],

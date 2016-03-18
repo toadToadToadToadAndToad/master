@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import AddJobComponent from '../components/addjob/addjob';
 
+import { addJob } from '../config/actions';
+
 const handleSubmit = (event, dispatch) => {
     event.preventDefault();
 
@@ -16,9 +18,8 @@ const handleSubmit = (event, dispatch) => {
     url: children.location.url,
     how_to_apply: children['how-to-apply'].value
   };
-
   event.target.reset();
-  dispatch({type: 'ADD_JOB', job: job});
+  dispatch(addJob(job));
 }
 
 let  AddJobContainer = ({dispatch}) => {
