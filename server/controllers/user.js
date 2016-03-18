@@ -8,11 +8,9 @@ const r = require('rethinkdb');
 module.exports.addUser = function* (next) {
   this.type = 'application/json';
   try {
-    // Create new instance of 'User' model
-    console.log("this ", this);
     let data = yield parse(this);
-    console.log("data ", data);
     // TODO: Hash password here: data.password = hashhhhhh
+    // Create new instance of 'User' model
     const user = new User( data );
 
     // Check to see if user already exists
@@ -35,12 +33,14 @@ module.exports.addUser = function* (next) {
 
 module.exports.deleteUser = function* (next) {
   try {
-    let user = yield parse(this);
+    const user = yield parse(this);
     if ((user === null) || (user.id === null)) {
-        throw new Error("The user must have a field `id`.");
+      throw new Error('The user must have a field "id".');
     }
+    console.log("User Id is ", user.id);
     const result = yield User.get(user.id)
-                              .delete().run(this._rdbConn);
+                             .delete().run();
+    console.log('User deleted sucessfully.');
     // this.body = '';
   } catch (e) {
     this.status = 500;
