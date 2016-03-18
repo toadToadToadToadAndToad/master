@@ -4,3 +4,4 @@ dist
 *.log
 bower_components
 .eslintrc.js
+rethinkdb_data
