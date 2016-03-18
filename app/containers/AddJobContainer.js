@@ -21,8 +21,6 @@ const handleSubmit = (event, dispatch) => {
   dispatch({type: 'ADD_JOB', job: job});
 }
 
-
-
 let  AddJobContainer = ({dispatch}) => {
   return (
       <div>
