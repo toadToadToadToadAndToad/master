@@ -11,17 +11,20 @@ class JobSearchContainer extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      data: []
     };
+    this.setState = this.setState.bind(this);
   }
-  componentWillMount() {
+  componentDidMount() {
     axios.get('/api/jobs/javascript')
       .then((response) => this.setState({ data: response.data.data }))
       .catch((response) => console.log('error', response));
   }
-  handleSearch(keywords) {
-    axios.get('/api/jobs/' + keywords)
-      .then((response) => this.setState({ data: response.data.data }))
+  handleSearchSubmit(keyword) {
+    axios.get('/api/jobs/' + keyword)
+      .then(function(response) {
+        this.setState({ data: response.data.data });
+      })
       .catch((response) => console.log('error', response));
   }
   render() {
@@ -33,10 +36,7 @@ class JobSearchContainer extends Component {
         />
         <br /><br />
         <PageHeader>Job Search</PageHeader>
-
-        <SearchBarComponent
-          handleSearch= {this.handleSearch}
-        />
+        <SearchBarComponent onHandleSearch={this.handleSearchSubmit} />
         <SiteSelectionComponent />
         <ResultsViewComponent data={this.state.data} />
       </div>
