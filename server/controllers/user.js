@@ -11,7 +11,7 @@ module.exports.addUser = function* (next) {
     let data = yield parse(this);
     // TODO: Hash password here: data.password = hashhhhhh
     // Create new instance of 'User' model
-    const user = new User( data );
+    const user = new User(data);
 
     // Check to see if user already exists
     const existing = yield User.filter({ email: user.email }).limit(1).run();
