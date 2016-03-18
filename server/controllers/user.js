@@ -37,7 +37,6 @@ module.exports.deleteUser = function* (next) {
     if ((user === null) || (user.id === null)) {
       throw new Error('The user must have a field "id".');
     }
-    console.log("User Id is ", user.id);
     const result = yield User.get(user.id)
                              .delete().run();
     console.log('User deleted sucessfully.');

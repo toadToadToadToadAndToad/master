@@ -6,50 +6,65 @@ import User from '../../database/models/user';
 import Job from '../../database/models/job';
 import thinky from '../../database/thinkylocal.js';
 import userController from '../../server/controllers/user';
-
+let request = require('request');
 let expect = chai.expect;
 
 describe('User Controller Methods Testing', () => {
-
-  // Did NOT end up needed these for tests below, but may need for future db tests
-  // beforeEach((done) => {
-  //   let connection = null;
-  //   r.connect({ host: 'localhost', port: 28015, db: 'test', }, (err, conn) => {
-  //     if (err) throw err;
-  //     connection = conn;
-  //   });
-  //   done();
-  // });
-
-  // afterEach(() => {
-  //   r.dbDrop('test');
-  // });
-
-  it('should have all proper methods', () => {
-    expect(addUser).to.be.a('function');
-    expect(deleteUser).to.be.a('function');
+  let connection = null;
+  beforeEach((done) => {
+    r.connect({ host: 'localhost', port: 28015, db: 'test' }, (err, conn) => {
+      if (err) throw err;
+      connection = conn;
+    });
+    done();
   });
 
-//   it('should store passed properties when instantiated', () => {
-//     const username = 'bsmith';
-//     const email = 'bsmith@io.io';
-//     const password = 'fjalskdjf';
-//     const user = new User ({ username, email, password });
-//     expect(user.username).to.equal('bsmith');
-//     expect(user.email).to.equal('bsmith@io.io');
-//     expect(user.password).to.equal('fjalskdjf');
-//   });
+  afterEach(() => {
+    r.dbDrop('test');
+  });
 
-//   it('should create a job', () => {
-//     const job = new Job({});
-//     expect(job).to.be.a('object');
-//   });
+  it('Should add a new user to the database', (done) => {
+    request({ method: 'POST',
+              url: 'http://localhost:3000/api/users',
+              json: { username: 'melissa', email: 'ing@melissa.com', password: 'ex' },
+    }, () => {
+      let promise = r.db('test').table('User').run(connection, (err, user) => {
+        if (err) throw err;
+        expect(user).to.equal({ username: 'melissa', email: 'ing@melissa.com', password: 'ex' });
+      }
+      );
+      done();
+    });
+  });
 
-//   it('should store passed properties when instantiated', () => {
-//     const title = 'Junior Dev';
-//     const company = 'Github Inc.';
-//     const job = new Job({ title, company, location });
-//     expect(job.title).to.equal('Junior Dev');
-//     expect(job.company).to.equal('Github Inc.');
-//   });
+  // it('Should NOT add an existing user to the database', (done) => {
+  //   request({ method: "POST",
+  //             url: "http://localhost:3000/api/users",
+  //             json: {"username": "melissa", "email": "ing@melissa.com", "password": "exy"}
+  //   }, () => { 
+  //     request({ method: "POST",
+  //             url: "http://localhost:3000/api/users",
+  //             json: {"username": "melissa", "email": "ing@melissa.com", "password": "exy"}
+  //   }, () => {
+  //     let user = r.db('test').table('User').count();
+  //     expect(user).to.equal(1);
+  //     done();
+  //      });
+  //   });
+  // });
+
+  // it('Should delete a user from the database', (done) => {
+  //   request({ method: "POST",
+  //             url: "http://localhost:3000/api/users",
+  //             json: {"username": "melissa", "email": "ing@melissa.com", "password": "exy"}
+  //   }, () => { 
+  //     request({ method: "DELETE",
+  //             url: "http://localhost:3000/api/users",
+  //             json: {"username": "melissa", "email": "ing@melissa.com", "password": "exy"}
+  //   }, () => {
+  //     let user = r.db('test').table('User').count();
+  //     expect(user).to.equal(0);
+  //     done();
+  //   });
+  // });
 });
