@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AddJobComponent from '../components/addjob/addjob';
 
 const handleSubmit = (event, dispatch) => {
-  console.log("handleSubmit");
     event.preventDefault();
 
     let children = event.target.children;
@@ -17,11 +16,10 @@ const handleSubmit = (event, dispatch) => {
     url: children.location.url,
     how_to_apply: children['how-to-apply'].value
   };
-  console.log(job);
+
+  event.target.reset();
   dispatch({type: 'ADD_JOB', job: job});
 }
-
-
 
 let  AddJobContainer = ({dispatch}) => {
   return (
