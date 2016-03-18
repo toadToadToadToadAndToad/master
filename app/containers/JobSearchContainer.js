@@ -13,7 +13,7 @@ class JobSearchContainer extends Component {
     this.state = {
       data: []
     };
-    this.setState = this.setState.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
   componentDidMount() {
     axios.get('/api/jobs/javascript')
@@ -22,9 +22,7 @@ class JobSearchContainer extends Component {
   }
   handleSearchSubmit(keyword) {
     axios.get('/api/jobs/' + keyword)
-      .then(function(response) {
-        this.setState({ data: response.data.data });
-      })
+      .then((response) => this.setState({ data: response.data.data }))
       .catch((response) => console.log('error', response));
   }
   render() {
