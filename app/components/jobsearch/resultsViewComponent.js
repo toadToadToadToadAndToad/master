@@ -21,7 +21,10 @@ function ResultsViewComponent(props) {
   );
   return (
     <div>
-      <Table multiSelectable>
+      <Table
+        multiSelectable
+        onCellClick={props.onRowClick}
+      >
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Company Name</TableHeaderColumn>
@@ -39,5 +42,8 @@ function ResultsViewComponent(props) {
   );
 }
 
-ResultsViewComponent.propTypes = { data: React.PropTypes.array };
+ResultsViewComponent.propTypes = {
+  data: React.PropTypes.array,
+  onRowClick: React.PropTypes.func
+};
 export default ResultsViewComponent;

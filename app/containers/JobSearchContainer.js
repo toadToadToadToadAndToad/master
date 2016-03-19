@@ -14,6 +14,7 @@ class JobSearchContainer extends Component {
       data: []
     };
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleRowClick = this.handleRowClick.bind(this);
   }
   componentDidMount() {
     axios.get('/api/jobs/javascript')
@@ -24,6 +25,9 @@ class JobSearchContainer extends Component {
     axios.get('/api/jobs/' + keyword)
       .then((response) => this.setState({ data: response.data.data }))
       .catch((response) => console.log('error', response));
+  }
+  handleRowClick(event) {
+    console.log(this.state.data[event]);
   }
   render() {
     return (
@@ -36,10 +40,14 @@ class JobSearchContainer extends Component {
         <PageHeader>Job Search</PageHeader>
         <SearchBarComponent onHandleSearch={this.handleSearchSubmit} />
         <SiteSelectionComponent />
-        <ResultsViewComponent data={this.state.data} />
+        <ResultsViewComponent
+          data={this.state.data}
+          onRowClick={this.handleRowClick}
+        />
       </div>
     );
   }
 }
 
+JobSearchContainer = connect()(JobSearchContainer);
 export default JobSearchContainer;
