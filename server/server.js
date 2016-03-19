@@ -32,6 +32,9 @@ function* closeConnection(next) {
 
 router.get('/api/jobs/:keywords/:city', job.list);
 router.get('/api/jobs/:keywords', job.list);
+router.post('/api/jobs/', job.addJob);
+router.delete('/api/jobs/', job.deleteJob);
+router.put('/api/jobs/', job.updateJob);
 
 router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);

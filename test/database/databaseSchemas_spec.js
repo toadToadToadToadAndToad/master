@@ -2,7 +2,7 @@ import r from 'rethinkdb';
 import chai from 'chai';
 import User from '../../database/models/user';
 import Job from '../../database/models/job';
-import thinky from '../../database/models/thinkylocal.js';
+import thinky from '../../database/thinkylocal.js';
 
 let expect = chai.expect;
 

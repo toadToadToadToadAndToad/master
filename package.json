@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback",
     "prod": "webpack -p",
-    "test": "mocha --compilers js:babel-core/register,css:./test/css-null-compiler.js --require ./test/test-helper.js  --recursive",
+    "test": "mocha --compilers js:babel-core/register,css:./test/css-null-compiler.js --require babel-polyfill --require ./test/test-helper.js  --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Ian Akers, Tim Dang, Michael Dziedzic, Aimee Rosato, Fanny Vasquez",
@@ -29,6 +29,7 @@
     "react-router": "^2.0.0-rc5",
     "redux": "^3.3.1",
     "redux-immutable": "^3.0.6",
+    "request": "^2.69.0",
     "rethinkdb": "^2.2.2",
     "thinky": "^2.2.5"
   },
