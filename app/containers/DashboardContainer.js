@@ -30,9 +30,7 @@ class DashboardContainer extends Component {
     console.log('ROW CLICK:', event);
   }
 
-
   render() {
-
     // only show the table of job data if it is not empty
     let jobsTable = '';
     if (this.props.jobs.length) {
@@ -82,6 +80,8 @@ const mapStateToProps = (state) => {
   let events = undefined;
   if (state.get('jobs')) jobs = state.get('jobs').toJS();
   if (state.get('events')) events = state.get('events').toJS();
+  // console.log('111', state.get('jobs').toJS());
+  // console.log('222', getState());
   return {
     jobs,
     events,
