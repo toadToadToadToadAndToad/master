@@ -12,7 +12,7 @@ module.exports.list = function*(next) {
     queryString+='&location=' + this.params.city
   }
   console.log('queryString', queryString);
-  const jobs = yield axios.get('https://jobs.github.com/positions.json'+queryString);
+  const jobs = yield axios.get('https://jobs.github.com/positions.json'+ queryString);
   this.body = jobs;
   this.status = 200;
 };
@@ -22,20 +22,11 @@ module.exports.addJob = function* (next) {
   try {
     const jobData = yield parse(this);
     const job = new Job(jobData);
-    console.log(job);
-    // Can't get this to work.  IDs not available to check. 
-    // Check to see if job already exists
-    // const existing = yield Job.filter({ id: job.id }).limit(1).run();
-    // if (existing.length !== 0) {
-    //   // throw and error
-    //   throw new Error('Job already in database');
-    // }
     yield job.save();
   } catch (e) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-
   yield next;
 };
 
@@ -45,12 +36,25 @@ module.exports.deleteJob = function* (next) {
     if ((jobToDelete === null) || (jobToDelete.id === null)) {
       throw new Error('The job must have a field "id".');
     }
-    console.log("job Id is ", jobToDelete.id);
-    const result = yield Job.get(jobToDelete.id)
-                             .delete().run();
+    yield Job.get(jobToDelete.id).delete().run();
     console.log('Job deleted sucessfully.');
-    // this.body = '';
   } catch (e) {
+    console.log('Sorry, could not find a job with that id.');
+    this.status = 500;
+    this.body = e.message || http.STATUS_CODES[this.status];
+  }
+  yield next;
+};
+
+module.exports.updateJob = function* (next) {
+  try {
+    // Would have to send id of job wanted to edit in
+    const dataToUpdate = yield parse(this);
+    const updatedJob = yield Job.get(dataToUpdate.id).run();
+    yield updatedJob.merge(dataToUpdate).save();
+    console.log('Sucessfully updated Job');
+  } catch (e) {
+    console.log('Could not update job');
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
