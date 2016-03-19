@@ -22,18 +22,14 @@ module.exports.addJob = function* (next) {
   try {
     const jobData = yield parse(this);
     const job = new Job(jobData);
-    console.log("job is ", job.id);
-
-    //Check to see if job already exists
- 
-    const existing = yield Job.filter({ id: job.id }).limit(1).run();
-    if (existing.length !== 0) {
-      // throw and error
-      throw new Error('Job already in database');
-    }
-    
-
-    // Otherwise, save the job to the table
+    console.log(job);
+    // Can't get this to work.  IDs not available to check. 
+    // Check to see if job already exists
+    // const existing = yield Job.filter({ id: job.id }).limit(1).run();
+    // if (existing.length !== 0) {
+    //   // throw and error
+    //   throw new Error('Job already in database');
+    // }
     yield job.save();
   } catch (e) {
     this.status = 500;
