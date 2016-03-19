@@ -5,19 +5,23 @@ class SearchBarComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keywords: ''
+      keywords: '',
+      location: ''
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyChange = this.handleKeyChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
-  handleChange(e) {
+  handleKeyChange(e) {
     this.setState({ keywords: e.target.value });
   }
-
+  handleLocationChange(e) {
+    this.setState({ location: e.target.value });
+  }
   handleSearch(event) {
     event.preventDefault();
-    this.props.onHandleSearch(this.state.keywords);
-    this.setState({ keywords: '' });
+    this.props.onHandleSearch(this.state.keywords, this.state.location);
+    this.setState({ keywords: '', location: '' });
   }
   render() {
     return (
@@ -25,9 +29,15 @@ class SearchBarComponent extends Component {
         <form onSubmit={this.handleSearch}>
           <input
             type="text"
-            placeholder="Search Jobs"
+            placeholder="Job Description"
             value={this.state.keywords}
-            onChange={this.handleChange}
+            onChange={this.handleKeyChange}
+          />
+          <input
+            type="text"
+            placeholder="Location"
+            value={this.state.location}
+            onChange={this.handleLocationChange}
           />
           <input type="submit" value="Post" />
         </form>
