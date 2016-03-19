@@ -13,7 +13,7 @@ let User = thinky.createModel('User', {
 
 // TODO: Determine relationship - might need to move into another file
 // circular reference error. - messed up unique id...
-// User.hasMany(Job, 'jobs', 'jobId', 'title', 'company');
-// Job.belongsTo(User, 'users', 'id', 'username');
+User.hasAndBelongsToMany(Job, 'jobs', 'id', 'id');
+Job.hasAndBelongsToMany(User, 'users', 'id', 'id');
 
 module.exports = User;

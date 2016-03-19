@@ -22,7 +22,11 @@ module.exports.addJob = function* (next) {
   try {
     const jobData = yield parse(this);
     const job = new Job(jobData);
-    yield job.save();
+    const newJob = yield job.saveAll();
+    console.log(newJob); // doesn't have users array
+    const result = yield Job.get(newJob.id).getJoin({users: true}).run();
+    this.body = result;
+    console.log(result); // has users array
   } catch (e) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
@@ -51,7 +55,7 @@ module.exports.updateJob = function* (next) {
     // Would have to send id of job wanted to edit in
     const dataToUpdate = yield parse(this);
     const updatedJob = yield Job.get(dataToUpdate.id).run();
-    yield updatedJob.merge(dataToUpdate).save();
+    yield updatedJob.merge(dataToUpdate).saveAll();
     console.log('Sucessfully updated Job');
   } catch (e) {
     console.log('Could not update job');
