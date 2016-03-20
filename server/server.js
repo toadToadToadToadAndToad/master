@@ -11,6 +11,10 @@ const user = require('./controllers/user');
 const http = require('http');
 const app = koa();
 const spa = require('koa-spa');
+const passport = require('koa-passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;;
+const tokens = require('./config');
+
 
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
@@ -44,6 +48,16 @@ router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
 
 // app.use(closeConnection);
+
+//Google Auth routes
+router.get('/auth/google', passport.authenticate('google',{scope:['email','profile']}));
+router.get('/auth/google/callback', 
+  passport.authenticate('google',{
+    successRedirect:'/dashboard',
+    failureRedirect: '/'   
+  }
+));
+
 
 // app.use(serve(path.join(__dirname, '../dist')));
 app.use(spa(path.join(__dirname, '../dist'), {
