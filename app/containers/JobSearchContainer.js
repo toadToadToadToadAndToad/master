@@ -21,18 +21,19 @@ class JobSearchContainer extends Component {
 
   componentDidMount() {
     // The state keeps on getting reset on load. Need to see how to persist a search result.
-    console.log('Mounted data:',this.state.data);
+    console.log('Mounted data:', this.state.data);
   }
 
   handleSearchSubmit(keyword, location) {
     // TODO add loading spinner
     // TODO incorporate variable from SiteSelection
-    let searchParams = '/api/jobs/' + keyword.replace(/ /g, '+')
+    const source = 'github';
+    let searchParams = '/api/jobs/' + source + '/' + keyword.replace(/ /g, '+');
     if (location.length) {
-      searchParams+= '/' + location.replace(/ /g, '+');
+      searchParams += '/' + location.replace(/ /g, '+');
     }
     axios.get(searchParams)
-      .then((response) => this.setState({ data: response.data.data }))
+      .then((response) => this.setState({ data: response.data }))
       .catch((response) => console.log('error', response));
   }
   handleRowClick(event) {
