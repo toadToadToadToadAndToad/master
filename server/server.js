@@ -12,7 +12,6 @@ const passport = require('./controllers/auth');
 const http = require('http');
 const app = koa();
 const spa = require('koa-spa');
-const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;;
 const tokens = require('./config');
 
@@ -33,6 +32,8 @@ function* closeConnection(next) {
   this._rdbConn.close();
   yield next;
 }
+//initialize Auth must be before app.use(router.routes())
+app.use(passport.initialize());
 
 app.use(createConnection);
 app.use(router.routes());
@@ -50,6 +51,7 @@ router.put('/api/jobs/', job.updateJob);
 router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
 
+
 //Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google',{scope:['email','profile'],accessType: 'offline', approvalPrompt: 'force'}));
 router.get('/auth/google/callback', 
@@ -59,8 +61,6 @@ router.get('/auth/google/callback',
   }
 ));
 
-//init auth
-app.use(passport.initialize());
 
 //if user already verified redirects to dasboard, else redirect to signin
 function *authed(next){

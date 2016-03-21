@@ -2343,3 +2343,213 @@
 2016-03-20T23:56:25.423528000 8617.189533s notice: All client connections closed.
 2016-03-20T23:56:25.423538000 8617.189543s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2016-03-20T23:56:25.435175000 8617.201180s notice: Storage engine shut down.
+2016-03-21T13:06:00.416929000 0.295157s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-21T13:06:00.422917000 0.301140s notice: Running on Darwin 14.5.0 x86_64
+2016-03-21T13:06:00.422986000 0.301206s notice: Loading data from directory /Users/fannyvasquez/Desktop/numbers-game/server/rethinkdb_data
+2016-03-21T13:06:00.634333000 0.512578s info: Automatically using cache size of 190 MB
+2016-03-21T13:06:00.634935000 0.513180s notice: Listening for intracluster connections on port 29015
+2016-03-21T13:06:00.706821000 0.585065s notice: Listening for client driver connections on port 28015
+2016-03-21T13:06:00.707066000 0.585310s notice: Listening for administrative HTTP connections on port 8080
+2016-03-21T13:06:00.707092000 0.585336s notice: Listening on addresses: 127.0.0.1, ::1
+2016-03-21T13:06:00.707094000 0.585338s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-03-21T13:06:00.707095000 0.585340s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-21T13:06:01.359381000 1.237626s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:02.043953000 1.922223s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Starting a new Raft election for term 4.
+2016-03-21T13:06:02.171516000 2.049784s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: This server is Raft leader for term 4. Latest log index is 12.
+2016-03-21T13:06:02.463685000 2.341954s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: Starting a new Raft election for term 4.
+2016-03-21T13:06:02.613450000 2.491719s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: This server is Raft leader for term 4. Latest log index is 10.
+2016-03-21T13:06:02.643599000 2.521867s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 5.
+2016-03-21T13:06:02.983686000 2.862000s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 5. Latest log index is 15.
+2016-03-21T13:06:03.414678000 3.292971s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:05.424447000 5.302787s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:07.435340000 7.313728s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:09.449488000 9.327923s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:11.462634000 11.341118s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:13.475703000 13.354233s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:06:15.485269000 15.363847s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:07:13.524321000 73.404186s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:07:15.588487000 75.468400s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:09:34.374408000 214.257457s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:46.302967000 286.187653s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:48.321856000 288.206566s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:49.879173000 289.763931s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:51.895651000 291.780457s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:53.945007000 293.829863s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:55.991277000 295.876180s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:10:58.005087000 297.890038s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:00.017224000 299.902199s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:02.031046000 301.916069s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:04.046208000 303.931280s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:06.057612000 305.942732s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:08.102588000 307.987756s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:10.118904000 310.004120s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:12.132266000 312.017531s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:14.143749000 314.029063s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:16.154702000 316.040064s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:18.170685000 318.056070s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:20.182576000 320.068010s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:22.198588000 322.084070s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:24.212606000 324.098136s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:26.227676000 326.113255s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:28.243764000 328.129391s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:30.259833000 330.145509s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:32.271508000 332.157231s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:34.281113000 334.166885s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:36.297855000 336.183651s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:38.644401000 338.530270s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:40.661457000 340.547349s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:42.677117000 342.563058s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:44.691075000 344.577065s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:46.742209000 346.628247s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:48.758274000 348.644360s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:51.548307000 351.434464s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:53.592452000 353.478659s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:55.608201000 355.494456s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:57.621665000 357.507969s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:11:59.632309000 359.518661s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:01.642844000 361.529220s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:03.658298000 363.544722s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:05.685552000 365.572025s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:07.701710000 367.588231s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:09.714951000 369.601520s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:11.728285000 371.614903s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:13.738827000 373.625493s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:15.754838000 375.641553s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:17.765863000 377.652626s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:19.780190000 379.666977s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:21.830787000 381.717623s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:23.844519000 383.731403s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:25.856068000 385.743002s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:27.872582000 387.759564s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:29.888274000 389.775303s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:31.902264000 391.789342s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:33.918018000 393.805144s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:35.932485000 395.819661s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:37.976140000 397.863339s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:39.987750000 399.874998s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:42.003533000 401.890830s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:44.015571000 403.902915s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:46.031997000 405.919390s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:48.044821000 407.932262s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:50.097057000 409.984547s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:52.108287000 411.995825s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:54.125385000 414.012972s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:56.183249000 416.070884s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:12:58.195926000 418.083610s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:00.212005000 420.099737s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:02.264685000 422.152466s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:04.276204000 424.164033s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:06.287781000 426.175636s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:08.296588000 428.184490s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:10.306068000 430.194019s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:12.317839000 432.205838s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:14.331687000 434.219735s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:16.346442000 436.234538s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:18.360547000 438.248692s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:20.415455000 440.303649s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:22.429360000 442.317602s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:24.440985000 444.329276s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:26.454650000 446.342965s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:28.465989000 448.354352s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:30.477900000 450.366312s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:32.493350000 452.381810s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:34.509960000 454.398469s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:36.525899000 456.414456s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:41.541514000 461.430193s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:47.699795000 467.588595s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:53.716386000 473.605332s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:13:59.708500000 479.597593s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:05.618652000 485.507867s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:11.615792000 491.505153s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:17.599555000 497.489061s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:20.262760000 500.152314s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:21.982709000 501.872312s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:23.994468000 503.884120s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:26.005441000 505.895140s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:31.120550000 511.010348s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:33.143986000 513.033833s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:34.620415000 514.510310s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:36.663729000 516.553673s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:38.673404000 518.563372s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:40.362326000 520.252343s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:42.379088000 522.269154s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:44.432360000 524.322475s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:46.261563000 526.151726s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:14:48.280945000 528.171133s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:03.701736000 543.592289s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:05.740543000 545.631145s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:10.649005000 550.539706s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:16.398738000 556.289584s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:21.737593000 561.628561s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:27.365424000 567.256514s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:29.377042000 569.268181s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:31.421627000 571.312815s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:33.436276000 573.327512s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:35.452503000 575.343788s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:37.467334000 577.358668s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:39.479673000 579.371056s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:41.489516000 581.380923s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:43.503599000 583.395055s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:45.515216000 585.406722s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:47.529747000 587.421302s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:49.542291000 589.433894s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:51.922148000 591.813800s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:53.942784000 593.834486s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:55.951566000 595.843315s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:57.275162000 597.166936s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:15:59.288903000 599.180727s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:01.303485000 601.195357s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:03.319983000 603.211904s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:05.330232000 605.222201s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:07.689417000 607.581435s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:09.705166000 609.597233s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:11.715698000 611.607814s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:13.760834000 613.653000s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:15.771798000 615.664012s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:17.823348000 617.715611s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:19.833124000 619.725410s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:21.844623000 621.736952s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:23.860809000 623.753180s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:25.876917000 625.769329s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:30.626424000 630.518940s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:36.610575000 636.503194s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:42.703346000 642.596091s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:48.602847000 648.495697s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:16:54.656018000 654.548993s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:00.543875000 660.436976s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:06.607363000 666.500567s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:12.606401000 672.499730s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:18.614692000 678.508147s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:24.606565000 684.500124s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:30.237775000 690.131459s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:36.605062000 696.498872s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:42.607022000 702.500938s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:48.604778000 708.498817s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:17:54.602033000 714.496199s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:00.236423000 720.130693s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:06.490683000 726.385079s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:12.649618000 732.544140s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:18.606410000 738.501037s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:24.603981000 744.498734s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:30.718013000 750.612891s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:36.605399000 756.500382s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:42.399718000 762.294827s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:44.446413000 764.341565s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:46.043523000 765.938696s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:48.102686000 767.997902s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:50.155192000 770.050449s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:52.201049000 772.096349s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:54.246991000 774.142332s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:56.257162000 776.152545s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:18:58.266467000 778.161892s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:00.275083000 780.170529s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:02.284998000 782.180486s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:04.295890000 784.191420s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:06.311133000 786.206705s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:08.322324000 788.217938s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:10.337509000 790.233165s notice: Someone asked for the nonwhitelisted file "/sockjs-node/info".  If this should be accessible, add it to the static web assets.
+2016-03-21T13:19:11.167432000 791.063109s notice: Server got SIGINT from pid 522, uid 501; shutting down...
+2016-03-21T13:19:11.167618000 791.063295s notice: Shutting down client connections...
+2016-03-21T13:19:11.167966000 791.063643s notice: All client connections closed.
+2016-03-21T13:19:11.167976000 791.063652s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-21T13:19:11.179325000 791.075001s notice: Storage engine shut down.
