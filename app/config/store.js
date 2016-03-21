@@ -1,15 +1,25 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Map } from 'immutable';
+import thunkMiddleware from 'redux-thunk';
 
 import numbersGameAppReducer from './reducers';
 import { setJobs, setEvents } from './actions';
 
+const store = createStore(
+  numbersGameAppReducer,
+  Map(),
+  compose(
+    applyMiddleware(thunkMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : undefined
+  )
+);
+
 // the window.devToolsExtension... stuff is needed for the google
 // chrome redux dev tools to work
-const store = createStore(numbersGameAppReducer, Map(),
-  window.devToolsExtension ? window.devToolsExtension() : undefined
-);
+// const store = createStore(numbersGameAppReducer, Map(),
+//   window.devToolsExtension ? window.devToolsExtension() : undefined
+// );
 
 // fill the store with some sample data
 

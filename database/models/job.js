@@ -9,7 +9,7 @@ let Job = thinky.createModel('Job', {
   company: type.string(),
   location: type.string(),
   type: type.string(),
-  description: type.string().max(200),
+  description: type.string(),
   url: type.string(),
   contact: {
     email: type.string(),
