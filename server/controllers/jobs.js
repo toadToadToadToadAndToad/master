@@ -8,6 +8,7 @@ const r = require('rethinkdb');
 
 module.exports.list = function*() {
   let jobs = [];
+  // format the querey and result from github
   if (this.params.source === 'github') {
     let queryString = '?description=' + this.params.keywords;
     if (this.params.city) {
@@ -17,6 +18,7 @@ module.exports.list = function*() {
     const unformattedJobs = yield axios.get('https://jobs.github.com/positions.json' + queryString);
     jobs = unformattedJobs.data;
   }
+  // format the querey and result from usajobs
   if (this.params.source === 'usajobs') {
     let queryString = '?Keyword=' + this.params.keywords;
     if (this.params.city) {
@@ -24,11 +26,19 @@ module.exports.list = function*() {
     }
     console.log('queryString', queryString);
     const unformattedJobs = yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
-    // TODO Finish Map Formatting Function
-    jobs = unformattedJobs.data.JobData.map((object) => { return object; });
-    // TODO Finish Map Formatting Function
+    // matching object keys with github's results
+    jobs = unformattedJobs.data.JobData.map((object) => {
+      return {
+        id: object.DocumentID,
+        title: object.JobTitle,
+        company: object.OrganizationName,
+        url: object.ApplyOnlineURL,
+        description: object.JobSummary,
+        location: object.Locations,
+        type: object.WorkSchedule
+      };
+    });
   }
-
   this.body = jobs;
   this.status = 200;
 };
@@ -43,13 +53,15 @@ module.exports.addJob = function*(next) {
     const result = yield Job.get(newJob.id).getJoin({
       users: true
     }).run();
-    this.body = result;
     console.log(result); // has users array
+    this.status = 200;
+    this.body = result;
+
   } catch (e) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  yield next;
+  // yield next;
 };
 
 module.exports.deleteJob = function*(next) {
@@ -65,7 +77,7 @@ module.exports.deleteJob = function*(next) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  yield next;
+  // yield next;
 };
 
 module.exports.updateJob = function*(next) {
@@ -80,5 +92,5 @@ module.exports.updateJob = function*(next) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  yield next;
+  // yield next;
 };
