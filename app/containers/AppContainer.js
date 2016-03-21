@@ -18,6 +18,10 @@ class AppContainer extends Component {
     };
   }
 
+  logout() {
+    console.log('LOGOUT!!!');
+  }
+
   render() {
 
     return (
@@ -25,7 +29,8 @@ class AppContainer extends Component {
         <AppBar
           title="Number's Game"
           showMenuIconButton={false}
-          >
+        >
+        <p onClick={this.logout}>Logout</p>
         </AppBar>
         <ReactCSSTransitionGroup
           transitionName="appear"
