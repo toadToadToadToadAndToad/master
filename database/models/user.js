@@ -8,7 +8,10 @@ let User = thinky.createModel('User', {
   id: type.string(),
   username: type.string(),
   email: type.string(),
-  password: type.string(),
+  // password: type.string(),
+  userID: type.string(),
+  refreshToken: type.string(),
+  accessToken: type.string()
 });
 
 // TODO: Determine relationship - might need to move into another file
