@@ -59,6 +59,9 @@ router.get('/auth/google/callback',
   }
 ));
 
+//init auth
+app.use(passport.initialize());
+
 //if user already verified redirects to dasboard, else redirect to signin
 function *authed(next){
   if (this.req.isAuthenticated()){
@@ -72,22 +75,12 @@ router.get('/app', authed, function *(){
   this.body = 'Secured Zone: koa-tutorial\n' + JSON.stringify(this.req.user, null, '\t');
 });
 
-//init auth
-app.use(passport.initialize());
-
 // app.use(serve(path.join(__dirname, '../dist')));
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',
   404: '404.html',
   routeBase: '/'
 }));
-
-// var jwtToken =  jwt.sign({ id: 123 }, "secret")
-// console.log("TOKEN",jwtToken)
-
-// var decoded = jwt.verify(jwtToken, 'secret');
-// console.log(decoded.id)
-
 
 app.listen(3000);
 console.log('server running on port 3000');

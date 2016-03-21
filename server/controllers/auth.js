@@ -4,7 +4,7 @@ const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;;
 const tokens = require('../config');
 const User = require('../../database/models/user');
-const http = require('http');
+// const http = require('http');
 const r = require('rethinkdb');
 const jwt = require('koa-jwt');
 
