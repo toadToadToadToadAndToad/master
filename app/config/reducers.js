@@ -4,43 +4,48 @@ import { combineReducers } from 'redux-immutable';
 import * as types from './actionTypes';
 
 /*
- * jobs
+ * db
  */
-const initialJobsState = Map({
+const initialDbState = Map({
   isWorking: false,
   error: null,
-  jobsList: List(),
 });
 
-function jobs(state = initialJobsState, action) {
+function db(state = initialDbState, action) {
   switch (action.type) {
+    case types.ADD_DB_REQUEST:
+    console.log('ADD_DB_REQUEST');
 
-    case types.SET_JOBS:
-      return state.update('jobsList',
-        jobsList => List(action.jobs.map((job) => Map(job))));
-
-    case types.ADD_JOB_REQUEST:
-      console.log('case ADD_JOB_REQUEST', action.job);
       return state.merge(Map({
         isWorking: true,
         error: null,
       }));
-    case types.ADD_JOB_SUCCESS:
-      console.log('case ADD_JOB_SUCCESS', action.job);
+    case types.ADD_DB_SUCCESS:
       return state.merge(Map({
         isWorking: false,
         error: null,
-        jobsList: jobsList => jobsList.push(Map(action.job)),
       }));
-    case types.ADD_JOB_FAILURE:
-      console.log('ADD_JOB_FAILURE', action.error);
+    case types.ADD_DB_FAILURE:
+    console.log('ADD_DB_FAILURE');
       return state.merge(Map({
         isWorking: false,
         error: action.error,
       }));
+    default:
+      return state;
+  }
+}
 
-    // case types.UPDATE_JOB:
-    // case types.DELETE_JOB:
+/*
+ * jobs
+ */
+function jobs(state = List(), action) {
+  switch (action.type) {
+    case types.SET_JOBS:
+      return List(action.jobs.map((job) => Map(job)));
+    case types.ADD_JOB_SUCCESS:
+    console.log('ADD_JOB_SUCCESS');
+      return state.update(jobs => jobs.push(Map(action.job)));
     default:
       return state;
   }
@@ -90,6 +95,7 @@ function userInfoReducer(state = Map(), action) {
 }
 
 const numbersGameAppReducer = combineReducers({
+  db,
   jobs,
   events,
   contactsReducer,

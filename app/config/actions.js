@@ -1,5 +1,4 @@
 import axios from 'axios';
-import request from 'superagent';
 import * as types from './actionTypes';
 
 /*
@@ -15,44 +14,42 @@ export function setState(state) {
 }
 
 /*
+ * db
+ */
+export function addDbRequest(job) {
+  console.log('addJobRequest');
+  return { type: types.ADD_DB_REQUEST, job };
+}
+export function addDbSuccess(job) {
+  console.log('addDBRequest');
+  return { type: types.ADD_DB_SUCCESS, job };
+}
+export function addDbFailure(error) {
+  return { type: types.ADD_DB_FAILURE, error };
+}
+
+/*
  * jobs
  */
 export function setJobs(jobs) {
   return { type: types.SET_JOBS, jobs };
 }
-export function addJobRequest(job) {
-  console.log('addJobRequest');
-  return { type: types.ADD_JOB_REQUEST, job };
-}
 export function addJobSuccess(job) {
   return { type: types.ADD_JOB_SUCCESS, job };
 }
-export function addJobFailure(error) {
-  return { type: types.ADD_JOB_FAILURE, error };
-}
 export function addJob(job) {
-  return function(dispatch) {
-    dispatch(addJobRequest(job));
-
-    // return request
-    //   .post(jobUrl)
-    //   .send(job)
-    //   .set('Accept', 'application/json')
-    //   .end((err, res) => {
-    //     if (err) {
-    //       dispatch(addJobFailure(err, event));
-    //     } else {
-    //       dispatch(addJobSuccess(res.body));
-    //     }
-    //   });
+  return dispatch => {
+    console.log('addJob');
+    dispatch(addDbRequest(job));
     return axios.post(jobUrl, job)
-      .then(function(res) {
-        console.log('addJob RES: ', res.data);
+      .then(res => {
+        console.log('lalsjflasdjf');
         dispatch(addJobSuccess(res.data));
+        dispatch(addDbSuccess(res.data));
       })
-      .catch(function(err) {
-        console.log('addJob ERR: ', err);
-        dispatch(addJobFailure(err, job));
+      .catch(err => {
+        console.log('failure', err, job);
+        dispatch(addDbFailure(err, job));
       });
   };
 }
@@ -67,7 +64,6 @@ export function updateJob(job) {
  * events
  */
 export function setEvents(events) {
-  console.log('setEvents');
   return { type: types.SET_EVENTS, events };
 }
 export function addEvent(event) {
