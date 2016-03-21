@@ -37,7 +37,7 @@
     "redux-thunk": "^2.0.1",
     "request": "^2.69.0",
     "rethinkdb": "^2.2.2",
-    "superagent": "^1.8.1",
+    "superagent": "^1.8.2",
     "thinky": "^2.2.5"
   },
   "devDependencies": {
