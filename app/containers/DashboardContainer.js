@@ -78,10 +78,10 @@ class DashboardContainer extends Component {
 const mapStateToProps = (state) => {
   let jobs = undefined;
   let events = undefined;
-  if (state.get('jobs')) jobs = state.get('jobs').toJS();
+  if (state.getIn(['jobs', 'jobsList'])) {
+    jobs = state.getIn(['jobs', 'jobsList']).toJS();
+  }
   if (state.get('events')) events = state.get('events').toJS();
-  // console.log('111', state.get('jobs').toJS());
-  // console.log('222', getState());
   return {
     jobs,
     events,

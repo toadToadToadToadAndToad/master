@@ -1,57 +1,89 @@
 import { Map, List } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 
-import { SET_JOBS, SET_EVENTS, SET_CONTACTS, SET_USERINFO, ADD_JOB,
-  ADD_EVENT, ADD_CONTACT, DELETE_JOB, DELETE_EVENT, DELETE_CONTACT, UPDATE_JOB,
-  UPDATE_EVENT, UPDATE_CONTACT } from './actions';
+import * as types from './actionTypes';
 
-// jobs
-function jobs(state = List(), action) {
+/*
+ * jobs
+ */
+const initialJobsState = Map({
+  isWorking: false,
+  error: null,
+  jobsList: List(),
+});
+
+function jobs(state = initialJobsState, action) {
   switch (action.type) {
-    case SET_JOBS:
-      return List(action.jobs.map((job) => Map(job)));
-    case ADD_JOB:
-      return state.update(jobs => jobs.push(Map(action.job)));
-    case UPDATE_JOB:
-    case DELETE_JOB:
+
+    case types.SET_JOBS:
+      return state.update('jobsList',
+        jobsList => List(action.jobs.map((job) => Map(job))));
+
+    case types.ADD_JOB_REQUEST:
+      console.log('case ADD_JOB_REQUEST', action.job);
+      return state.merge(Map({
+        isWorking: true,
+        error: null,
+      }));
+    case types.ADD_JOB_SUCCESS:
+      console.log('case ADD_JOB_SUCCESS', action.job);
+      return state.merge(Map({
+        isWorking: false,
+        error: null,
+        jobsList: jobsList => jobsList.push(Map(action.job)),
+      }));
+    case types.ADD_JOB_FAILURE:
+      console.log('ADD_JOB_FAILURE', action.error);
+      return state.merge(Map({
+        isWorking: false,
+        error: action.error,
+      }));
+
+    // case types.UPDATE_JOB:
+    // case types.DELETE_JOB:
     default:
       return state;
-
   }
 }
 
-// events
+/*
+ * events
+ */
 function events(state = List(), action) {
   switch (action.type) {
-    case SET_EVENTS:
+    case types.SET_EVENTS:
       return List(action.events.map((event) => Map(event)));
-    case ADD_EVENT:
+    case types.ADD_EVENT:
       return state.update(events => events.push(Map(action.event)));
-    case UPDATE_EVENT:
-    case DELETE_EVENT:
+    // case types.UPDATE_EVENT:
+    // case types.DELETE_EVENT:
     default:
       return state;
   }
 }
 
-// contacts
+/*
+ * contacts
+ */
 function contactsReducer(state = List(), action) {
   switch (action.type) {
-    case SET_CONTACTS:
+    case types.SET_CONTACTS:
       return List(action.contacts.map((contact) => Map(contact)));
-    case ADD_CONTACT:
+    case types.ADD_CONTACT:
       return state.update(contacts => contacts.push(Map(action.contact)));
-    case UPDATE_CONTACT:
-    case DELETE_CONTACT:
+    case types.UPDATE_CONTACT:
+    case types.DELETE_CONTACT:
     default:
       return state;
   }
 }
 
-// userInfo
+/*
+ * userInfo
+ */
 function userInfoReducer(state = Map(), action) {
   switch (action.type) {
-    case SET_USERINFO:
+    case types.SET_USERINFO:
     default:
       return state;
   }

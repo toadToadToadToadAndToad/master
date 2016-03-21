@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { addJob } from '../config/actions';
 
+
 class JobSearchContainer extends Component {
   constructor() {
     super();
@@ -39,6 +40,7 @@ class JobSearchContainer extends Component {
   handleRowClick(event) {
     // Adds clicked job to the store.
     this.props.dispatch(addJob(this.state.data[event]));
+    console.log('----->', this.state.data[event]);
     // TODO Add a way to mark listings as being added to the Store.
     // Something like this.state.data[0].added = true;
   }
@@ -64,5 +66,4 @@ class JobSearchContainer extends Component {
   }
 }
 
-JobSearchContainer = connect()(JobSearchContainer);
-export default JobSearchContainer;
+export default connect()(JobSearchContainer);

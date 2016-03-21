@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import AddJobComponent from '../components/addjob/addjob';
 
 import { addJob } from '../config/actions';
@@ -32,7 +33,6 @@ let  AddJobContainer = ({dispatch}) => {
       </div>
   )
 };
-
 
 AddJobContainer = connect()(AddJobContainer);
 export default AddJobContainer;

@@ -1,84 +1,104 @@
-/*
- * action types
- */
-
-// state
-export const SET_STATE = 'SET_STATE';
-
-// jobs
-export const SET_JOBS = 'SET_JOBS';
-export const ADD_JOB = 'ADD_JOB';
-export const DELETE_JOB = 'DELETE_JOB';
-export const UPDATE_JOB = 'UPDATE_JOB';
-
-// events
-export const SET_EVENTS = 'SET_EVENTS';
-export const ADD_EVENT = 'ADD_EVENT';
-export const DELETE_EVENT = 'DELETE_EVENT';
-export const UPDATE_EVENT = 'UPDATE_EVENT';
-
-// contacts
-export const SET_CONTACTS = 'SET_CONTACTS';
-export const ADD_CONTACT = 'ADD_CONTACT';
-export const DELETE_CONTACT = 'DELETE_CONTACT';
-export const UPDATE_CONTACT = 'UPDATE_CONTACT';
-
-// userInfo
-export const SET_USERINFO = 'SET_USERINFO';
-
+import axios from 'axios';
+import request from 'superagent';
+import * as types from './actionTypes';
 
 /*
- * action creators
+ * rethinkdb urls
  */
+const jobUrl = 'http://localhost:3000/api/jobs/';
 
-// state
+/*
+ * state
+ */
 export function setState(state) {
-  return { type: SET_STATE, state };
+  return { type: types.SET_STATE, state };
 }
 
-// jobs
+/*
+ * jobs
+ */
 export function setJobs(jobs) {
-  return { type: SET_JOBS, jobs };
+  return { type: types.SET_JOBS, jobs };
+}
+export function addJobRequest(job) {
+  console.log('addJobRequest');
+  return { type: types.ADD_JOB_REQUEST, job };
+}
+export function addJobSuccess(job) {
+  return { type: types.ADD_JOB_SUCCESS, job };
+}
+export function addJobFailure(error) {
+  return { type: types.ADD_JOB_FAILURE, error };
 }
 export function addJob(job) {
-  return { type: ADD_JOB, job };
+  return function(dispatch) {
+    dispatch(addJobRequest(job));
+
+    // return request
+    //   .post(jobUrl)
+    //   .send(job)
+    //   .set('Accept', 'application/json')
+    //   .end((err, res) => {
+    //     if (err) {
+    //       dispatch(addJobFailure(err, event));
+    //     } else {
+    //       dispatch(addJobSuccess(res.body));
+    //     }
+    //   });
+    return axios.post(jobUrl, job)
+      .then(function(res) {
+        console.log('addJob RES: ', res.data);
+        dispatch(addJobSuccess(res.data));
+      })
+      .catch(function(err) {
+        console.log('addJob ERR: ', err);
+        dispatch(addJobFailure(err, job));
+      });
+  };
 }
 export function deleteJob(jobID) {
-  return { type: DELETE_JOB, jobID };
+  return { type: types.DELETE_JOB, jobID };
 }
 export function updateJob(job) {
-  return { type: UPDATE_JOB, job };
+  return { type: types.UPDATE_JOB, job };
 }
 
-// events
+/*
+ * events
+ */
 export function setEvents(events) {
-  return { type: SET_EVENTS, events };
+  console.log('setEvents');
+  return { type: types.SET_EVENTS, events };
 }
 export function addEvent(event) {
-  return { type: ADD_EVENT, event };
+  return { type: types.ADD_EVENT, event };
 }
 export function deleteEvent(eventID) {
-  return { type: DELETE_EVENT, eventID };
+  return { type: types.DELETE_EVENT, eventID };
 }
 export function udpateEvent(event) {
-  return { type: UPDATE_EVENT, event };
+  return { type: types.UPDATE_EVENT, event };
 }
 
-// contacts
+/*
+ * contacts
+ */
 export function setContacts(contacts) {
-  return { type: SET_CONTACTS, contacts };
+  return { type: types.SET_CONTACTS, contacts };
 }
 export function addContact(contact) {
-  return { type: ADD_CONTACT, contact };
+  return { type: types.ADD_CONTACT, contact };
 }
 export function deleteContact(contactID) {
-  return { type: DELETE_CONTACT, contactID };
+  return { type: types.DELETE_CONTACT, contactID };
 }
 export function udpateContact(contact) {
-  return { type: UPDATE_CONTACT, contact };
+  return { type: types.UPDATE_CONTACT, contact };
 }
 
-// userInfo
+/*
+ * userInfo
+ */
 export function setUserInfo(unserInfo) {
-  return { type: SET_USERINFO, unserInfo };
+  return { type: types.SET_USERINFO, unserInfo };
 }
