@@ -3,18 +3,17 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import SearchBarComponent from '../components/jobsearch/searchBarComponent';
-import SiteSelectionComponent from '../components/jobsearch/siteSelectComponent';
+// import SiteSelectionComponent from '../components/jobsearch/siteSelectComponent';
 import ResultsViewComponent from '../components/jobsearch/resultsViewComponent';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { addJob } from '../config/actions';
 
-
 class JobSearchContainer extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
     };
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleRowClick = this.handleRowClick.bind(this);
@@ -26,15 +25,34 @@ class JobSearchContainer extends Component {
   }
 
   handleSearchSubmit(keyword, location) {
+    this.setState({ data: [] });
     // TODO add loading spinner
     // TODO incorporate variable from SiteSelection
-    const source = 'github';
-    let searchParams = '/api/jobs/' + source + '/' + keyword.replace(/ /g, '+');
+    let githubParams = '/api/jobs/github/' + keyword.replace(/ /g, '+');
     if (location.length) {
-      searchParams += '/' + location.replace(/ /g, '+');
+      githubParams += '/' + location.replace(/ /g, '+');
     }
-    axios.get(searchParams)
-      .then((response) => this.setState({ data: response.data }))
+    let usajobsParams = '/api/jobs/usajobs/' + keyword.replace(/ /g, '+');
+    if (location.length) {
+      usajobsParams += '/' + location.replace(/ /g, '+');
+    }
+    axios.get(githubParams)
+      .then((response) => {
+        const nextState = this.state.data.slice();
+        response.data.forEach(
+          (job) => nextState.push(job)
+        );
+        this.setState({ data: nextState });
+      })
+      .catch((response) => console.log('error', response));
+    axios.get(usajobsParams)
+      .then((response) => {
+        const nextState = this.state.data.slice();
+        response.data.forEach(
+          (job) => nextState.push(job)
+        );
+        this.setState({ data: nextState });
+      })
       .catch((response) => console.log('error', response));
   }
   handleRowClick(event) {
@@ -55,7 +73,6 @@ class JobSearchContainer extends Component {
         <br /><br />
         <PageHeader>Job Search</PageHeader>
         <SearchBarComponent onHandleSearch={this.handleSearchSubmit} />
-        <SiteSelectionComponent />
         <p>Click on a result to add it to your jobs</p>
         <ResultsViewComponent
           data={this.state.data}
