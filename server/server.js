@@ -7,6 +7,7 @@ const r = require('rethinkdb');
 const config = require('../database/config');
 const job = require('./controllers/jobs');
 const user = require('./controllers/user');
+const passport = require('./controllers/auth');
 // const parse = require('co-body');
 const http = require('http');
 const app = koa();
@@ -14,7 +15,6 @@ const spa = require('koa-spa');
 const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;;
 const tokens = require('./config');
-
 
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
@@ -37,20 +37,21 @@ function* closeConnection(next) {
 app.use(createConnection);
 app.use(router.routes());
 
+//Jobsearch Routes
+router.get('/api/jobs/:source/:keywords/:city', job.list);
+router.get('/api/jobs/:source/:keywords', job.list);
 router.post('/api/jobs/', job.addJob);
 router.delete('/api/jobs/', job.deleteJob);
 router.put('/api/jobs/', job.updateJob);
 
-router.get('/api/jobs/:source/:keywords/:city', job.list);
-router.get('/api/jobs/:source/:keywords', job.list);
+// app.use(closeConnection);
 
+//DB Routes
 router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
 
-// app.use(closeConnection);
-
-//Google Auth routes
-router.get('/auth/google', passport.authenticate('google',{scope:['email','profile']}));
+//Google Authentication Routes
+router.get('/auth/google', passport.authenticate('google',{scope:['email','profile'],accessType: 'offline', approvalPrompt: 'force'}));
 router.get('/auth/google/callback', 
   passport.authenticate('google',{
     successRedirect:'/dashboard',
@@ -58,6 +59,21 @@ router.get('/auth/google/callback',
   }
 ));
 
+//if user already verified redirects to dasboard, else redirect to signin
+function *authed(next){
+  if (this.req.isAuthenticated()){
+    yield next;
+  } else {
+    this.redirect('/auth/google');
+  }
+}
+
+router.get('/app', authed, function *(){
+  this.body = 'Secured Zone: koa-tutorial\n' + JSON.stringify(this.req.user, null, '\t');
+});
+
+//init auth
+app.use(passport.initialize());
 
 // app.use(serve(path.join(__dirname, '../dist')));
 app.use(spa(path.join(__dirname, '../dist'), {
@@ -65,6 +81,13 @@ app.use(spa(path.join(__dirname, '../dist'), {
   404: '404.html',
   routeBase: '/'
 }));
+
+var jwtToken =  jwt.sign({ id: 123 }, "secret")
+console.log("TOKEN",jwtToken)
+
+var decoded = jwt.verify(jwtToken, 'secret');
+console.log(decoded.id)
+
 
 app.listen(3000);
 console.log('server running on port 3000');
