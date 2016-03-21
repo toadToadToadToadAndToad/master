@@ -16,13 +16,11 @@ export function setState(state) {
 /*
  * db
  */
-export function addDbRequest(job) {
-  console.log('addJobRequest');
-  return { type: types.ADD_DB_REQUEST, job };
+export function addDbRequest() {
+  return { type: types.ADD_DB_REQUEST };
 }
-export function addDbSuccess(job) {
-  console.log('addDBRequest');
-  return { type: types.ADD_DB_SUCCESS, job };
+export function addDbSuccess() {
+  return { type: types.ADD_DB_SUCCESS };
 }
 export function addDbFailure(error) {
   return { type: types.ADD_DB_FAILURE, error };
@@ -39,17 +37,14 @@ export function addJobSuccess(job) {
 }
 export function addJob(job) {
   return dispatch => {
-    console.log('addJob');
-    dispatch(addDbRequest(job));
+    dispatch(addDbRequest());
     return axios.post(jobUrl, job)
       .then(res => {
-        console.log('lalsjflasdjf');
         dispatch(addJobSuccess(res.data));
         dispatch(addDbSuccess(res.data));
       })
       .catch(err => {
-        console.log('failure', err, job);
-        dispatch(addDbFailure(err, job));
+        dispatch(addDbFailure(err));
       });
   };
 }

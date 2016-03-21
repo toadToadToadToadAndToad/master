@@ -14,8 +14,6 @@ const initialDbState = Map({
 function db(state = initialDbState, action) {
   switch (action.type) {
     case types.ADD_DB_REQUEST:
-    console.log('ADD_DB_REQUEST');
-
       return state.merge(Map({
         isWorking: true,
         error: null,
@@ -26,7 +24,6 @@ function db(state = initialDbState, action) {
         error: null,
       }));
     case types.ADD_DB_FAILURE:
-    console.log('ADD_DB_FAILURE');
       return state.merge(Map({
         isWorking: false,
         error: action.error,
@@ -44,7 +41,6 @@ function jobs(state = List(), action) {
     case types.SET_JOBS:
       return List(action.jobs.map((job) => Map(job)));
     case types.ADD_JOB_SUCCESS:
-    console.log('ADD_JOB_SUCCESS');
       return state.update(jobs => jobs.push(Map(action.job)));
     default:
       return state;
