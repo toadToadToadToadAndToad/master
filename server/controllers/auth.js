@@ -4,7 +4,6 @@ const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;;
 const tokens = require('../config');
 const User = require('../../database/models/user');
-const parse = require('co-body');
 const http = require('http');
 const r = require('rethinkdb');
 const jwt = require('koa-jwt');
@@ -24,13 +23,18 @@ passport.use(new GoogleStrategy({
       refreshToken: refreshToken,
       accessToken: accessToken
     };
-
-    const user = new User(userInfo);
-    user.save();
-
-    console.log("This is the user OBJECT", userInfo)
-
-    return done(null, profile);
+    const userToBeSaved = new User(userInfo);
+    User.filter({ userID: userToBeSaved.userID }).limit(1).run().then(function(user, err){
+      if(err){
+        console.error("ERROR",err);
+      }
+      else if(user.length !== 0 ){
+        return;
+      }else{
+        userToBeSaved.save(); 
+      }
+    })
+    return done(null, userInfo);
   }
 ));
 
@@ -43,7 +47,5 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 module.exports = passport; 

@@ -82,11 +82,11 @@ app.use(spa(path.join(__dirname, '../dist'), {
   routeBase: '/'
 }));
 
-var jwtToken =  jwt.sign({ id: 123 }, "secret")
-console.log("TOKEN",jwtToken)
+// var jwtToken =  jwt.sign({ id: 123 }, "secret")
+// console.log("TOKEN",jwtToken)
 
-var decoded = jwt.verify(jwtToken, 'secret');
-console.log(decoded.id)
+// var decoded = jwt.verify(jwtToken, 'secret');
+// console.log(decoded.id)
 
 
 app.listen(3000);
