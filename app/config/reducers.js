@@ -66,7 +66,7 @@ function events(state = List(), action) {
 /*
  * contacts
  */
-function contactsReducer(state = List(), action) {
+function contacts(state = List(), action) {
   switch (action.type) {
     case types.SET_CONTACTS:
       return List(action.contacts.map((contact) => Map(contact)));
@@ -82,7 +82,7 @@ function contactsReducer(state = List(), action) {
 /*
  * userInfo
  */
-function userInfoReducer(state = Map(), action) {
+function userInfo(state = Map(), action) {
   switch (action.type) {
     case types.SET_USERINFO:
     default:
@@ -94,8 +94,8 @@ const numbersGameAppReducer = combineReducers({
   db,
   jobs,
   events,
-  contactsReducer,
-  userInfoReducer,
+  contacts,
+  userInfo,
 });
 
 export default numbersGameAppReducer;
