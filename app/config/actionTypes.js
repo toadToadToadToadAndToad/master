@@ -23,3 +23,8 @@ export const UPDATE_CONTACT = 'UPDATE_CONTACT';
 
 // userInfo
 export const SET_USERINFO = 'SET_USERINFO';
+
+// db
+export const ADD_DB_REQUEST = 'ADD_DB_REQUEST';
+export const ADD_DB_FAILURE = 'ADD_DB_FAILURE';
+export const ADD_DB_SUCCESS = 'ADD_DB_SUCCESS';
