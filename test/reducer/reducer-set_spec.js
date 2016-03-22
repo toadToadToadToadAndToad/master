@@ -1,5 +1,5 @@
 import { List, Map, fromJS } from 'immutable';
-import reducer from '../../app/config/reducer';
+import reducer from '../../app/config/reducers';
 
 describe('reducer', () => {
 

@@ -11,8 +11,8 @@ describe('JobSearchContainer', () => {
     );
   });
 
-  it('has a getJobs method', () => {
+  it('has a handleRowClick method', () => {
     const componet = new JobSearchContainer();
-    componet.getJobs.should.exist;
+    componet.handleRowClick.should.exist;
   })
 });
