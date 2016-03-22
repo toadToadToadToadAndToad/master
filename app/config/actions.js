@@ -25,6 +25,26 @@ export function addDbSuccess() {
 export function addDbFailure(error) {
   return { type: types.ADD_DB_FAILURE, error };
 }
+export function hydrateDb(userId) {
+  return dispatch => {
+    dispatch(addDbRequest());
+
+    // or just get all of the user info at once!
+
+    return axios.get(jobUrl)
+      .then(res => dispatch(setJobs(res.data)))
+      .then(axios.get(eventUrl))
+      .then(res => dispatch(setEvents(res.data)))
+      .then(axios.get(contactUrl))
+      .then(res => dispatch(setContacts(res.data)))
+      .then(axios.get(userInfoUrl))
+      .then(res => {
+        dispatch(setUserInfo(res.data));
+        dispatch(addDbSuccess());
+      })
+      .catch(err => dispatch(addDbFailure(err)));
+  };
+}
 
 /*
  * jobs
@@ -41,7 +61,7 @@ export function addJob(job) {
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
-        dispatch(addDbSuccess(res.data));
+        dispatch(addDbSuccess());
       })
       .catch(err => {
         dispatch(addDbFailure(err));
