@@ -4,6 +4,24 @@ import { combineReducers } from 'redux-immutable';
 import * as types from './actionTypes';
 
 /*
+* app
+*/
+const initialAppState = Map({
+  currentJob: null,
+});
+
+function app(state = initialAppState, action) {
+  switch (action.type) {
+    case types.SET_CURRENT_JOB:
+      return state.merge(Map({
+        currentJob: action.id,
+      }));
+    default:
+      return state;
+  }
+}
+
+/*
  * db
  */
 const initialDbState = Map({
@@ -91,6 +109,7 @@ function userInfo(state = Map(), action) {
 }
 
 const numbersGameAppReducer = combineReducers({
+  app,
   db,
   jobs,
   events,

@@ -57,6 +57,14 @@ export function rehydrateDb(userId) {
 }
 
 /*
+ * app
+ */
+
+export function setCurrentJob(id) {
+  return { type: types.SET_CURRENT_JOB, id };
+}
+
+/*
  * jobs
  */
 export function setJobs(jobs) {

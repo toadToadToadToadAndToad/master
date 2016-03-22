@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 
@@ -18,9 +19,22 @@ class JobViewContainer extends Component {
         />
       <br /><br />
         <PageHeader>Job View</PageHeader>
+        {this.props.jobID}
       </div>
     );
   }
+}
+
+const mapStateToProps = (state) => {
+  let jobID = undefined;
+  if (state.get('app')) jobID = state.get('app').toJS().currentJob;
+  return {
+    jobID,
+  };
 };
 
-export default JobViewContainer;
+JobViewContainer.propTypes = {
+  jobID: PropTypes.number.isRequired,
+};
+
+export default connect(mapStateToProps)(JobViewContainer);
