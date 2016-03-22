@@ -28,9 +28,9 @@ function* createConnection(next) {
 
 // Close the RethinkDB connection
 function* closeConnection(next) {
-    this._rdbConn.close();
-    yield next;
-  }
+  this._rdbConn.close();
+  yield next;
+}
   // initialize Auth must be before app.use(router.routes())
 app.use(passport.initialize());
 
@@ -78,8 +78,10 @@ router.get('/app', authed, function*() {
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',
   404: '404.html',
-  routeBase: '/'
+  routeBase: '/',
 }));
 
 app.listen(3000);
 console.log('server running on port 3000');
+
+// testing to see if Travis accepts this PR.
