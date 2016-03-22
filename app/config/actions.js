@@ -25,11 +25,21 @@ export function addDbSuccess() {
 export function addDbFailure(error) {
   return { type: types.ADD_DB_FAILURE, error };
 }
-export function hydrateDb(userId) {
+export function rehydrateDb(userId) {
   return dispatch => {
     dispatch(addDbRequest());
 
     // or just get all of the user info at once!
+
+    return axios.get(userUrl)
+      .then(res => {
+        dispatch(setJobs(res.data.jobs));
+        dispatch(setEvents(res.data.events));
+        dispatch(setContacts(res.data.contacts));
+        dispatch(setUserInfo(res.data.userInfo));
+        dispatch(addDbSuccess());
+      })
+      .catch(err => dispatch(addDbFailure(err)));
 
     return axios.get(jobUrl)
       .then(res => dispatch(setJobs(res.data)))
