@@ -32,7 +32,10 @@ export function rehydrateDb(userId) {
   return dispatch => {
     dispatch(addDbRequest());
 
+    // work in progress
     // or just get all of the user info at once!
+    // should really have a server-side redux store
+    // TODO: this needs to be finished, one way or another
 
     return axios.get(userUrl)
       .then(res => {
@@ -71,6 +74,11 @@ export function addJobSuccess(job) {
 export function addJob(job) {
   return dispatch => {
     dispatch(addDbRequest());
+
+    // TODO: get rid of this temporary job.idUser hardcoding
+    // want to set job.idUser to the rethinkdb user's id
+    job.idUser = '5ea994c8-1bef-499e-b69a-9b7152414d31';
+
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
