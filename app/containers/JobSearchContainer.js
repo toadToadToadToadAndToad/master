@@ -24,6 +24,14 @@ class JobSearchContainer extends Component {
     console.log('Mounted data:', this.state.data);
   }
 
+  strip(html) {
+    html = html.replace('\n\n', ' ');
+    html = html.replace('\n', ' ');
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
   handleSearchSubmit(keyword, location) {
     this.setState({ data: [] });
     // TODO add loading spinner
@@ -57,7 +65,9 @@ class JobSearchContainer extends Component {
   }
   handleRowClick(event) {
     // Adds clicked job to the store.
-    this.props.dispatch(addJob(this.state.data[event]));
+    const job = this.state.data[event];
+    job.description = this.strip(job.description).slice(0, 200).concat('...');
+    this.props.dispatch(addJob(job));
     // TODO Add a way to mark listings as being added to the Store.
     // Something like this.state.data[0].added = true;
   }
