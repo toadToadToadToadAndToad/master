@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 
+import JobData from '../components/jobview/JobData';
+
 
 class JobViewContainer extends Component {
   constructor() {
@@ -19,7 +21,7 @@ class JobViewContainer extends Component {
         />
       <br /><br />
         <PageHeader>Job View</PageHeader>
-        {this.props.jobID}
+        <JobData job={this.props.job} />
       </div>
     );
   }
@@ -28,13 +30,18 @@ class JobViewContainer extends Component {
 const mapStateToProps = (state) => {
   let jobID = undefined;
   if (state.get('app')) jobID = state.get('app').toJS().currentJob;
+  const jobs = state.get('jobs').toJS().filter(job => job.id === jobID);
+  const job = jobs[0];
+  console.log('job', job);
   return {
     jobID,
+    job,
   };
 };
 
 JobViewContainer.propTypes = {
-  jobID: PropTypes.number.isRequired,
+  jobID: PropTypes.string.isRequired,
+  job: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(JobViewContainer);
