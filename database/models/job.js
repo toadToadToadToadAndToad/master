@@ -15,6 +15,11 @@ let Job = thinky.createModel('Job', {
     email: type.string(),
     phone: type.number(),
   },
+  idUser: type.string(),
 });
 
 module.exports = Job;
+
+// user require required here to avoid circular reference
+const User = require('./user');
+Job.belongsTo(User, 'user', 'idUser', 'id');
