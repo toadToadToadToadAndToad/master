@@ -5,6 +5,8 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const tokens = require('../config');
 const User = require('../../database/models/user');
 
+const currentUser = {};
+
 passport.use(new GoogleStrategy({
   clientID: tokens.GOOGLE_CLIENT_ID,
   clientSecret: tokens.GOOGLE_CLIENT_SECRET,
