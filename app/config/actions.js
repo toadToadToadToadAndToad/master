@@ -77,7 +77,8 @@ export function addJob(job) {
 
     // TODO: get rid of this temporary job.idUser hardcoding
     // want to set job.idUser to the rethinkdb user's id
-    job.idUser = 'e683d4c4-c095-426d-a0a4-f49de90275f0';
+    job.idUser = '23bc9d7d-5ebe-4709-a71a-0912c1fd6181';
+    // job.idUser = 'e683d4c4-c095-426d-a0a4-f49de90275f0';
 
     return axios.post(jobUrl, job)
       .then(res => {

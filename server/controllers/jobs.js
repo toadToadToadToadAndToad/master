@@ -48,17 +48,13 @@ module.exports.addJob = function*(next) {
   try {
     const jobData = yield parse(this);
     const job = new Job(jobData);
-    const user = yield User.get(job.idUser);
-    // job.user = user;
+    // const user = yield User.get(job.idUser);
     const newJob = yield job.saveAll();
-    // console.log('AAAAA', newJob); // doesn't have users array
     const result = yield Job.get(newJob.id).getJoin({
       users: true,
     }).run();
-    // console.log('BBBBBB', result); // has users array
     this.status = 200;
     this.body = result;
-
   } catch (e) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
@@ -66,8 +62,17 @@ module.exports.addJob = function*(next) {
 };
 
 module.exports.getJobs = function*(next) {
-  console.log('------->', this.params.idUser);
-
+  let jobs = [];
+  try {
+    this.status = 200;
+    this.body = User.get(this.params.idUser).getJoin({
+      jobs,
+    }).run().then(user => user.jobs);
+  } catch (e) {
+    console.error('Could not get jobs.', e);
+    this.status = 500;
+    this.body = e.message || http.STATUS_CODES[this.status];
+  }
 };
 
 module.exports.deleteJob = function*(next) {
