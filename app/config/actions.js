@@ -6,12 +6,15 @@ import * as types from './actionTypes';
  */
 const jobUrl = 'http://localhost:3000/api/jobs/';
 
-/*
- * state
+ /*
+ * app
  */
-export function setState(state) {
-  return { type: types.SET_STATE, state };
-}
+ export function setState(state) {
+   return { type: types.SET_STATE, state };
+ }
+ export function setCurrentJob(id) {
+   return { type: types.SET_CURRENT_JOB, id };
+ }
 
 /*
  * db
@@ -54,14 +57,6 @@ export function rehydrateDb(userId) {
       })
       .catch(err => dispatch(addDbFailure(err)));
   };
-}
-
-/*
- * app
- */
-
-export function setCurrentJob(id) {
-  return { type: types.SET_CURRENT_JOB, id };
 }
 
 /*
