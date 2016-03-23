@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { toJS } from 'immutable';
+
+import { setCurrentJob } from '../config/actions';
+
 
 class DashboardContainer extends Component {
   constructor() {
@@ -27,7 +30,8 @@ class DashboardContainer extends Component {
   // onCellClick in <JobsTableData> and <EventsTableData> where
   // it really should be called by onRowClick on a <TableRow>
   handleRowClick(event) {
-    console.log('ROW CLICK:', event);
+    this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
+    browserHistory.push('/jobview');
   }
 
   render() {
@@ -89,6 +93,7 @@ const mapStateToProps = (state) => {
 DashboardContainer.propTypes = {
   jobs: PropTypes.array,
   events: PropTypes.array,
+  dispatch: PropTypes.func,
 };
 
 export default connect(mapStateToProps)(DashboardContainer);

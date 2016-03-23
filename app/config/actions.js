@@ -25,6 +25,44 @@ export function addDbSuccess() {
 export function addDbFailure(error) {
   return { type: types.ADD_DB_FAILURE, error };
 }
+export function rehydrateDb(userId) {
+  return dispatch => {
+    dispatch(addDbRequest());
+
+    // or just get all of the user info at once!
+
+    return axios.get(userUrl)
+      .then(res => {
+        dispatch(setJobs(res.data.jobs));
+        dispatch(setEvents(res.data.events));
+        dispatch(setContacts(res.data.contacts));
+        dispatch(setUserInfo(res.data.userInfo));
+        dispatch(addDbSuccess());
+      })
+      .catch(err => dispatch(addDbFailure(err)));
+
+    return axios.get(jobUrl)
+      .then(res => dispatch(setJobs(res.data)))
+      .then(axios.get(eventUrl))
+      .then(res => dispatch(setEvents(res.data)))
+      .then(axios.get(contactUrl))
+      .then(res => dispatch(setContacts(res.data)))
+      .then(axios.get(userInfoUrl))
+      .then(res => {
+        dispatch(setUserInfo(res.data));
+        dispatch(addDbSuccess());
+      })
+      .catch(err => dispatch(addDbFailure(err)));
+  };
+}
+
+/*
+ * app
+ */
+
+export function setCurrentJob(id) {
+  return { type: types.SET_CURRENT_JOB, id };
+}
 
 /*
  * jobs
@@ -41,7 +79,7 @@ export function addJob(job) {
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
-        dispatch(addDbSuccess(res.data));
+        dispatch(addDbSuccess());
       })
       .catch(err => {
         dispatch(addDbFailure(err));

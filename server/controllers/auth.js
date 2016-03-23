@@ -14,7 +14,7 @@ passport.use(new GoogleStrategy({
     returnURL: 'http://localhost:3000/auth/google/return',
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
-  //profile contains all the personal data returned   
+  //profile contains all the personal data returned
   function (accessToken, refreshToken, profile, done) {
     let userInfo = {
       username: profile.displayName,
@@ -31,7 +31,7 @@ passport.use(new GoogleStrategy({
       else if(user.length !== 0 ){
         return;
       }else{
-        userToBeSaved.save(); 
+        userToBeSaved.save();
       }
     })
     return done(null, userInfo);
@@ -48,4 +48,4 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-module.exports = passport; 
+module.exports = passport;

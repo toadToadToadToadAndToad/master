@@ -1,4 +1,11 @@
+// app
 export const SET_STATE = 'SET_STATE';
+export const SET_CURRENT_JOB = 'SET_CURRENT_JOB';
+
+// db
+export const ADD_DB_REQUEST = 'ADD_DB_REQUEST';
+export const ADD_DB_FAILURE = 'ADD_DB_FAILURE';
+export const ADD_DB_SUCCESS = 'ADD_DB_SUCCESS';
 
 // jobs
 export const SET_JOBS = 'SET_JOBS';
@@ -23,8 +30,3 @@ export const UPDATE_CONTACT = 'UPDATE_CONTACT';
 
 // userInfo
 export const SET_USERINFO = 'SET_USERINFO';
-
-// db
-export const ADD_DB_REQUEST = 'ADD_DB_REQUEST';
-export const ADD_DB_FAILURE = 'ADD_DB_FAILURE';
-export const ADD_DB_SUCCESS = 'ADD_DB_SUCCESS';

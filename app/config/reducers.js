@@ -4,6 +4,24 @@ import { combineReducers } from 'redux-immutable';
 import * as types from './actionTypes';
 
 /*
+* app
+*/
+const initialAppState = Map({
+  currentJob: null,
+});
+
+function app(state = initialAppState, action) {
+  switch (action.type) {
+    case types.SET_CURRENT_JOB:
+      return state.merge(Map({
+        currentJob: action.id,
+      }));
+    default:
+      return state;
+  }
+}
+
+/*
  * db
  */
 const initialDbState = Map({
@@ -66,7 +84,7 @@ function events(state = List(), action) {
 /*
  * contacts
  */
-function contactsReducer(state = List(), action) {
+function contacts(state = List(), action) {
   switch (action.type) {
     case types.SET_CONTACTS:
       return List(action.contacts.map((contact) => Map(contact)));
@@ -82,7 +100,7 @@ function contactsReducer(state = List(), action) {
 /*
  * userInfo
  */
-function userInfoReducer(state = Map(), action) {
+function userInfo(state = Map(), action) {
   switch (action.type) {
     case types.SET_USERINFO:
     default:
@@ -91,11 +109,12 @@ function userInfoReducer(state = Map(), action) {
 }
 
 const numbersGameAppReducer = combineReducers({
+  app,
   db,
   jobs,
   events,
-  contactsReducer,
-  userInfoReducer,
+  contacts,
+  userInfo,
 });
 
 export default numbersGameAppReducer;
