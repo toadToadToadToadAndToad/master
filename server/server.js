@@ -48,13 +48,14 @@ app.use(router.routes());
 // Jobsearch Routes
 router.get('/api/jobs/:source/:keywords/:city', job.list);
 router.get('/api/jobs/:source/:keywords', job.list);
-router.post('/api/jobs/', job.addJob);
-router.delete('/api/jobs/', job.deleteJob);
-router.put('/api/jobs/', job.updateJob);
 
 // DB Routes
 router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
+router.post('/api/jobs/', job.addJob);
+router.get('/api/getjobs/:idUser', job.getJobs);
+router.delete('/api/jobs/', job.deleteJob);
+router.put('/api/jobs/', job.updateJob);
 
 // Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google', {

@@ -2,6 +2,7 @@
 
 const axios = require('axios');
 const Job = require('../../database/models/job');
+const User = require('../../database/models/user');
 const parse = require('co-body');
 const http = require('http');
 
@@ -48,19 +49,28 @@ module.exports.addJob = function*(next) {
     const jobData = yield parse(this);
     const job = new Job(jobData);
     const newJob = yield job.saveAll();
-    console.log(newJob); // doesn't have users array
-    const result = yield Job.get(newJob.id).getJoin({
-      users: true,
-    }).run();
-    console.log(result); // has users array
     this.status = 200;
-    this.body = result;
-
+    this.body = yield Job.get(newJob.id).getJoin({
+      users: true
+    }).run();
   } catch (e) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  // yield next;
+};
+
+module.exports.getJobs = function*(next) {
+  let jobs = [];
+  try {
+    this.status = 200;
+    this.body = yield User.get(this.params.idUser).getJoin({
+      jobs,
+    }).run().then(user => user.jobs);
+  } catch (e) {
+    console.error('Could not get jobs.', e);
+    this.status = 500;
+    this.body = e.message || http.STATUS_CODES[this.status];
+  }
 };
 
 module.exports.deleteJob = function*(next) {

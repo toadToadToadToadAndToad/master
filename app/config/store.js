@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 import thunkMiddleware from 'redux-thunk';
 
 import numbersGameAppReducer from './reducers';
-import { setEvents } from './actions';
+import { rehydrateDb, setEvents } from './actions';
 
 const store = createStore(
   numbersGameAppReducer,
@@ -15,7 +15,7 @@ const store = createStore(
   )
 );
 
-store.dispatch
+store.dispatch(rehydrateDb());
 
 store.dispatch(setEvents([
   { type: 'Interview', company: 'Uber', notes: 'Be sure to wear pants.' },
