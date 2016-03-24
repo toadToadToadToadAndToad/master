@@ -8,10 +8,10 @@ const config = require('../database/config');
 const http = require('http');
 const spa = require('koa-spa');
 const session = require('koa-session');
-
 const job = require('./controllers/jobs');
 const user = require('./controllers/user');
 const passport = require('./controllers/auth');
+
 
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
@@ -38,7 +38,12 @@ app.use(session(app));
 // }
 // app.use(closeConnection);
 
-// initialize Auth must be before app.use(router.routes())
+// Close the RethinkDB connection
+function* closeConnection(next) {
+  this._rdbConn.close();
+  yield next;
+}
+  // initialize Auth must be before app.use(router.routes())
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router.routes());
@@ -60,7 +65,8 @@ router.get('/auth/google', passport.authenticate('google', {
   scope: ['email', 'profile'],
   accessType: 'offline',
   approvalPrompt: 'force',
-}));
+  })
+);
 router.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',

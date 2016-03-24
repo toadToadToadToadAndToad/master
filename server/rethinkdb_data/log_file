@@ -2641,3 +2641,72 @@
 2016-03-22T18:28:09.540565000 1289.019961s notice: All client connections closed.
 2016-03-22T18:28:09.540582000 1289.019977s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2016-03-22T18:28:09.552913000 1289.032310s notice: Storage engine shut down.
+2016-03-23T10:23:16.739725000 0.508424s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-23T10:23:16.799561000 0.568255s notice: Running on Darwin 14.5.0 x86_64
+2016-03-23T10:23:16.799627000 0.568319s notice: Loading data from directory /Users/fannyvasquez/Desktop/numbers-game/server/rethinkdb_data
+2016-03-23T10:23:17.073435000 0.842127s info: Automatically using cache size of 100 MB
+2016-03-23T10:23:17.073449000 0.842141s warn: Cache size does not leave much memory for server and query overhead (available memory: 1123 MB).
+2016-03-23T10:23:17.073457000 0.842149s warn: Cache size is very low and may impact performance.
+2016-03-23T10:23:17.075733000 0.844425s notice: Listening for intracluster connections on port 29015
+2016-03-23T10:23:17.412902000 1.181596s notice: Listening for client driver connections on port 28015
+2016-03-23T10:23:17.413672000 1.182366s notice: Listening for administrative HTTP connections on port 8080
+2016-03-23T10:23:17.413679000 1.182371s notice: Listening on addresses: 127.0.0.1, ::1
+2016-03-23T10:23:17.413681000 1.182373s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-03-23T10:23:17.413767000 1.182459s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-23T10:23:18.485568000 2.254289s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Starting a new Raft election for term 9.
+2016-03-23T10:23:18.641407000 2.410128s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: This server is Raft leader for term 9. Latest log index is 30.
+2016-03-23T10:23:19.099490000 2.868239s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: Starting a new Raft election for term 9.
+2016-03-23T10:23:19.125139000 2.893888s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 10.
+2016-03-23T10:23:19.257775000 3.026524s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: This server is Raft leader for term 9. Latest log index is 28.
+2016-03-23T10:23:19.352310000 3.121059s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 10. Latest log index is 32.
+2016-03-23T12:58:10.867963000 9004.036407s notice: Server got SIGINT from pid 502, uid 501; shutting down...
+2016-03-23T12:58:10.868151000 9004.036594s notice: Shutting down client connections...
+2016-03-23T12:58:10.868332000 9004.036775s notice: All client connections closed.
+2016-03-23T12:58:10.868340000 9004.036783s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-23T12:58:10.992457000 9004.160901s notice: Storage engine shut down.
+2016-03-23T14:53:21.256957000 0.418740s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-23T14:53:21.339489000 0.501269s notice: Running on Darwin 14.5.0 x86_64
+2016-03-23T14:53:21.339553000 0.501331s notice: Loading data from directory /Users/fannyvasquez/Desktop/numbers-game/server/rethinkdb_data
+2016-03-23T14:53:21.580467000 0.742246s info: Automatically using cache size of 100 MB
+2016-03-23T14:53:21.580481000 0.742259s warn: Cache size does not leave much memory for server and query overhead (available memory: 879 MB).
+2016-03-23T14:53:21.580489000 0.742267s warn: Cache size is very low and may impact performance.
+2016-03-23T14:53:21.581406000 0.743184s notice: Listening for intracluster connections on port 29015
+2016-03-23T14:53:21.861997000 1.023776s notice: Listening for client driver connections on port 28015
+2016-03-23T14:53:21.862261000 1.024039s notice: Listening for administrative HTTP connections on port 8080
+2016-03-23T14:53:21.862263000 1.024041s notice: Listening on addresses: 127.0.0.1, ::1
+2016-03-23T14:53:21.862288000 1.024066s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-03-23T14:53:21.862290000 1.024067s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-23T14:53:23.066458000 2.228265s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Starting a new Raft election for term 10.
+2016-03-23T14:53:23.196248000 2.358084s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: This server is Raft leader for term 10. Latest log index is 33.
+2016-03-23T14:53:23.304412000 2.466248s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: Starting a new Raft election for term 10.
+2016-03-23T14:53:23.304471000 2.466306s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 11.
+2016-03-23T14:53:23.529353000 2.691189s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: This server is Raft leader for term 10. Latest log index is 31.
+2016-03-23T14:53:23.529433000 2.691268s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 11. Latest log index is 35.
+2016-03-23T17:03:23.824122000 7803.172507s notice: Server got SIGINT from pid 502, uid 501; shutting down...
+2016-03-23T17:03:23.824464000 7803.172848s notice: Shutting down client connections...
+2016-03-23T17:03:23.824870000 7803.173254s notice: All client connections closed.
+2016-03-23T17:03:23.824889000 7803.173273s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-23T17:03:23.970734000 7803.319119s notice: Storage engine shut down.
+2016-03-23T19:21:02.127471000 0.517010s notice: Running rethinkdb 2.2.5 (CLANG 7.0.2 (clang-700.1.81))...
+2016-03-23T19:21:02.360499000 0.750034s notice: Running on Darwin 14.5.0 x86_64
+2016-03-23T19:21:02.360566000 0.750099s notice: Loading data from directory /Users/fannyvasquez/Desktop/numbers-game/server/rethinkdb_data
+2016-03-23T19:21:02.653820000 1.043352s info: Automatically using cache size of 100 MB
+2016-03-23T19:21:02.653834000 1.043366s warn: Cache size does not leave much memory for server and query overhead (available memory: 852 MB).
+2016-03-23T19:21:02.653841000 1.043373s warn: Cache size is very low and may impact performance.
+2016-03-23T19:21:02.655278000 1.044810s notice: Listening for intracluster connections on port 29015
+2016-03-23T19:21:02.952381000 1.341939s notice: Listening for client driver connections on port 28015
+2016-03-23T19:21:02.952691000 1.342249s notice: Listening for administrative HTTP connections on port 8080
+2016-03-23T19:21:02.952694000 1.342251s notice: Listening on addresses: 127.0.0.1, ::1
+2016-03-23T19:21:02.952695000 1.342252s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-03-23T19:21:02.952722000 1.342279s notice: Server ready, "Aimees_MBP_3x6" 63cf4258-f617-4537-aae4-2e0291796c86
+2016-03-23T19:21:04.021397000 2.410981s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: Starting a new Raft election for term 11.
+2016-03-23T19:21:04.079325000 2.468909s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: Starting a new Raft election for term 12.
+2016-03-23T19:21:04.132107000 2.521691s info: Table 79106929-9a0b-4171-b93b-40b8d2eb6397: This server is Raft leader for term 11. Latest log index is 37.
+2016-03-23T19:21:04.199652000 2.589236s info: Table f6f7d6b1-7e75-433b-8286-056b6d53a402: This server is Raft leader for term 12. Latest log index is 39.
+2016-03-23T19:21:04.291007000 2.680590s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: Starting a new Raft election for term 11.
+2016-03-23T19:21:04.638504000 3.028087s info: Table ab529feb-3f8b-460b-b528-3dc9cb8c32f0: This server is Raft leader for term 11. Latest log index is 35.
+2016-03-23T19:37:29.032715000 986.946559s notice: Server got SIGINT from pid 502, uid 501; shutting down...
+2016-03-23T19:37:29.032895000 986.946739s notice: Shutting down client connections...
+2016-03-23T19:37:29.033359000 986.947203s notice: All client connections closed.
+2016-03-23T19:37:29.033367000 986.947210s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-03-23T19:37:29.136669000 987.050513s notice: Storage engine shut down.
