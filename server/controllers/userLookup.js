@@ -7,6 +7,7 @@ module.exports.lookup = function*() {
   const cookieBuffer = new Buffer(cookie, 'base64');
   const decodedCookie = JSON.parse(cookieBuffer.toString('utf8'));
   const findUser = decodedCookie.passport.user.userID;
+<<<<<<< 48f341d4499763ca220eced8d5f4a92499b2f661
   try {
     this.body = yield User.filter({
       userID: findUser,
@@ -14,4 +15,18 @@ module.exports.lookup = function*() {
   } catch (e) {
     console.error(e);
   }
+=======
+  yield User.filter({
+    userID: findUser,
+  })
+  .limit(1)
+  .run()
+  .then((user, err) => {
+    if (err) {
+      console.error('ERROR', err);
+    } else {
+      this.body = user;
+    }
+  });
+>>>>>>> (fix) beautify
 };
