@@ -22,25 +22,25 @@ const getJobsUrl = 'http://localhost:3000/api/getjobs/e683d4c4-c095-426d-a0a4-f4
 /*
  * db
  */
-export function addDbRequest() {
-  return { type: types.ADD_DB_REQUEST };
+export function dbRequest() {
+  return { type: types.DB_REQUEST };
 }
-export function addDbSuccess() {
-  return { type: types.ADD_DB_SUCCESS };
+export function dbSuccess() {
+  return { type: types.DB_SUCCESS };
 }
-export function addDbFailure(error) {
-  return { type: types.ADD_DB_FAILURE, error };
+export function dbFailure(error) {
+  return { type: types.DB_FAILURE, error };
 }
 export function rehydrateDb(userId) {
   return dispatch => {
-    dispatch(addDbRequest());
+    dispatch(dbRequest());
 
     return axios.get(getJobsUrl)
       .then(res => {
         dispatch(setJobs(res.data));
-        dispatch(addDbSuccess());
+        dispatch(dbSuccess());
       })
-      .catch(err => dispatch(addDbFailure(err)));
+      .catch(err => dispatch(dbFailure(err)));
 
     // work in progress
     // or just get all of the user info at once!
@@ -52,9 +52,9 @@ export function rehydrateDb(userId) {
     //     dispatch(setEvents(res.data.events));
     //     dispatch(setContacts(res.data.contacts));
     //     dispatch(setUserInfo(res.data.userInfo));
-    //     dispatch(addDbSuccess());
+    //     dispatch(dbSuccess());
     //   })
-    //   .catch(err => dispatch(addDbFailure(err)));
+    //   .catch(err => dispatch(dbFailure(err)));
     //
     // or can do it this way...
     //
@@ -67,9 +67,9 @@ export function rehydrateDb(userId) {
     //   .then(axios.get(userInfoUrl))
     //   .then(res => {
     //     dispatch(setUserInfo(res.data));
-    //     dispatch(addDbSuccess());
+    //     dispatch(dbSuccess());
     //   })
-    //   .catch(err => dispatch(addDbFailure(err)));
+    //   .catch(err => dispatch(dbFailure(err)));
   };
 }
 
@@ -84,7 +84,7 @@ export function addJobSuccess(job) {
 }
 export function addJob(job) {
   return dispatch => {
-    dispatch(addDbRequest());
+    dispatch(dbRequest());
 
     // TODO: get rid of this temporary job.idUser hardcoding
     // want to set job.idUser to the rethinkdb user's id
@@ -93,10 +93,10 @@ export function addJob(job) {
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
-        dispatch(addDbSuccess());
+        dispatch(dbSuccess());
       })
       .catch(err => {
-        dispatch(addDbFailure(err));
+        dispatch(dbFailure(err));
       });
   };
 }

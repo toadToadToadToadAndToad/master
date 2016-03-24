@@ -3,9 +3,9 @@ export const SET_STATE = 'SET_STATE';
 export const SET_CURRENT_JOB = 'SET_CURRENT_JOB';
 
 // db
-export const ADD_DB_REQUEST = 'ADD_DB_REQUEST';
-export const ADD_DB_FAILURE = 'ADD_DB_FAILURE';
-export const ADD_DB_SUCCESS = 'ADD_DB_SUCCESS';
+export const DB_REQUEST = 'DB_REQUEST';
+export const DB_FAILURE = 'DB_FAILURE';
+export const DB_SUCCESS = 'DB_SUCCESS';
 
 // jobs
 export const SET_JOBS = 'SET_JOBS';

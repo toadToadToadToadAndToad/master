@@ -31,17 +31,17 @@ const initialDbState = Map({
 
 function db(state = initialDbState, action) {
   switch (action.type) {
-    case types.ADD_DB_REQUEST:
+    case types.DB_REQUEST:
       return state.merge(Map({
         isWorking: true,
         error: null,
       }));
-    case types.ADD_DB_SUCCESS:
+    case types.DB_SUCCESS:
       return state.merge(Map({
         isWorking: false,
         error: null,
       }));
-    case types.ADD_DB_FAILURE:
+    case types.DB_FAILURE:
       return state.merge(Map({
         isWorking: false,
         error: action.error,
