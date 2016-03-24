@@ -32,6 +32,15 @@ export function rehydrateDb(userId) {
   return dispatch => {
     dispatch(addDbRequest());
 
+
+    return axios.get('http://localhost:3000/api/getjobs/e683d4c4-c095-426d-a0a4-f49de90275f0')
+      .then(res => {
+        console.log('%%%%%', res);
+        dispatch(setJobs(res.data));
+      })
+      .catch(err => dispatch(addDbFailure(err)));
+
+
     // work in progress
     // or just get all of the user info at once!
     // should really have a server-side redux store

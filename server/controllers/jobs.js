@@ -65,7 +65,7 @@ module.exports.getJobs = function*(next) {
   let jobs = [];
   try {
     this.status = 200;
-    this.body = User.get(this.params.idUser).getJoin({
+    this.body = yield User.get(this.params.idUser).getJoin({
       jobs,
     }).run().then(user => user.jobs);
   } catch (e) {
