@@ -12,6 +12,7 @@ const session = require('koa-session');
 const job = require('./controllers/jobs');
 const user = require('./controllers/user');
 const passport = require('./controllers/auth');
+const userLookup = require('./controllers/userLookup');
 
 
 // Create a rethinkdb connection, and save it in req._rdbConn
@@ -84,10 +85,14 @@ function* authed(next) {
   }
 }
 
+//User DB lookup 
+router.post('/api/me', userLookup.lookup);
+
 router.get('/dashboard', authed, function*(next) {
-  console.log('\n\n\nincoming dashboard req\n\n\n', this.req.headers.cookie);
+  // console.log('\n\n\nincoming dashboard req\n\n\n', this.req.headers.cookie);
   yield next;
 });
+
 
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',

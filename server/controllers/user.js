@@ -8,14 +8,6 @@ const jwt = require('koa-jwt');
 // const currentUser = require('./auth');
 
 module.exports.addUser = function* (next) {
-  const user = yield User.filter({ userID: "103418747388988896612" }).limit(1).run();
-  this.headers = {
-    user: user,
-    token: jwt.sign({name:'fanny'}, 'secret')
-  }
-  console.log(user)
-  
-
   // this.type = 'application/json';
   // try {
   //   let data = yield parse(this);
