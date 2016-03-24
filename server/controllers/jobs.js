@@ -14,7 +14,6 @@ module.exports.list = function*() {
     if (this.params.city) {
       queryString += '&location=' + this.params.city;
     }
-    console.log('queryString', queryString);
     const unformattedJobs = yield axios.get('https://jobs.github.com/positions.json' + queryString);
     jobs = unformattedJobs.data;
   }
@@ -24,30 +23,31 @@ module.exports.list = function*() {
     if (this.params.city) {
       queryString += '&LocationName=' + this.params.city;
     }
-    console.log('queryString', queryString);
     const unformattedJobs = yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
     // matching object keys with github's results
-    console.log(unformattedJobs.data.JobData);
-    jobs = unformattedJobs.data.JobData.map((object) => {
-      return {
-        id: object.DocumentID,
-        title: object.JobTitle,
-        company: object.OrganizationName,
-        url: object.ApplyOnlineURL,
-        description: object.JobSummary,
-        location: object.Locations,
-        type: object.WorkSchedule,
-      };
-    });
+    if (!!unformattedJobs.data.JobData) {
+      jobs = unformattedJobs.data.JobData.map((object) => {
+        return {
+          id: object.DocumentID,
+          title: object.JobTitle,
+          company: object.OrganizationName,
+          url: object.ApplyOnlineURL,
+          description: object.JobSummary,
+          location: object.Locations,
+          type: object.WorkSchedule,
+        };
+      });
+    }
   }
-  this.body = jobs;
   this.status = 200;
+  this.body = jobs;
 };
 
-module.exports.addJob = function*(next) {
+module.exports.addJob = function*() {
   this.type = 'application/json';
   try {
     const jobData = yield parse(this);
+    console.log('line 50', jobData);
     const job = new Job(jobData);
     const newJob = yield job.saveAll();
     this.status = 200;
@@ -60,8 +60,8 @@ module.exports.addJob = function*(next) {
   }
 };
 
-module.exports.getJobs = function*(next) {
-  let jobs = [];
+module.exports.getJobs = function*() {
+  const jobs = [];
   try {
     this.status = 200;
     this.body = yield User.get(this.params.idUser).getJoin({
@@ -74,7 +74,7 @@ module.exports.getJobs = function*(next) {
   }
 };
 
-module.exports.deleteJob = function*(next) {
+module.exports.deleteJob = function*() {
   try {
     const jobToDelete = yield parse(this);
     if ((jobToDelete === null) || (jobToDelete.id === null)) {
@@ -87,10 +87,9 @@ module.exports.deleteJob = function*(next) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  // yield next;
 };
 
-module.exports.updateJob = function*(next) {
+module.exports.updateJob = function*() {
   try {
     // Would have to send id of job wanted to edit in
     const dataToUpdate = yield parse(this);
@@ -102,5 +101,4 @@ module.exports.updateJob = function*(next) {
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
-  // yield next;
 };
