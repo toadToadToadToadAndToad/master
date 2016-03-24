@@ -37,6 +37,7 @@ class DashboardContainer extends Component {
     this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
     browserHistory.push('/jobview');
   }
+ 
 
   render() {
     // only show the table of job data if it is not empty
