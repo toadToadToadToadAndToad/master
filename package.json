@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.9.1",
+    "co-body": "^4.0.0",
     "immutable": "^3.7.6",
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.0.1",

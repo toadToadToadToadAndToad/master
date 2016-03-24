@@ -29,7 +29,7 @@ function* createConnection(next) {
 const app = koa();
 
 app.use(createConnection);
-app.use(bodyParser());
+// app.use(bodyParser());
 app.keys = ['secret'];
 app.use(session(app));
 
