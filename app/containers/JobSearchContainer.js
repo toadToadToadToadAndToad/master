@@ -66,7 +66,7 @@ class JobSearchContainer extends Component {
   handleRowClick(event) {
     // Adds clicked job to the store.
     const job = this.state.data[event];
-    job.description = this.strip(job.description).slice(0, 200).concat('...');
+    job.description = this.strip(job.description).slice(0, 500).concat('...');
     this.props.dispatch(addJob(job));
     // TODO Add a way to mark listings as being added to the Store.
     // Something like this.state.data[0].added = true;
