@@ -7,7 +7,6 @@ const r = require('rethinkdb');
 const config = require('../database/config');
 const http = require('http');
 const spa = require('koa-spa');
-const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 
 const job = require('./controllers/jobs');
@@ -29,7 +28,6 @@ function* createConnection(next) {
 const app = koa();
 
 app.use(createConnection);
-// app.use(bodyParser());
 app.keys = ['secret'];
 app.use(session(app));
 
@@ -70,6 +68,7 @@ router.get('/auth/google/callback',
   })
 );
 
+// authenticating routes
 function* authed(next) {
   if (this.req.isAuthenticated()) {
     yield next;
@@ -77,12 +76,17 @@ function* authed(next) {
     this.redirect('auth/google');
   }
 }
-
 router.get('/dashboard', authed, function*(next) {
-  console.log('\n\n\nincoming dashboard req\n\n\n', this.req.headers.cookie);
+  yield next;
+});
+router.get('/jobsearch', authed, function*(next) {
+  yield next;
+});
+router.get('/addjob', authed, function*(next) {
   yield next;
 });
 
+// serving up react SPA
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',
   404: '404.html',
