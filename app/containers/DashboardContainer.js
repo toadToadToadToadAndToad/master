@@ -69,10 +69,6 @@ class DashboardContainer extends Component {
           containerElement={<Link to="/addjob" />}
           label="Add Job"
         />
-        <RaisedButton
-          containerElement={<Link to="/jobview" />}
-          label="Job View"
-        />
         <br />
         <br />
         <PageHeader>Dashboard</PageHeader>
