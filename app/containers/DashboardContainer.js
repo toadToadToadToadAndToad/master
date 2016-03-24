@@ -15,7 +15,11 @@ class DashboardContainer extends Component {
     super();
     this.state = {};
   }
-
+  componentDidMount() {
+    // axios.get('api/me').then(function(result){
+    //   dispatchsdsdkls(result)
+    // })
+  }
   handleToggle(event, toggled) {
     this.setState({
       [event.target.name]: toggled,

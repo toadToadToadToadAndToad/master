@@ -4,7 +4,6 @@ const axios = require('axios');
 const Job = require('../../database/models/job');
 const parse = require('co-body');
 const http = require('http');
-const r = require('rethinkdb');
 
 module.exports.list = function*() {
   let jobs = [];
@@ -35,7 +34,7 @@ module.exports.list = function*() {
         url: object.ApplyOnlineURL,
         description: object.JobSummary,
         location: object.Locations,
-        type: object.WorkSchedule
+        type: object.WorkSchedule,
       };
     });
   }
@@ -51,7 +50,7 @@ module.exports.addJob = function*(next) {
     const newJob = yield job.saveAll();
     console.log(newJob); // doesn't have users array
     const result = yield Job.get(newJob.id).getJoin({
-      users: true
+      users: true,
     }).run();
     console.log(result); // has users array
     this.status = 200;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
 
-import SignIn from '../components/signin/signIn'
+import SignIn from '../components/signin/signIn';
 
 class SignInContainer extends Component {
   constructor() {
@@ -9,17 +8,13 @@ class SignInContainer extends Component {
     this.state = {};
   }
 
-  goToDashboard() {
-    browserHistory.push('/dashboard');
-  }
-
   render() {
     return (
       <div>
-        <SignIn goToDashboard={this.goToDashboard} />
+        <SignIn />
       </div>
     );
   }
-};
+}
 
 export default SignInContainer;

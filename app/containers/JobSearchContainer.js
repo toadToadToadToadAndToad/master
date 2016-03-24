@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import SearchBarComponent from '../components/jobsearch/searchBarComponent';
-// import SiteSelectionComponent from '../components/jobsearch/siteSelectComponent';
-import ResultsViewComponent from '../components/jobsearch/resultsViewComponent';
+import SearchBarComponent from '../components/jobsearch/SearchBar';
+// import SiteSelectionComponent from '../components/jobsearch/SiteSelect';
+import ResultsViewComponent from '../components/jobsearch/ResultsView';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { addJob } from '../config/actions';
@@ -82,4 +82,5 @@ class JobSearchContainer extends Component {
   }
 }
 
+JobSearchContainer.propTypes = { dispatch: React.PropTypes.func };
 export default connect()(JobSearchContainer);
