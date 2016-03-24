@@ -9,10 +9,11 @@ const http = require('http');
 const spa = require('koa-spa');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
-
 const job = require('./controllers/jobs');
 const user = require('./controllers/user');
 const passport = require('./controllers/auth');
+const userLookup = require('./controllers/userLookup');
+
 
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
@@ -40,7 +41,12 @@ app.use(session(app));
 // }
 // app.use(closeConnection);
 
-// initialize Auth must be before app.use(router.routes())
+// Close the RethinkDB connection
+function* closeConnection(next) {
+  this._rdbConn.close();
+  yield next;
+}
+  // initialize Auth must be before app.use(router.routes())
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router.routes());
@@ -62,7 +68,8 @@ router.get('/auth/google', passport.authenticate('google', {
   scope: ['email', 'profile'],
   accessType: 'offline',
   approvalPrompt: 'force',
-}));
+  })
+);
 router.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -78,10 +85,14 @@ function* authed(next) {
   }
 }
 
+//User DB lookup 
+router.post('/api/me', userLookup.lookup);
+
 router.get('/dashboard', authed, function*(next) {
-  console.log('\n\n\nincoming dashboard req\n\n\n', this.req.headers.cookie);
+  // console.log('\n\n\nincoming dashboard req\n\n\n', this.req.headers.cookie);
   yield next;
 });
+
 
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',
