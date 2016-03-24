@@ -47,7 +47,6 @@ module.exports.addJob = function*() {
   this.type = 'application/json';
   try {
     const jobData = yield parse(this);
-    console.log('line 50', jobData);
     const job = new Job(jobData);
     const newJob = yield job.saveAll();
     this.status = 200;
@@ -83,7 +82,7 @@ module.exports.deleteJob = function*() {
     yield Job.get(jobToDelete.id).delete().run();
     console.log('Job deleted sucessfully.');
   } catch (e) {
-    console.log('Sorry, could not find a job with that id.');
+    console.error('Sorry, could not find a job with that id.');
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }
@@ -97,7 +96,7 @@ module.exports.updateJob = function*() {
     yield updatedJob.merge(dataToUpdate).saveAll();
     console.log('Sucessfully updated Job');
   } catch (e) {
-    console.log('Could not update job');
+    console.error('Could not update job');
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }

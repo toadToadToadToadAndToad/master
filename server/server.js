@@ -13,7 +13,6 @@ const user = require('./controllers/user');
 const passport = require('./controllers/auth');
 const userLookup = require('./controllers/userLookup');
 
-
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
   try {
@@ -39,12 +38,7 @@ app.use(session(app));
 // }
 // app.use(closeConnection);
 
-// Close the RethinkDB connection
-function* closeConnection(next) {
-  this._rdbConn.close();
-  yield next;
-}
-  // initialize Auth must be before app.use(router.routes())
+// initialize Auth must be before app.use(router.routes())
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router.routes());
@@ -54,7 +48,6 @@ router.get('/api/jobs/:source/:keywords/:city', job.list);
 router.get('/api/jobs/:source/:keywords', job.list);
 
 // DB Routes
-router.post('/api/users/', user.addUser);
 router.delete('/api/users/', user.deleteUser);
 router.post('/api/jobs/', job.addJob);
 router.get('/api/getjobs/:idUser', job.getJobs);
@@ -66,8 +59,7 @@ router.get('/auth/google', passport.authenticate('google', {
   scope: ['email', 'profile'],
   accessType: 'offline',
   approvalPrompt: 'force',
-  })
-);
+}));
 router.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/dashboard',
@@ -94,13 +86,10 @@ router.get('/addjob', authed, function*(next) {
   yield next;
 });
 
-// serving up react SPA
-
-
-//User DB lookup 
+// User DB lookup
 router.post('/api/me', userLookup.lookup);
 
-
+// serving up react SPA
 app.use(spa(path.join(__dirname, '../dist'), {
   index: 'index.html',
   404: '404.html',
