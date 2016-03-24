@@ -100,9 +100,18 @@ function contacts(state = List(), action) {
 /*
  * userInfo
  */
-function userInfo(state = Map(), action) {
+
+ const initialUserInfoState = Map({
+   dbUserID: null,
+ });
+
+function userInfo(state = initialUserInfoState, action) {
   switch (action.type) {
     case types.SET_USERINFO:
+    console.log('kdjklfslasdf', action);
+      return state.merge(Map({
+        dbUserID: action.id,
+      }));
     default:
       return state;
   }
