@@ -27,6 +27,7 @@ module.exports.list = function*() {
     console.log('queryString', queryString);
     const unformattedJobs = yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
     // matching object keys with github's results
+    console.log(unformattedJobs.data.JobData);
     jobs = unformattedJobs.data.JobData.map((object) => {
       return {
         id: object.DocumentID,
@@ -51,7 +52,7 @@ module.exports.addJob = function*(next) {
     const newJob = yield job.saveAll();
     this.status = 200;
     this.body = yield Job.get(newJob.id).getJoin({
-      users: true
+      users: true,
     }).run();
   } catch (e) {
     this.status = 500;
