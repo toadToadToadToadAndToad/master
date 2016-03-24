@@ -28,10 +28,10 @@ passport.use(new GoogleStrategy({
     if (err) {
       console.error('ERROR', err);
     } else if (user.length !== 0) {
-      console.log('not saving user');
+      console.log('User already exists.');
       return;
     } else {
-      console.log('saving user');
+      console.log('Saving new user.');
       userToBeSaved.save();
     }
   });
