@@ -7,17 +7,11 @@ module.exports.lookup = function*() {
   const cookieBuffer = new Buffer(cookie, 'base64');
   const decodedCookie = JSON.parse(cookieBuffer.toString('utf8'));
   const findUser = decodedCookie.passport.user.userID;
-  // console.log("GOT ME GOT ME GOT ME", findUser)
-  yield User.filter({
-    userID: findUser,
-  })
-  .limit(1)
-  .run()
-  .then((user, err) => {
-    if (err) {
-      console.error('ERROR', err);
-    } else {
-      this.body = user;
-    }
-  });
+  try {
+    this.body = yield User.filter({
+      userID: findUser,
+    }).limit(1).run();
+  } catch (e) {
+    console.error(e);
+  }
 };

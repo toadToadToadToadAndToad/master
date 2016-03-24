@@ -7,7 +7,7 @@ import * as types from './actionTypes';
 // TODO: these should probably go in a config file
 const jobUrl = 'http://localhost:3000/api/jobs/';
 // TODO: this needs to be replaced with user's db id
-const getJobsUrl = 'http://localhost:3000/api/getjobs/e683d4c4-c095-426d-a0a4-f49de90275f0';
+const getJobsUrl = 'http://localhost:3000/api/getjobs/fb88e6b2-764a-4346-a3ba-348021c86726';
 
  /*
  * app
@@ -88,7 +88,7 @@ export function addJob(job) {
 
     // TODO: get rid of this temporary job.idUser hardcoding
     // want to set job.idUser to the rethinkdb user's id
-    job.idUser = 'e683d4c4-c095-426d-a0a4-f49de90275f0';
+    job.idUser = 'fb88e6b2-764a-4346-a3ba-348021c86726';
 
     return axios.post(jobUrl, job)
       .then(res => {
@@ -142,6 +142,6 @@ export function udpateContact(contact) {
 /*
  * userInfo
  */
-export function setUserInfo(unserInfo) {
-  return { type: types.SET_USERINFO, unserInfo };
+export function setUserInfo(id) {
+  return { type: types.SET_USERINFO, id };
 }

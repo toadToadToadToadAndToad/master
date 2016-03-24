@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { toJS } from 'immutable';
 import axios from 'axios';
+import { setUserInfo } from '../config/actions';
 
 import { setCurrentJob } from '../config/actions';
 
@@ -18,8 +19,9 @@ class DashboardContainer extends Component {
   }
   componentWillMount() {
     //send cookie to retrieve user from DB
+    const that = this;
     axios.post('/api/me').then(function(result){
-      console.log("COOKIE RESULT", result)
+      that.props.dispatch(setUserInfo(result.data[0].id));
     })
   }
   handleToggle(event, toggled) {
@@ -39,7 +41,7 @@ class DashboardContainer extends Component {
     this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
     browserHistory.push('/jobview');
   }
- 
+
 
   render() {
     // only show the table of job data if it is not empty
