@@ -8,6 +8,7 @@ import * as types from './actionTypes';
 */
 const initialAppState = Map({
   currentJob: null,
+  dbUserID: null,
 });
 
 function app(state = initialAppState, action) {
@@ -15,6 +16,10 @@ function app(state = initialAppState, action) {
     case types.SET_CURRENT_JOB:
       return state.merge(Map({
         currentJob: action.id,
+      }));
+    case types.SET_USERINFO:
+      return state.merge(Map({
+        dbUserID: action.id,
       }));
     default:
       return state;
@@ -97,32 +102,12 @@ function contacts(state = List(), action) {
   }
 }
 
-/*
- * userInfo
- */
-
- const initialUserInfoState = Map({
-   dbUserID: null,
- });
-
-function userInfo(state = initialUserInfoState, action) {
-  switch (action.type) {
-    case types.SET_USERINFO:
-      return state.merge(Map({
-        dbUserID: action.id,
-      }));
-    default:
-      return state;
-  }
-}
-
 const numbersGameAppReducer = combineReducers({
   app,
   db,
   jobs,
   events,
   contacts,
-  userInfo,
 });
 
 export default numbersGameAppReducer;

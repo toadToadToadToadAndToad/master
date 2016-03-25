@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/route-transition.css';
 import '../styles/main.css';
@@ -23,14 +23,15 @@ class AppContainer extends Component {
           title="Number's Game"
           showMenuIconButton={false}
         >
-        <a href="/logout">Logout</a>
+          <a href="/logout">Logout</a>
         </AppBar>
         <ReactCSSTransitionGroup
           transitionName="appear"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
         >
-          {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
+          {React.cloneElement(this.props.children,
+            { key: this.props.location.pathname })}
         </ReactCSSTransitionGroup>
       </div>
     );
@@ -38,7 +39,12 @@ class AppContainer extends Component {
 }
 
 AppContainer.childContextTypes = {
-  muiTheme: React.PropTypes.object,
+  muiTheme: PropTypes.object,
+};
+
+AppContainer.propTypes = {
+  children: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default AppContainer;

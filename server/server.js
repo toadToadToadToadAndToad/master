@@ -53,6 +53,7 @@ router.post('/api/jobs/', job.addJob);
 router.get('/api/getjobs/:idUser', job.getJobs);
 router.delete('/api/jobs/', job.deleteJob);
 router.put('/api/jobs/', job.updateJob);
+router.get('/api/me', userLookup.lookup);
 
 // Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google', {
@@ -88,9 +89,6 @@ router.get('/jobsearch', authed, function*(next) {
 router.get('/addjob', authed, function*(next) {
   yield next;
 });
-
-// User DB lookup
-router.post('/api/me', userLookup.lookup);
 
 // serving up react SPA
 app.use(spa(path.join(__dirname, '../dist'), {

@@ -15,8 +15,6 @@ const store = createStore(
   )
 );
 
-store.dispatch(rehydrateDb());
-
 store.dispatch(setEvents([
   { type: 'Interview', company: 'Uber', notes: 'Be sure to wear pants.' },
   { type: 'Decision', company: 'Hack Reactor', notes: 'Bring toad demo.' },
