@@ -5,12 +5,9 @@ import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
-import { toJS } from 'immutable';
 import axios from 'axios';
 import { setUserInfo } from '../config/actions';
-
 import { setCurrentJob } from '../config/actions';
-
 
 class DashboardContainer extends Component {
   constructor() {
@@ -18,11 +15,11 @@ class DashboardContainer extends Component {
     this.state = {};
   }
   componentWillMount() {
-    //send cookie to retrieve user from DB
+    // send cookie to retrieve user from DB
     const that = this;
-    axios.post('/api/me').then(function(result){
+    axios.post('/api/me').then((result) => {
       that.props.dispatch(setUserInfo(result.data[0].id));
-    })
+    });
   }
   handleToggle(event, toggled) {
     this.setState({
@@ -41,7 +38,6 @@ class DashboardContainer extends Component {
     this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
     browserHistory.push('/jobview');
   }
-
 
   render() {
     // only show the table of job data if it is not empty

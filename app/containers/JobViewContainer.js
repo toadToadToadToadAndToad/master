@@ -3,9 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
-
 import JobData from '../components/jobview/JobData';
-
 
 class JobViewContainer extends Component {
   constructor() {

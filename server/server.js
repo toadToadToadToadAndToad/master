@@ -66,16 +66,19 @@ router.get('/auth/google/callback',
     failureRedirect: '/',
   })
 );
+router.get('/logout', function*() {
+  this.session = null;
+  this.redirect('/');
+});
 
 // authenticating routes
 function* authed(next) {
   if (this.req.isAuthenticated()) {
     yield next;
   } else {
-    this.redirect('auth/google');
+    this.redirect('/');
   }
 }
-
 router.get('/dashboard', authed, function*(next) {
   yield next;
 });

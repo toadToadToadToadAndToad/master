@@ -6,7 +6,7 @@ class SearchBarComponent extends Component {
     super(props);
     this.state = {
       keywords: '',
-      location: ''
+      location: '',
     };
     this.handleKeyChange = this.handleKeyChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
@@ -28,6 +28,7 @@ class SearchBarComponent extends Component {
       <div>
         <form onSubmit={this.handleSearch}>
           <input
+            required
             type="text"
             placeholder="Job Description"
             value={this.state.keywords}
