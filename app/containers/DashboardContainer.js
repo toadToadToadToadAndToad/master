@@ -7,9 +7,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import axios from 'axios';
 import { setUserInfo } from '../config/actions';
-
 import { setCurrentJob } from '../config/actions';
-
 
 class DashboardContainer extends Component {
   constructor() {
@@ -40,7 +38,6 @@ class DashboardContainer extends Component {
     this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
     browserHistory.push('/jobview');
   }
-
 
   render() {
     // only show the table of job data if it is not empty

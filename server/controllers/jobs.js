@@ -67,7 +67,7 @@ module.exports.getJobs = function*() {
       jobs,
     }).run().then(user => user.jobs);
   } catch (e) {
-    console.error('Could not get jobs.', e);
+    // console.error('Could not get jobs.', e);
     this.status = 500;
     this.body = e.message || http.STATUS_CODES[this.status];
   }

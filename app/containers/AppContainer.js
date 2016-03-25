@@ -13,38 +13,32 @@ class AppContainer extends Component {
   }
 
   getChildContext() {
-    return {
-      muiTheme: getMuiTheme(customMaterialTheme)
-    };
-  }
-
-  logout() {
-    console.log('LOGOUT!!!');
+    return { muiTheme: getMuiTheme(customMaterialTheme) };
   }
 
   render() {
-
     return (
       <div className="container">
         <AppBar
           title="Number's Game"
           showMenuIconButton={false}
         >
-        <p onClick={this.logout}>Logout</p>
+        <a href="/logout">Logout</a>
         </AppBar>
         <ReactCSSTransitionGroup
           transitionName="appear"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
-          >{React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+        >
+          {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
         </ReactCSSTransitionGroup>
       </div>
     );
   }
-};
+}
 
 AppContainer.childContextTypes = {
-  muiTheme: React.PropTypes.object
+  muiTheme: React.PropTypes.object,
 };
 
 export default AppContainer;
