@@ -14,5 +14,6 @@ module.exports.lookup = function*() {
   } catch (e) {
     console.error(e);
   }
+}
 
 
