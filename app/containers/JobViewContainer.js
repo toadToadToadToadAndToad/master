@@ -7,7 +7,6 @@ import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
 import { deleteJob } from '../config/actions';
 
-
 class JobViewContainer extends Component {
   constructor(props) {
     super(props);
