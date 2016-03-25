@@ -10,7 +10,6 @@ import Notes from '../components/jobview/NotesComponent';
 import { addNote, deleteNote } from '../config/actions';
 import axios from 'axios';
 
-
 class JobViewContainer extends Component {
   constructor(props) {
     super(props);

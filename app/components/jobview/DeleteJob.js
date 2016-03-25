@@ -16,6 +16,6 @@ function DeleteJobComponent(props) {
 }
 
 DeleteJobComponent.propTypes = {
-  handleDelete: React.PropTypes.func
-}
+  handleDelete: React.PropTypes.func,
+};
 export default DeleteJobComponent;
