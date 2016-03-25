@@ -1,23 +1,33 @@
 import axios from 'axios';
 import * as types from './actionTypes';
+import store from './store';
+import { toJS } from 'immutable';
 
 /*
  * rethinkdb urls
  */
 // TODO: these should probably go in a config file
 const jobUrl = 'http://localhost:3000/api/jobs/';
-// TODO: this needs to be replaced with user's db id
-const getJobsUrl = 'http://localhost:3000/api/getjobs/fb88e6b2-764a-4346-a3ba-348021c86726';
+const getJobsUrl = 'http://localhost:3000/api/getjobs/';
 
  /*
  * app
  */
- export function setState(state) {
-   return { type: types.SET_STATE, state };
- }
- export function setCurrentJob(id) {
-   return { type: types.SET_CURRENT_JOB, id };
- }
+export function setState(state) {
+  return { type: types.SET_STATE, state };
+}
+export function setCurrentJob(id) {
+  return { type: types.SET_CURRENT_JOB, id };
+}
+export function setUserInfo(id) {
+  return { type: types.SET_USERINFO, id };
+}
+export function initializeUser(id) {
+  return (dispatch) => {
+    dispatch(setUserInfo(id));
+    dispatch(rehydrateDb(id));
+  };
+}
 
 /*
  * db
@@ -32,10 +42,10 @@ export function dbFailure(error) {
   return { type: types.DB_FAILURE, error };
 }
 export function rehydrateDb(userId) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(dbRequest());
 
-    return axios.get(getJobsUrl)
+    return axios.get(getJobsUrl.concat(userId))
       .then(res => {
         dispatch(setJobs(res.data));
         dispatch(dbSuccess());
@@ -83,12 +93,11 @@ export function addJobSuccess(job) {
   return { type: types.ADD_JOB_SUCCESS, job };
 }
 export function addJob(job) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(dbRequest());
 
-    // TODO: get rid of this temporary job.idUser hardcoding
-    // want to set job.idUser to the rethinkdb user's id
-    job.idUser = 'fb88e6b2-764a-4346-a3ba-348021c86726';
+    // add the user's db id to the job
+    job.idUser = getState().get('app').toJS().dbUserID;
 
     return axios.post(jobUrl, job)
       .then(res => {
@@ -137,11 +146,4 @@ export function deleteContact(contactID) {
 }
 export function udpateContact(contact) {
   return { type: types.UPDATE_CONTACT, contact };
-}
-
-/*
- * userInfo
- */
-export function setUserInfo(id) {
-  return { type: types.SET_USERINFO, id };
 }

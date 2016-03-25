@@ -6,21 +6,29 @@ import EventsTableData from '../components/dashboard/EventsTableData';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import axios from 'axios';
-import { setUserInfo } from '../config/actions';
-import { setCurrentJob } from '../config/actions';
+import { initializeUser, setCurrentJob } from '../config/actions';
 
 class DashboardContainer extends Component {
   constructor() {
     super();
     this.state = {};
   }
+
   componentWillMount() {
-    // send cookie to retrieve user from DB
-    const that = this;
-    axios.post('/api/me').then((result) => {
-      that.props.dispatch(setUserInfo(result.data[0].id));
-    });
+    /* check to see if the dbUserID has been set in the redux
+    store. if not then this is the first visit to the dashboard
+    after the user logs in and some setup needs to be
+    done (initializeUser() which in turn rehydrates the redux
+    store from the db with the user's data) */
+    if (!this.props.app.dbUserID) {
+      const context = this;
+      // retrieve cookie to get the user's db id
+      axios.post('/api/me').then(function(result) {
+        context.props.dispatch(initializeUser(result.data[0].id));
+      });
+    }
   }
+
   handleToggle(event, toggled) {
     this.setState({
       [event.target.name]: toggled,
@@ -81,17 +89,21 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+  let app = undefined;
   let jobs = undefined;
   let events = undefined;
+  if (state.get('app')) app = state.get('app').toJS();
   if (state.get('jobs')) jobs = state.get('jobs').toJS();
   if (state.get('events')) events = state.get('events').toJS();
   return {
+    app,
     jobs,
     events,
   };
 };
 
 DashboardContainer.propTypes = {
+  app: PropTypes.object,
   jobs: PropTypes.array,
   events: PropTypes.array,
   dispatch: PropTypes.func,
