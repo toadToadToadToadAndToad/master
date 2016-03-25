@@ -23,7 +23,7 @@ class AppContainer extends Component {
           title="Number's Game"
           showMenuIconButton={false}
         >
-        <a href="/logout">Logout</a>
+          <a href="/logout">Logout</a>
         </AppBar>
         <ReactCSSTransitionGroup
           transitionName="appear"

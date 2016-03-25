@@ -23,7 +23,7 @@ class DashboardContainer extends Component {
     if (!this.props.app.dbUserID) {
       const context = this;
       // retrieve cookie to get the user's db id
-      axios.post('/api/me').then(function(result) {
+      axios.get('/api/me').then(function(result) {
         context.props.dispatch(initializeUser(result.data[0].id));
       });
     }
