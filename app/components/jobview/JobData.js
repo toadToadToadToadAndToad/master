@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import Divider from 'material-ui/lib/divider';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
-
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import Slider from 'material-ui/lib/slider';
