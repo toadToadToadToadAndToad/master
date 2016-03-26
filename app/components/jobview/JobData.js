@@ -44,7 +44,16 @@ const JobData = (props) => (
     <Tabs>
       <Tab label="Notes" >
         <div>
-          <h2 style={styles.headline}>Notes</h2>
+          <form onSubmit={props.submitNote}>
+            <input
+              required
+              type="text"
+              placeholder="Note"
+              value={props.state}
+              onChange={props.onTextAdd} />
+          </form>
+          //TODO: h2 doesn't work onClick only button
+          <button onClick={props.onNoteClick} style={styles.headline}>Notes</button>
           <p>
             Remember to enter on Heart Attack and Vine.
           </p>

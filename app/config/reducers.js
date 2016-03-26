@@ -111,12 +111,28 @@ function contacts(state = List(), action) {
   }
 }
 
+/*
+ * notes
+ */
+function notes(state = List(), action) {
+  switch (action.type) {
+    case types.ADD_NOTE:
+      //return 
+    case types.DELETE_NOTE:
+      //return
+    case types.EDIT_NOTE:
+      //return
+  }
+
+}
+
 const numbersGameAppReducer = combineReducers({
   app,
   db,
   jobs,
   events,
   contacts,
+  //notes
 });
 
 export default numbersGameAppReducer;

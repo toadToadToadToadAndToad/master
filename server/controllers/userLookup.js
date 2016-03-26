@@ -15,5 +15,3 @@ module.exports.lookup = function*() {
     console.error(e);
   }
 }
-
-

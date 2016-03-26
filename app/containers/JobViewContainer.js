@@ -38,12 +38,15 @@ class JobViewContainer extends Component {
 
 const mapStateToProps = (state) => {
   let jobID = undefined;
+  let dbUserID = undefined;
   if (state.get('app')) jobID = state.get('app').toJS().currentJob;
+  if (state.get('app')) dbUserID = state.get('app').toJS().dbUserID;
   const jobs = state.get('jobs').toJS().filter(job => job.id === jobID);
   const job = jobs[0];
   return {
     jobID,
     job,
+    dbUserID
   };
 };
 

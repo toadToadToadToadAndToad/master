@@ -8,7 +8,6 @@ import { toJS } from 'immutable';
  */
 // TODO: these should probably go in a config file
 const jobUrl = 'http://localhost:3000/api/jobs/';
-<<<<<<< bdc2ae47dc8955e9f81b3fb0e1e6539d7343235d
 const getJobsUrl = 'http://localhost:3000/api/getjobs/';
 const deleteJobUrl = 'http://localhost:3000/api/jobs/';
 
@@ -97,16 +96,8 @@ export function addJobSuccess(job) {
 export function addJob(job) {
   return (dispatch, getState) => {
     dispatch(dbRequest());
-
-<<<<<<< bdc2ae47dc8955e9f81b3fb0e1e6539d7343235d
     // add the user's db id to the job
     job.idUser = getState().get('app').toJS().dbUserID;
-=======
-    // TODO: get rid of this temporary job.idUser hardcoding
-    // want to set job.idUser to the rethinkdb user's id
-    job.idUser = 'da3807af-8473-4c4e-9688-3d1dcfcd1f89';
->>>>>>> (fix) no code change
-
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
@@ -168,4 +159,17 @@ export function deleteContact(contactID) {
 }
 export function udpateContact(contact) {
   return { type: types.UPDATE_CONTACT, contact };
+}
+
+/*
+ * notes
+ */
+export function addNote(userID, JobID) {
+  return { type: types.ADD_NOTE, userID, jobID };
+}
+export function deleteNote(userID, JobID, note) {
+  return { type: types.DELETE_NOTE, userID, jobID, note };
+}
+export function editNote(userID, JobID, note) {
+  return { type: types.EDIT_NOTE, userID, jobID };
 }
