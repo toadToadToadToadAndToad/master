@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextField from 'material-ui/lib/text-field';
 
 class SearchBarComponent extends Component {
 
@@ -27,20 +28,18 @@ class SearchBarComponent extends Component {
     return (
       <div>
         <form onSubmit={this.handleSearch}>
-          <input
-            required
-            type="text"
-            placeholder="Job Description"
+          <TextField
             value={this.state.keywords}
             onChange={this.handleKeyChange}
-          />
-          <input
-            type="text"
-            placeholder="Location"
+            onEnterKeyDown={this.handleSearch}
+            hintText="Keywords"
+          />&nbsp;&nbsp;&nbsp;&nbsp;
+          <TextField
             value={this.state.location}
             onChange={this.handleLocationChange}
+            onEnterKeyDown={this.handleSearch}
+            hintText="Location"
           />
-          <input type="submit" value="Post" />
         </form>
       </div>
     );

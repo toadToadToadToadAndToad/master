@@ -75,14 +75,9 @@ class JobSearchContainer extends Component {
   render() {
     return (
       <div>
-        <RaisedButton
-          containerElement={<Link to="/dashboard" />}
-          label="Dashboard"
-        />
-        <br /><br />
-        <PageHeader>Job Search</PageHeader>
+        <h2>Job Search</h2>
         <SearchBarComponent onHandleSearch={this.handleSearchSubmit} />
-        <p>Click on a result to add it to your jobs</p>
+        <br /><br />
         <ResultsViewComponent
           data={this.state.data}
           onRowClick={this.handleRowClick}
