@@ -24,7 +24,7 @@ class AppContainer extends Component {
       <div>
         <div className="app-bar">
           <div className="container">
-            <h1>Number's Game</h1>
+            <a href="/dashboard"><h1>Number's Game</h1></a>
             <a href="/logout" className="logout">
               <FontIcon
                 className="material-icons"
