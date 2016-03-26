@@ -6,7 +6,7 @@ import zIndex from 'material-ui/lib/styles/zIndex';
 export default {
   spacing: Spacing,
   zIndex: zIndex,
-  fontFamily: 'Source Sans Pro, sans-serif',
+  fontFamily: 'Fira Sans, sans-serif',
   palette: {
     primary1Color: Colors.cyan500,
     primary2Color: Colors.cyan700,
