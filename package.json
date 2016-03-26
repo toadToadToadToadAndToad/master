@@ -2,11 +2,11 @@
   "name": "numbers-game",
   "version": "1.0.0",
   "description": "job search tool",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback",
     "prod": "webpack -p",
-    "test": "mocha --compilers js:babel-core/register,css:./test/css-null-compiler.js --require babel-polyfill --require ./test/test-helper.js  --recursive",
+    "test": "mocha test/**/*spec.js --compilers js:babel-core/register,css:./test/css-null-compiler.js --require babel-polyfill --require ./test/test-helper.js  --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Ian Akers, Tim Dang, Michael Dziedzic, Aimee Rosato, Fanny Vasquez",
