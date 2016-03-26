@@ -1,13 +1,14 @@
-import r from 'rethinkdb';
-import chai from 'chai';
-import User from '../../database/models/user';
-import Job from '../../database/models/job';
-import thinky from '../../database/thinkylocal.js';
+'use strict';
+
+const r = require ('rethinkdb');
+const chai = require ('chai');
+const User = require ('../../../database/models/user');
+const Job = require ('../../../database/models/job');
+const thinky = require ('../../../database/thinkylocal.js');
 
 let expect = chai.expect;
 
 describe('Database Model Testing', () => {
-
   // Did NOT end up needed these for tests below, but may need for future db tests
   // beforeEach((done) => {
   //   let connection = null;
@@ -45,7 +46,7 @@ describe('Database Model Testing', () => {
   it('should store passed properties when instantiated', () => {
     const title = 'Junior Dev';
     const company = 'Github Inc.';
-    const job = new Job({ title, company, location });
+    const job = new Job({ title, company });
     expect(job.title).to.equal('Junior Dev');
     expect(job.company).to.equal('Github Inc.');
   });

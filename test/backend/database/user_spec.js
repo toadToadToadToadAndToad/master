@@ -1,11 +1,11 @@
 'use strict';
 
-import r from 'rethinkdb';
-import chai from 'chai';
-import User from '../../database/models/user';
-import Job from '../../database/models/job';
-import thinky from '../../database/thinkylocal.js';
-import userController from '../../server/controllers/user';
+const r = require ('rethinkdb');
+const chai = require ('chai');
+const User = require ('../../../database/models/user');
+const Job = require ('../../../database/models/job');
+const thinky = require ('../../../database/thinkylocal.js');
+const userController = require ('../../../server/controllers/user');
 let request = require('request');
 let expect = chai.expect;
 
