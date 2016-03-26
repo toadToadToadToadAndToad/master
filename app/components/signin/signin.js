@@ -5,9 +5,10 @@ import '../../styles/main.css';
 
 function SignIn() {
   return (
-    <div className="sign-in">
+    <div className="container">
       <a href="/auth/google">
         <RaisedButton
+          className="sign-in"
           label="Sign In with Google"
           primary
         />
