@@ -5,6 +5,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
+import '../../styles/main.css';
 
 const tableSettings = {
   fixedHeader: true,
@@ -18,6 +19,7 @@ const tableSettings = {
   displayRowCheckbox: false,
   adjustForCheckbox: false,
   displaySelectAll: false,
+  height: 300,
 };
 
 function JobsTableData(props) {
@@ -40,8 +42,8 @@ function JobsTableData(props) {
           <TableRow
             displayRowCheckbox={tableSettings.displayRowCheckbox}
           >
+          <TableHeaderColumn>Company</TableHeaderColumn>
             <TableHeaderColumn>Job Title</TableHeaderColumn>
-            <TableHeaderColumn>Company</TableHeaderColumn>
             <TableHeaderColumn>Type</TableHeaderColumn>
             <TableHeaderColumn>Location</TableHeaderColumn>
           </TableRow>
@@ -58,8 +60,8 @@ function JobsTableData(props) {
                 // TODO: see comment above handleRowClick in DashboardContainer.js
                 onRowClick={props.onRowClick}
               >
+              <TableRowColumn>{job.company}</TableRowColumn>
                 <TableRowColumn>{job.title}</TableRowColumn>
-                <TableRowColumn>{job.company}</TableRowColumn>
                 <TableRowColumn>{job.type}</TableRowColumn>
                 <TableRowColumn>{job.location}</TableRowColumn>
               </TableRow>

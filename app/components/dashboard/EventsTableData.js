@@ -5,6 +5,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
+import '../../styles/main.css';
 
 const tableSettings = {
   fixedHeader: true,
@@ -23,7 +24,7 @@ const tableSettings = {
 function EventsTableData(props) {
   return (
     <div>
-      <h2>Events</h2>
+      <h2>Reminders</h2>
       <Table
         height={tableSettings.height}
         fixedHeader={tableSettings.fixedHeader}

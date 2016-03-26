@@ -7,6 +7,12 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import axios from 'axios';
 import { initializeUser, setCurrentJob } from '../config/actions';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+
+const style = {
+  marginRight: 20,
+};
 
 class DashboardContainer extends Component {
   constructor() {
@@ -15,11 +21,11 @@ class DashboardContainer extends Component {
   }
 
   componentWillMount() {
-    /* check to see if the dbUserID has been set in the redux
-    store. if not then this is the first visit to the dashboard
-    after the user logs in and some setup needs to be
-    done (initializeUser() which in turn rehydrates the redux
-    store from the db with the user's data) */
+    // check to see if the dbUserID has been set in the redux
+    // store. if not then this is the first visit to the dashboard
+    // after the user logs in and some setup needs to be
+    // done (initializeUser() which in turn rehydrates the redux
+    // store from the db with the user's data)
     if (!this.props.app.dbUserID) {
       const context = this;
       // retrieve cookie to get the user's db id
@@ -39,12 +45,20 @@ class DashboardContainer extends Component {
     this.setState({ height: event.target.value });
   }
 
-  // TODO: currently material-ui is buggy, so this is being called by
+  // Currently material-ui is buggy, so this is being called by
   // onCellClick in <JobsTableData> and <EventsTableData> where
   // it really should be called by onRowClick on a <TableRow>
   handleRowClick(event) {
     this.props.dispatch(setCurrentJob(this.props.jobs[event].id));
     browserHistory.push('/jobview');
+  }
+
+  goToJobSearch(event) {
+    browserHistory.push('/jobsearch');
+  }
+
+  goToAddJob(event) {
+    browserHistory.push('/addjob');
   }
 
   render() {
@@ -70,18 +84,29 @@ class DashboardContainer extends Component {
     }
     return (
       <div>
-        <RaisedButton
-          containerElement={<Link to="/jobsearch" />}
-          label="Job Search"
-        />
-        <RaisedButton
-          containerElement={<Link to="/addjob" />}
-          label="Add Job"
-        />
-        <br />
-        <br />
-        <PageHeader>Dashboard</PageHeader>
         {jobsTable}<br /><br />
+
+      <div className="addJobButtons">
+        <FloatingActionButton
+          mini
+          className="button-circle"
+          onMouseDown={this.goToJobSearch}
+          >
+          <ContentAdd />
+        </FloatingActionButton>
+        <span className="button-circle-text">Job Search</span>
+        &nbsp;&nbsp;
+        <FloatingActionButton
+          mini
+          className="button-circle"
+          onMouseDown={this.goToAddJob}
+          >
+          <ContentAdd />
+        </FloatingActionButton>
+        <span className="button-circle-text">Add Job</span>
+      </div>
+
+        <br /><br /><br />
         {eventsTable}
       </div>
     );
