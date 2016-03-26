@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import TextField from 'material-ui/lib/text-field';
+import CircularProgress from 'material-ui/lib/circular-progress';
+import '../../styles/main.css';
 
 function SearchBar(props) {
   return (
@@ -17,6 +19,12 @@ function SearchBar(props) {
           onEnterKeyDown={props.onHandleSearch}
           hintText="Location"
         />
+      <div className={props.isWorking ? 'show' : 'hide'}>
+        <CircularProgress
+          size={2}
+          style={{ position: "absolute", left: "50%" }}
+        />
+      </div>
       </form>
     </div>
   );
@@ -25,6 +33,7 @@ function SearchBar(props) {
 SearchBar.propTypes = {
   keywords: PropTypes.string,
   location: PropTypes.string,
+  isWorking: PropTypes.bool,
   onHandleSearch: PropTypes.func,
   onHandleLocationChange: PropTypes.func,
   onHandleKeyChange: PropTypes.func,

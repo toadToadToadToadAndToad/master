@@ -27,7 +27,7 @@ function JobsTableData(props) {
     <div>
       <h2>Jobs</h2>
       <Table
-        height={tableSettings.height}
+        height={props.jobs.length > 6 ? tableSettings.height : undefined}
         fixedHeader={tableSettings.fixedHeader}
         fixedFooter={tableSettings.fixedFooter}
         selectable={tableSettings.selectable}
