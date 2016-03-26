@@ -13,7 +13,8 @@ export const ADD_JOB = 'ADD_JOB';
 export const ADD_JOB_REQUEST = 'ADD_JOB_REQUEST';
 export const ADD_JOB_SUCCESS = 'ADD_JOB_SUCCESS';
 export const ADD_JOB_FAILURE = 'ADD_JOB_FAILURE';
-export const DELETE_JOB = 'DELETE_JOB';
+export const DELETE_JOB_SUCCESS = 'DELETE_JOB_SUCCESS';
+
 export const UPDATE_JOB = 'UPDATE_JOB';
 
 // events

@@ -4,12 +4,22 @@ import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
+import DeleteJobComponent from '../components/jobview/DeleteJob';
+import { deleteJob } from '../config/actions';
+
 
 class JobViewContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
+    this.handleDelete = this.handleDelete.bind(this);
   }
+
+  handleDelete() {
+    this.props.dispatch(deleteJob(this.props.jobID));
+    browserHistory.push('/dashboard');
+  }
+
   render() {
     return (
       <div>
@@ -19,6 +29,7 @@ class JobViewContainer extends Component {
         />
       <br /><br />
         <PageHeader>Job View</PageHeader>
+        <DeleteJobComponent handleDelete={this.handleDelete} />
         <JobData job={this.props.job} />
       </div>
     );
@@ -30,7 +41,6 @@ const mapStateToProps = (state) => {
   if (state.get('app')) jobID = state.get('app').toJS().currentJob;
   const jobs = state.get('jobs').toJS().filter(job => job.id === jobID);
   const job = jobs[0];
-  console.log('job', job);
   return {
     jobID,
     job,
@@ -40,6 +50,7 @@ const mapStateToProps = (state) => {
 JobViewContainer.propTypes = {
   jobID: PropTypes.string.isRequired,
   job: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(JobViewContainer);

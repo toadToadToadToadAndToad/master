@@ -27,7 +27,6 @@ let  AddJobContainer = ({dispatch}) => {
   return (
       <div>
         <AddJobComponent
-        handleChange={((event) => handleChange(event, dispatch))}
         handleSubmit={((event) => handleSubmit(event, dispatch))} />
         <Link to="/dashboard">Back to Dashboard</Link>
       </div>

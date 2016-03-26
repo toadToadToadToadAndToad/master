@@ -65,6 +65,15 @@ function jobs(state = List(), action) {
       return List(action.jobs.map((job) => Map(job)));
     case types.ADD_JOB_SUCCESS:
       return state.update(jobs => jobs.push(Map(action.job)));
+    case types.DELETE_JOB_SUCCESS:
+      var idx;
+      state.forEach(function(job, i) {
+        // Note: job is a Map object, so needed to use job.get("id") to access id
+        if (job.get("id") === action.jobID){
+          idx = i;
+        }
+      });
+      return state.delete(idx);
     default:
       return state;
   }
