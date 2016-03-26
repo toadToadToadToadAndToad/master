@@ -19,7 +19,7 @@ const tableSettings = {
   displayRowCheckbox: false,
   adjustForCheckbox: false,
   displaySelectAll: false,
-  height: 300,
+  height: '300',
 };
 
 function JobsTableData(props) {
