@@ -9,6 +9,7 @@ import { toJS } from 'immutable';
 // TODO: these should probably go in a config file
 const jobUrl = 'http://localhost:3000/api/jobs/';
 const getJobsUrl = 'http://localhost:3000/api/getjobs/';
+const deleteJobUrl = 'http://localhost:3000/api/jobs/';
 
  /*
  * app
@@ -109,8 +110,22 @@ export function addJob(job) {
       });
   };
 }
+export function deleteJobSuccess(jobID) {
+  return { type: types.DELETE_JOB_SUCCESS, jobID };
+}
 export function deleteJob(jobID) {
-  return { type: types.DELETE_JOB, jobID };
+  return (dispatch, getState) => {
+    dispatch(dbRequest());
+
+    return axios.delete(deleteJobUrl.concat(jobID))
+      .then(res => {
+        dispatch(deleteJobSuccess(jobID));
+        dispatch(dbSuccess());
+      })
+      .catch(err => {
+        dispatch(dbFailure(err));
+      });
+  };
 }
 export function updateJob(job) {
   return { type: types.UPDATE_JOB, job };
