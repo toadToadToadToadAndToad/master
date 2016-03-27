@@ -1,13 +1,10 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { renderIntoDocument } from 'react-addons-test-utils';
-// import AddJobContainer from './../../../app/containers/AddJobContainer.js';
+import React, { TestUtils } from 'react';
+import AddJobComponent from '../../../app/components/addjob/addJob.js';
 //
-// describe('AddJobContainer', () => {
-//
-//   it('renders into the DOM', () => {
-//     const component = renderIntoDocument(
-//       <AddJobContainer />
-//     );
+// describe('Component', () => {
+//   it('should work', () => {
+//     const component = <Component />;
+//     TestUtils.renderIntoDocument(component);
+//     expect(component).to.be.an('object');
 //   });
 // });
