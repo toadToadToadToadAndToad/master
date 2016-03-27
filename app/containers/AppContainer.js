@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Router, Route } from 'react-router';
+import { connect } from 'react-redux';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/route-transition.css';
@@ -8,6 +9,7 @@ import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';
 import FontIcon from 'material-ui/lib/font-icon';
 import * as Colors from 'material-ui/lib/styles/colors';
+import CircularProgress from 'material-ui/lib/circular-progress';
 
 class AppContainer extends Component {
   constructor() {
@@ -25,6 +27,15 @@ class AppContainer extends Component {
         <div className="app-bar">
           <div className="container">
             <a href="/dashboard"><h1>Number's Game</h1></a>
+            <div className={this.props.isWorking ? 'show' : 'hide'}>
+              <CircularProgress
+                size={0.75}
+                color="#263238"
+                style={{ position: "absolute",
+                  left: "50%",
+                  top: "-5" }}
+              />
+            </div>
             <a href="/logout" className="logout">
               <FontIcon
                 className="material-icons"
@@ -53,9 +64,17 @@ AppContainer.childContextTypes = {
   muiTheme: PropTypes.object,
 };
 
+const mapStateToProps = (state) => {
+  const isWorking = state.get('db').toJS().isWorking;
+  return {
+    isWorking,
+  };
+};
+
 AppContainer.propTypes = {
   children: PropTypes.object,
   location: PropTypes.object,
+  isWorking: PropTypes.bool,
 };
 
-export default AppContainer;
+export default connect(mapStateToProps)(AppContainer);
