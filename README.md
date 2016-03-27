@@ -1,6 +1,6 @@
-# Project Name
+# Number's Game
 
-Number's Game
+Numbers Game makes job hunting enjoyable and easy by allowing you to compile jobs from other sites, and keep track of jobs in your pipeline.
 
 ## Team
 
