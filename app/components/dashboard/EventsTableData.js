@@ -19,6 +19,7 @@ const tableSettings = {
   displayRowCheckbox: false,
   adjustForCheckbox: false,
   displaySelectAll: false,
+  height: '300',
 };
 
 function EventsTableData(props) {
@@ -26,7 +27,7 @@ function EventsTableData(props) {
     <div>
       <h2>Reminders</h2>
       <Table
-        height={tableSettings.height}
+        height={props.events.length > 6 ? tableSettings.height : undefined}
         fixedHeader={tableSettings.fixedHeader}
         fixedFooter={tableSettings.fixedFooter}
         selectable={tableSettings.selectable}

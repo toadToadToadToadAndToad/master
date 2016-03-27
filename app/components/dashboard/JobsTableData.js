@@ -19,7 +19,7 @@ const tableSettings = {
   displayRowCheckbox: false,
   adjustForCheckbox: false,
   displaySelectAll: false,
-  height: 300,
+  height: '300',
 };
 
 function JobsTableData(props) {
@@ -27,7 +27,7 @@ function JobsTableData(props) {
     <div>
       <h2>Jobs</h2>
       <Table
-        height={tableSettings.height}
+        height={props.jobs.length > 6 ? tableSettings.height : undefined}
         fixedHeader={tableSettings.fixedHeader}
         fixedFooter={tableSettings.fixedFooter}
         selectable={tableSettings.selectable}
@@ -44,7 +44,6 @@ function JobsTableData(props) {
           >
           <TableHeaderColumn>Company</TableHeaderColumn>
             <TableHeaderColumn>Job Title</TableHeaderColumn>
->>>>>>> rebase hell
             <TableHeaderColumn>Type</TableHeaderColumn>
             <TableHeaderColumn>Location</TableHeaderColumn>
           </TableRow>
@@ -63,7 +62,6 @@ function JobsTableData(props) {
               >
               <TableRowColumn>{job.company}</TableRowColumn>
                 <TableRowColumn>{job.title}</TableRowColumn>
->>>>>>> rebase hell
                 <TableRowColumn>{job.type}</TableRowColumn>
                 <TableRowColumn>{job.location}</TableRowColumn>
               </TableRow>

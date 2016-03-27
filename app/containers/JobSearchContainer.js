@@ -1,30 +1,43 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import SearchBarComponent from '../components/jobsearch/SearchBar';
-// import SiteSelectionComponent from '../components/jobsearch/SiteSelect';
+import SearchBar from '../components/jobsearch/SearchBar';
 import ResultsViewComponent from '../components/jobsearch/ResultsView';
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
-import { addJob } from '../config/actions';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import { addJob, dbRequest, dbSuccess, dbFailure } from '../config/actions';
 
 class JobSearchContainer extends Component {
   constructor() {
     super();
+    this.handleKeyChange = this.handleKeyChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleRowClick = this.handleRowClick.bind(this);
+    this.saveJobsToStore = this.saveJobsToStore.bind(this);
+
     this.state = {
       data: [],
+      jobsSelected: {},
+      keywords: '',
+      location: '',
+      open: false,
     };
-    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-    this.handleRowClick = this.handleRowClick.bind(this);
   }
 
   componentDidMount() {
-    // The state keeps on getting reset on load. Need to see how to persist a search result.
-    console.log('Mounted data:', this.state.data);
   }
 
+  // this method cleans up job descriptions that
+  // come back from the api with html tags
   strip(html) {
+    console.log(html);
     html = html.replace('\n\n', ' ');
     html = html.replace('\n', ' ');
     var tmp = document.createElement("DIV");
@@ -32,8 +45,23 @@ class JobSearchContainer extends Component {
     return tmp.textContent || tmp.innerText || "";
   }
 
+  handleKeyChange(e) {
+    this.setState({ keywords: e.target.value });
+  }
+
+  handleLocationChange(e) {
+    this.setState({ location: e.target.value });
+  }
+
+  handleSearch(event) {
+    event.preventDefault();
+    this.handleSearchSubmit(this.state.keywords, this.state.location);
+    this.setState({ keywords: '', location: '' });
+  }
+
   handleSearchSubmit(keyword, location) {
     this.setState({ data: [] });
+    this.setState({ jobsSelected: {} });
     // TODO add loading spinner
     // TODO incorporate variable from SiteSelection
     let githubParams = '/api/jobs/github/' + keyword.replace(/ /g, '+');
@@ -44,6 +72,8 @@ class JobSearchContainer extends Component {
     if (location.length) {
       usajobsParams += '/' + location.replace(/ /g, '+');
     }
+
+    this.props.dispatch(dbRequest());
     axios.get(githubParams)
       .then((response) => {
         const nextState = this.state.data.slice();
@@ -51,8 +81,10 @@ class JobSearchContainer extends Component {
           (job) => nextState.push(job)
         );
         this.setState({ data: nextState });
+        this.props.dispatch(dbSuccess());
       })
-      .catch((response) => console.log('error', response));
+      .catch((err) => this.props.dispatch(dbFailure(err)));
+
     axios.get(usajobsParams)
       .then((response) => {
         const nextState = this.state.data.slice();
@@ -63,34 +95,101 @@ class JobSearchContainer extends Component {
       })
       .catch((response) => console.log('error', response));
   }
+
   handleRowClick(event) {
-    // Adds clicked job to the store.
     const job = this.state.data[event];
-    job.description = this.strip(job.description).slice(0, 500).concat('...');
-    this.props.dispatch(addJob(job));
-    // TODO Add a way to mark listings as being added to the Store.
-    // Something like this.state.data[0].added = true;
+
+    if (this.state.jobsSelected[job.id]) {
+      delete this.state.jobsSelected[job.id];
+    } else {
+      this.state.jobsSelected[job.id] = job;
+    }
+  }
+
+  saveJobsToStore() {
+    console.log(this.state.jobsSelected);
+    for (const jobID in this.state.jobsSelected) {
+      if (this.state.jobsSelected.hasOwnProperty(jobID)) {
+        this.state.jobsSelected[jobID].description =
+          this.strip(this.state.jobsSelected[jobID].description)
+          .slice(0, 500).concat('...');
+        this.props.dispatch(addJob(this.state.jobsSelected[jobID]));
+      }
+    }
+    this.handleOpen();
+  }
+
+  handleOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    browserHistory.push('/dashboard');
+    // this.setState({ open: false });
   }
 
   render() {
+    const actions = [
+      <FlatButton
+        label="OK"
+        primary
+        onMouseDown={this.handleClose}
+      />,
+    ];
+
     return (
       <div>
-        <RaisedButton
-          containerElement={<Link to="/dashboard" />}
-          label="Dashboard"
+        <h2>Job Search</h2>
+        <SearchBar
+          keywords={this.state.keywords}
+          location={this.state.location}
+          onHandleSearch={this.handleSearch}
+          onHandleLocationChange={this.handleLocationChange}
+          onHandleKeyChange={this.handleKeyChange}
+          isWorking={this.props.isWorking}
         />
         <br /><br />
-        <PageHeader>Job Search</PageHeader>
-        <SearchBarComponent onHandleSearch={this.handleSearchSubmit} />
-        <p>Click on a result to add it to your jobs</p>
-        <ResultsViewComponent
-          data={this.state.data}
-          onRowClick={this.handleRowClick}
-        />
+        <div className={this.state.data.length > 0 ? 'show' : 'hide'}>
+          <ResultsViewComponent
+            data={this.state.data}
+            onRowClick={this.handleRowClick}
+            onHandleSubmit={this.handleSubmit}
+          /><br /><br />
+          <div className="addJobButtons">
+            <FloatingActionButton
+              mini
+              className="button-circle"
+              onMouseDown={this.saveJobsToStore}
+            >
+              <ContentAdd />
+            </FloatingActionButton>
+            <span className="button-circle-text">Add Job(s)</span>
+            <br /><br /><br /><br />
+          </div>
+        </div>
+        <Dialog
+          title="Jobs Added!"
+          actions={actions}
+          modal
+          open={this.state.open}
+        >
+          The selected jobs have been added to your dashboard.
+        </Dialog>
       </div>
     );
   }
 }
 
-JobSearchContainer.propTypes = { dispatch: React.PropTypes.func };
-export default connect()(JobSearchContainer);
+const mapStateToProps = (state) => {
+  const isWorking = state.get('db').toJS().isWorking;
+  return {
+    isWorking,
+  };
+};
+
+JobSearchContainer.propTypes = {
+  isWorking: PropTypes.bool,
+  dispatch: PropTypes.func,
+};
+
+export default connect(mapStateToProps)(JobSearchContainer);
