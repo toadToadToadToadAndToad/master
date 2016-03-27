@@ -44,7 +44,6 @@ function JobsTableData(props) {
           >
           <TableHeaderColumn>Company</TableHeaderColumn>
             <TableHeaderColumn>Job Title</TableHeaderColumn>
->>>>>>> rebase hell
             <TableHeaderColumn>Type</TableHeaderColumn>
             <TableHeaderColumn>Location</TableHeaderColumn>
           </TableRow>
@@ -63,7 +62,6 @@ function JobsTableData(props) {
               >
               <TableRowColumn>{job.company}</TableRowColumn>
                 <TableRowColumn>{job.title}</TableRowColumn>
->>>>>>> rebase hell
                 <TableRowColumn>{job.type}</TableRowColumn>
                 <TableRowColumn>{job.location}</TableRowColumn>
               </TableRow>
