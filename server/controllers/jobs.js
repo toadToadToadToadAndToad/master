@@ -75,20 +75,11 @@ module.exports.getJobs = function*() {
 
 module.exports.deleteJob = function*() {
   try {
-<<<<<<< HEAD
-    const jobToDelete = yield parse(this);
-    if ((jobToDelete === null) || (jobToDelete.id === null)) {
-      throw new Error('The job must have a field "id".');
-    }
-    yield Job.get(jobToDelete.id).delete().run();
-    console.log('Job deleted sucessfully.');
-=======
     const jobToDelete = this.params.id;
     yield Job.get(jobToDelete).delete().run();
     console.log('Job deleted sucessfully.');
     this.status = 200;
     this.body = jobToDelete;
->>>>>>> working delete button
   } catch (e) {
     console.error('Sorry, could not find a job with that id.');
     this.status = 500;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
