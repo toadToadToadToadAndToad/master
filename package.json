@@ -57,7 +57,6 @@
     "chai": "^3.5.0",
     "chai-immutable": "^1.5.3",
     "css-loader": "^0.23.1",
-    "html-webpack-plugin": "^2.7.1",
     "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
