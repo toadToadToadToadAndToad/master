@@ -23,5 +23,6 @@ app.use(spa(path.join(__dirname, '../dist'), {
   routeBase: '/',
 }));
 
-app.listen(3000);
+const thePort = process.env.PORT || 3000;
+app.listen(thePort);
 console.log('server running on port 3000');
