@@ -6,6 +6,9 @@ import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
 import { deleteJob } from '../config/actions';
+import Notes from '../components/notes/NotesComponent';
+import { addNote } from '../config/actions';
+import axios from 'axios';
 
 
 class JobViewContainer extends Component {
@@ -13,6 +16,16 @@ class JobViewContainer extends Component {
     super(props);
     this.state = {};
     this.handleDelete = this.handleDelete.bind(this);
+
+  handleText(e){
+    this.setState({ text: e.target.value })
+  }
+
+  handleNote(event){
+    event.preventDefault();
+    //dispatch action
+    this.props.dispatch(addNote(this.state, this.props.jobID));
+    event.target.reset();
   }
 
   handleDelete() {
@@ -31,6 +44,10 @@ class JobViewContainer extends Component {
         <PageHeader>Job View</PageHeader>
         <DeleteJobComponent handleDelete={this.handleDelete} />
         <JobData job={this.props.job} />
+        <Notes onNoteClick={this.handleNoteClick} 
+        submitNote={this.handleNote}
+        state={this.state.text}
+        onTextAdd={this.handleText} />
       </div>
     );
   }
@@ -57,3 +74,4 @@ JobViewContainer.propTypes = {
 };
 
 export default connect(mapStateToProps)(JobViewContainer);
+

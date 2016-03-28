@@ -117,7 +117,8 @@ function contacts(state = List(), action) {
 function notes(state = List(), action) {
   switch (action.type) {
     case types.ADD_NOTE:
-      //return 
+      //iterate match jobID 
+      //update job with the new note
     case types.DELETE_NOTE:
       //return
     case types.EDIT_NOTE:

@@ -164,8 +164,13 @@ export function udpateContact(contact) {
 /*
  * notes
  */
-export function addNote(userID, JobID) {
-  return { type: types.ADD_NOTE, userID, jobID };
+export function addNote(text, jobID) {
+  //put req to add to job
+  //push text the job client side array
+  axios.post('/api/addnote', {text: text, jobID:jobID}).then(function(response){
+      console.log(response)
+  })
+  return { type: types.ADD_NOTE, text, jobID };
 }
 export function deleteNote(userID, JobID, note) {
   return { type: types.DELETE_NOTE, userID, jobID, note };
