@@ -17,7 +17,6 @@ const accessToken = this.req.user.accessToken;
 }
 module.exports.addEvent = function(){
   const accessToken = this.req.user.accessToken;
-  // console.log(this.req.user);
   axios({
   method: 'post',
   data: {
