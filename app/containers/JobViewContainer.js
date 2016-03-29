@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
-import { deleteJob } from '../config/actions';
+import { deleteJob, addEvent, setEvents } from '../config/actions';
 
 class JobViewContainer extends Component {
   constructor(props) {
@@ -26,30 +26,19 @@ class JobViewContainer extends Component {
   }
 
   onDateChange(err, value) {
-    console.log("new date ", value);
     this.setState({ date: value });
-    console.log("After setting DATE ", this.state);
   }
 
   onTextChange(e) {
     this.setState({ text: e.target.value });
-    console.log("after setting TEXT ", this.state);
-    console.log("Inside of text change ", e.target.value);
   }
 
-  postReminder() {
-    // post to dashboard somehow here
-    console.log('Inside postReminder');
-    console.log(this.state);
+  postReminder(event, dispatch) {
     let reminder = this.state;
     console.log("This is reminder ", reminder);
-    //dispatch(addReminder(reminder));
-//     store.dispatch(setEvents([
-//   { type: 'Interview', company: 'Uber', notes: 'Be sure to wear pants.' },
-//   { type: 'Decision', company: 'Hack Reactor', notes: 'Bring toad demo.' },
-//   { type: 'Interview', company: 'Microsoft',
-//     notes: 'Entrance on west side of building' },
-// ]));
+    this.setState({ date: '', text: '' });
+    this.props.dispatch(addEvent(reminder));
+    //do i need to rerender store?  this.props.dispatch(setEvents(reminder));
   }
 
   render() {
