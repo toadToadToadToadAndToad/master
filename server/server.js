@@ -25,4 +25,4 @@ app.use(spa(path.join(__dirname, '../dist'), {
 
 const thePort = process.env.PORT || 3000;
 app.listen(thePort);
-console.log('server running on port 3000');
+console.log('server running on port' + thePort);
