@@ -96,8 +96,8 @@ class JobSearchContainer extends Component {
       .catch((response) => console.log('error', response));
   }
 
-  handleRowClick(event) {
-    const job = this.state.data[event];
+  handleRowClick(row, col) {
+    const job = this.state.data[row];
 
     if (this.state.jobsSelected[job.id]) {
       delete this.state.jobsSelected[job.id];
@@ -163,7 +163,7 @@ class JobSearchContainer extends Component {
             >
               <ContentAdd />
             </FloatingActionButton>
-            <span className="button-circle-text">Add Job(s)</span>
+            <span className="button-circle-text">Add Jobs</span>
             <br /><br /><br /><br />
           </div>
         </div>
