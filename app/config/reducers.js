@@ -74,6 +74,20 @@ function jobs(state = List(), action) {
         }
       });
       return state.delete(idx);
+    case types.ADD_NOTE_SUCCESS:
+      state.forEach(function(job){
+        if(job.get("id") === action.jobID){
+          job.get("notes").push(action.text.text);
+        }
+      });
+    case types.DELETE_NOTE_SUCCESS: 
+      state.forEach(function(job){
+        if(job.get("id") === action.jobID){
+          job.get("notes").slice(0, action.noteIndex)
+          .concat(job.get("notes")
+          .slice(action.noteIndex + 1))
+        }
+      });
     default:
       return state;
   }
@@ -118,11 +132,7 @@ function contacts(state = List(), action) {
 function notes(state = List(), action) {
   switch (action.type) {
     case types.ADD_NOTE_SUCCESS:
-      console.log("INSIDE REDUCER!", state);
-      console.log("MY JOBS", action.jobs)
-      return state;
-      // iterate match jobID 
-      // update job with the new note
+      //return
     case types.DELETE_NOTE:
       //return
     case types.EDIT_NOTE:
@@ -138,7 +148,7 @@ const numbersGameAppReducer = combineReducers({
   jobs,
   events,
   contacts,
-  notes
+  // notes
 });
 
 export default numbersGameAppReducer;

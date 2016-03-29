@@ -172,15 +172,9 @@ export function addNoteSuccess(text, jobID) {
 export function addNote(text, jobID) {
   return (dispatch, getState) => {
     dispatch(dbRequest());
-    const jobs = getState().get('jobs').toJS();
     return axios.post('/api/addnote', {text: text, jobID:jobID})
       .then(response => {
-        // dispatch(addNoteSuccess(text, jobID));
-        jobs.forEach(function(job){
-          if(job.id === jobID){
-            job.notes.push(text.text)
-          }
-        })
+        dispatch(addNoteSuccess(text, jobID));
         dispatch(dbSuccess());
     }).catch(err => {
         dispatch(dbFailure(err));
@@ -188,17 +182,16 @@ export function addNote(text, jobID) {
   }
 }
 export function deleteNoteSuccess(jobID, noteIndex ){
-  return { type: types.DELETE_NOTE, jobID, noteIndex };
+  return { type: types.DELETE_NOTE_SUCCESS, jobID, noteIndex };
 }
 
 export function deleteNote(jobID, noteIndex) {
   return (dispatch, getState) => {
     dispatch(dbRequest());
-
     return axios.delete(deleteNoteUrl.concat(jobID, '/' , noteIndex))
       .then(res => {
         console.log(res)
-        dispatch(deleteNoteSuccess(jobID));
+        dispatch(deleteNoteSuccess(jobID, noteIndex));
         dispatch(dbSuccess());
       })
       .catch(err => {

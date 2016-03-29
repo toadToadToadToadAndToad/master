@@ -17,7 +17,16 @@ module.exports.addNote = function*(next){
 }
 
 module.exports.deleteNote = function*(next){
-  console.log("NOTE INFO", this.params.id)
-  console.log("NOTE INFO", this.params.noteid)
-  this.body = "note deleted successfully";
+  let jobID = this.params.id;
+  let noteIndex = this.params.noteid;
+  try{
+    let job = yield Job.get(jobID).run();
+      job.notes.slice(0,noteIndex).concat(job.notes.slice(Number(noteIndex) + 1));
+      yield job.save();
+      console.log("JOBNOTES",job.notes.slice(0,noteIndex).concat(job.notes.slice(Number(noteIndex) + 1)))
+      this.body = "note deleted successfully";
+
+  } catch (e) {
+    console.error(e);
+  }
 }
