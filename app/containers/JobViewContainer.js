@@ -12,11 +12,30 @@ class JobViewContainer extends Component {
     super(props);
     this.state = {};
     this.handleDelete = this.handleDelete.bind(this);
+    this.postReminder = this.postReminder.bind(this);
   }
 
   handleDelete() {
     this.props.dispatch(deleteJob(this.props.jobID));
     browserHistory.push('/dashboard');
+  }
+
+  onDateChange(err, value) {
+    console.log("new date ", value);
+    //this.setState({ date: value });
+    //console.log("After setting DATE ", this.state);
+  }
+
+  // onTextChange(e) {
+  //   //this.setState({ text: e.target.value });
+  //   //console.log("after setting TEXT ", this.state);
+  //   console.log("Inside of text change ", e.target.value);
+  // }
+
+  postReminder() {
+    // post to dashboard somehow here
+    console.log('Inside postReminder');
+    //console.log(this.state);
   }
 
   render() {
@@ -29,7 +48,7 @@ class JobViewContainer extends Component {
       <br /><br />
         <PageHeader>Job View</PageHeader>
         <DeleteJobComponent handleDelete={this.handleDelete} />
-        <JobData job={this.props.job} />
+        <JobData job={this.props.job} postReminder={this.postReminder} onChange={this.onChange} />
       </div>
     );
   }
@@ -50,6 +69,7 @@ JobViewContainer.propTypes = {
   jobID: PropTypes.string.isRequired,
   job: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
+  postReminder: PropTypes.func,
 };
 
 export default connect(mapStateToProps)(JobViewContainer);

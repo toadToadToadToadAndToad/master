@@ -5,6 +5,11 @@ import TextField from 'material-ui/lib/text-field';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import Slider from 'material-ui/lib/slider';
+import RaisedButton from 'material-ui/lib/raised-button';
+//import ReminderComponent from './Reminder';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
+const injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
 
 const styles = {
   marginLeft: 20,
@@ -23,6 +28,10 @@ const styles = {
 function handleActive(tab) {
   alert(`A tab with this route property ${tab.props.route} was activated.`);
 }
+
+// let onChange = function (err, value){
+//   console.log(value);
+// };
 
 const JobData = (props) => (
   <div>
@@ -53,9 +62,20 @@ const JobData = (props) => (
       <Tab label="Reminders" >
         <div>
           <h2 style={styles.headline}>Reminders</h2>
-          <p>
-            This is another example tab.
-          </p>
+            <DatePicker hintText="Choose your date" mode="landscape" onChange={props.onDateChange} />
+            <TextField
+              multiLine={true}
+              hintText="Write your reminder here"
+              rows={2}
+              value={props.text}
+              onChange={props.onTextChange}
+            />
+            <br />
+            <RaisedButton
+              label="Post Reminder"
+              primary
+              onMouseDown={props.postReminder}
+            />
         </div>
       </Tab>
       <Tab
