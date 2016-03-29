@@ -62,6 +62,15 @@ class JobViewContainer extends Component {
     // post to dashboard somehow here
     console.log('Inside postReminder');
     console.log(this.state);
+    let reminder = this.state;
+    console.log("This is reminder ", reminder);
+    //dispatch(addReminder(reminder));
+//     store.dispatch(setEvents([
+//   { type: 'Interview', company: 'Uber', notes: 'Be sure to wear pants.' },
+//   { type: 'Decision', company: 'Hack Reactor', notes: 'Bring toad demo.' },
+//   { type: 'Interview', company: 'Microsoft',
+//     notes: 'Entrance on west side of building' },
+// ]));
   }
 
   render() {
