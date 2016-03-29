@@ -47,7 +47,7 @@ class JobViewContainer extends Component {
   }
 
   onDateChange(err, value) {
-    const stringDate = value.toLocaleString();
+    const stringDate = value.toString();
     this.setState({ date: stringDate });
   }
 
@@ -56,16 +56,10 @@ class JobViewContainer extends Component {
   }
 
   postReminder(event, dispatch) {
-    let reminder = this.state;
-    let company;
-    console.log("This.props.job ", this.props.job);
-    reminder[company] = this.props.job;
+    const reminder = this.state;
     console.log("This is reminder ", reminder);
-    // reset components
-    //this.setState({ date: '', text: '' });
+    this.setState({ date: null, text: null });
     this.props.dispatch(addEvent(reminder));
-    // do i need to rerender store?  this.props.dispatch(setEvents(reminder));
-    //two more variables in jobdata.....
   }
 
   render() {
