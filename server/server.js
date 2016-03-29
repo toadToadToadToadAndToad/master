@@ -13,6 +13,8 @@ const user = require('./controllers/user');
 const passport = require('./controllers/auth');
 const userLookup = require('./controllers/userLookup');
 const notes = require('./controllers/notes');
+const calendar = require('./controllers/calendar');
+
 
 
 // Create a rethinkdb connection, and save it in req._rdbConn
@@ -59,9 +61,11 @@ router.get('/api/me', userLookup.lookup);
 router.post('/api/addnote', notes.addNote)
 router.delete('/api/deletenote/:id/:noteid', notes.deleteNote)
 
+router.get('/calendar', calendar.addCalendar)
+
 // Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google', {
-  scope: ['email', 'profile'],
+  scope: ['email', 'profile','https://www.googleapis.com/auth/calendar'],
   accessType: 'offline',
   approvalPrompt: 'force',
 }));
@@ -76,6 +80,7 @@ router.get('/logout', function*() {
   this.redirect('/');
 });
 
+
 // authenticating routes
 function* authed(next) {
   if (this.req.isAuthenticated()) {
@@ -84,6 +89,9 @@ function* authed(next) {
     this.redirect('/');
   }
 }
+
+
+
 router.get('/dashboard', authed, function*(next) {
   yield next;
 });
