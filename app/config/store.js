@@ -15,10 +15,10 @@ const store = createStore(
   )
 );
 
-store.dispatch(setEvents([
-  { date: 'Monday', text: 'Be sure to wear pants.' },
-  { date: 'Tuesday', text: 'Bring toad demo.' },
-  { date: 'Wednesday', text: 'Microsoft' },
-]));
+// store.dispatch(setEvents([
+//   { date: 'Monday', text: 'Be sure to wear pants.' },
+//   { date: 'Tuesday', text: 'Bring toad demo.' },
+//   { date: 'Wednesday', text: 'Microsoft' }, { date: 'Thurs', text: 'hi' }, { date: 'Fro', text: 'again' }
+// ]));
 
 export default store;

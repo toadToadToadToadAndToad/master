@@ -63,6 +63,7 @@ class DashboardContainer extends Component {
 
   render() {
     // only show the table of job data if it is not empty
+    console.log("Inside of dashboard render ", this.props.events);
     let jobsTable = '';
     if (this.props.jobs.length) {
       jobsTable = (
