@@ -76,5 +76,7 @@ h2 {
 }
 
 .jobType {
-  right: 0;
+  position: absolute;
+  top: 3px;
+  left: 100px;
 }

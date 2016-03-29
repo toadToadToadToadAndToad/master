@@ -27,8 +27,8 @@ function JobsTableData(props) {
   return (
     <div>
       <h2>Jobs</h2>
-      <div classNames="jobType">
-        <FlatButton label="New" primary />
+      <div className="jobType">
+        <FlatButton label="New" disabled />
         <FlatButton label="Pending" primary />
         <FlatButton label="Closed" primary />
       </div>
