@@ -63,7 +63,7 @@ const JobData = (props) => (
       <Tab label="Reminders" >
         <div>
           <h2 style={styles.headline}>Reminders</h2>
-            <DatePicker hintText="Choose your date" mode="landscape" onChange={props.onDateChange} />
+            <DatePicker hintText="Choose your date" mode="landscape"  dateVal={props.date} onChange={props.onDateChange} />
             <TextField
               multiLine={true}
               hintText="Write your reminder here"
