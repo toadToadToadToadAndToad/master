@@ -1,6 +1,6 @@
 module.exports = {
   rethinkdb: {
-    host: 'rethinkdb://aws-us-east-1-portal.12.dblayer.com',
+    host: 'rethinkdb://haproxy419.aws-us-east-1-portal.12.dblayer.com',
     port: 10419,
     authKey: 'WXDkgpygPhK57JELT22QmbYEw7sq9DnpRuSswcSiF4',
     db: 'jobs',
