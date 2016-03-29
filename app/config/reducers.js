@@ -87,6 +87,7 @@ function events(state = List(), action) {
     case types.SET_EVENTS:
       return List(action.events.map((event) => Map(event)));
     case types.ADD_EVENT:
+      console.log("Inside of add_event in reducer ", action.event);
       return state.update(events => events.push(Map(action.event)));
     // case types.UPDATE_EVENT:
     // case types.DELETE_EVENT:
@@ -101,7 +102,7 @@ function events(state = List(), action) {
 function contacts(state = List(), action) {
   switch (action.type) {
     case types.SET_CONTACTS:
-      return List(action.contacts.map((contact) => Map(contact)));
+      return List(action.events.map((event) => Map(event)));
     case types.ADD_CONTACT:
       return state.update(contacts => contacts.push(Map(action.contact)));
     case types.UPDATE_CONTACT:
