@@ -1,19 +1,14 @@
 import React, { PropTypes } from 'react';
+import Paper from 'material-ui/lib/paper';
 
 const styles = {
-  marginLeft: 20,
-  paddingTop: 20,
-  paddingBottom: 20,
-  paddingLeft: 20,
-  paddingRight: 20,
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
+  height: 100,
+  width: 100,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block',
 
+};
 
 const Notes = (props) => (
   <div>
@@ -25,7 +20,14 @@ const Notes = (props) => (
         value={props.state}
         onChange={props.onTextAdd} />
     </form>
-    <button onClick={props.onNoteClick} style={styles.headline}>Notes</button>
+      {props.job.notes.map((note, index) => {
+        return (
+          <Paper zDepth={1} style={styles} 
+          key={index} onClick={props.onDeleteNote.bind(this, index, props)}>
+            {note} 
+          </Paper>
+        );
+      })}
   </div>
 );
 
@@ -34,7 +36,7 @@ const Notes = (props) => (
 Notes.propTypes = {
   state: PropTypes.string.isRequired,
   onTextAdd: PropTypes.func.isRequired,
-  onNoteClick: PropTypes.func.isRequired
+  job: PropTypes.object.isRequired
 };
 
 export default Notes;

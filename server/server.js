@@ -57,6 +57,7 @@ router.delete('/api/jobs/:id', job.deleteJob);
 router.put('/api/jobs/', job.updateJob);
 router.get('/api/me', userLookup.lookup);
 router.post('/api/addnote', notes.addNote)
+router.delete('/api/deletenote/:id/:noteid', notes.deleteNote)
 
 // Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google', {

@@ -116,15 +116,19 @@ function contacts(state = List(), action) {
  */
 function notes(state = List(), action) {
   switch (action.type) {
-    case types.ADD_NOTE:
-      //iterate match jobID 
-      //update job with the new note
+    case types.ADD_NOTE_SUCCESS:
+      console.log("INSIDE REDUCER!", state);
+      console.log("MY JOBS", action.jobs)
+      return state;
+      // iterate match jobID 
+      // update job with the new note
     case types.DELETE_NOTE:
       //return
     case types.EDIT_NOTE:
       //return
+    default:
+      return state;
   }
-
 }
 
 const numbersGameAppReducer = combineReducers({
@@ -133,7 +137,7 @@ const numbersGameAppReducer = combineReducers({
   jobs,
   events,
   contacts,
-  //notes
+  notes
 });
 
 export default numbersGameAppReducer;
