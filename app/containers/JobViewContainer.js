@@ -10,9 +10,14 @@ import { deleteJob } from '../config/actions';
 class JobViewContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      date: '',
+      text: '',
+    };
     this.handleDelete = this.handleDelete.bind(this);
     this.postReminder = this.postReminder.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.onTextChange = this.onTextChange.bind(this);
   }
 
   handleDelete() {
@@ -22,20 +27,20 @@ class JobViewContainer extends Component {
 
   onDateChange(err, value) {
     console.log("new date ", value);
-    //this.setState({ date: value });
-    //console.log("After setting DATE ", this.state);
+    this.setState({ date: value });
+    console.log("After setting DATE ", this.state);
   }
 
-  // onTextChange(e) {
-  //   //this.setState({ text: e.target.value });
-  //   //console.log("after setting TEXT ", this.state);
-  //   console.log("Inside of text change ", e.target.value);
-  // }
+  onTextChange(e) {
+    this.setState({ text: e.target.value });
+    console.log("after setting TEXT ", this.state);
+    console.log("Inside of text change ", e.target.value);
+  }
 
   postReminder() {
     // post to dashboard somehow here
     console.log('Inside postReminder');
-    //console.log(this.state);
+    console.log(this.state);
   }
 
   render() {
@@ -48,7 +53,12 @@ class JobViewContainer extends Component {
       <br /><br />
         <PageHeader>Job View</PageHeader>
         <DeleteJobComponent handleDelete={this.handleDelete} />
-        <JobData job={this.props.job} postReminder={this.postReminder} onDateChange={this.onDateChange} />
+        <JobData
+          job={this.props.job}
+          postReminder={this.postReminder}
+          onDateChange={this.onDateChange}
+          onTextChange={this.onTextChange}
+        />
       </div>
     );
   }
