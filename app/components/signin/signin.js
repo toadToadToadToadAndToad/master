@@ -7,6 +7,7 @@ function SignIn() {
   return (
     <div className="container">
       <a href="/auth/google">
+        <br />
         <RaisedButton
           className="sign-in"
           label="Sign In with Google"

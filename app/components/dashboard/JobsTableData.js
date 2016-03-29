@@ -6,6 +6,7 @@ import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import '../../styles/main.css';
+import FlatButton from 'material-ui/lib/flat-button';
 
 const tableSettings = {
   fixedHeader: true,
@@ -26,6 +27,11 @@ function JobsTableData(props) {
   return (
     <div>
       <h2>Jobs</h2>
+      <div className="jobType">
+        <FlatButton label="New" disabled />
+        <FlatButton label="Pending" primary />
+        <FlatButton label="Closed" primary />
+      </div>
       <Table
         height={props.jobs.length > 6 ? tableSettings.height : undefined}
         fixedHeader={tableSettings.fixedHeader}
