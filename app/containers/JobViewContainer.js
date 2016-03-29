@@ -48,7 +48,7 @@ class JobViewContainer extends Component {
       <br /><br />
         <PageHeader>Job View</PageHeader>
         <DeleteJobComponent handleDelete={this.handleDelete} />
-        <JobData job={this.props.job} postReminder={this.postReminder} onChange={this.onChange} />
+        <JobData job={this.props.job} postReminder={this.postReminder} onDateChange={this.onDateChange} />
       </div>
     );
   }
