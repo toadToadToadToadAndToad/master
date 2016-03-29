@@ -12,17 +12,17 @@ class SnackbarComponent extends React.Component {
   }
 
   // These may not be needed - right now the onRowClick in the dashboard is 'working'
-  // handleTouchTap() {
-  //   this.setState({
-  //     open: true,
-  //   });
-  // }
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
+  }
 
-  // handleRequestClose() {
-  //   this.setState({
-  //     open: false,
-  //   });
-  // }
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  }
 
   render() {
     return (
