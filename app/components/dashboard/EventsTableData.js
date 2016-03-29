@@ -42,9 +42,8 @@ function EventsTableData(props) {
           <TableRow
             displayRowCheckbox={tableSettings.displayRowCheckbox}
           >
-            <TableHeaderColumn>Type</TableHeaderColumn>
-            <TableHeaderColumn>Company</TableHeaderColumn>
-            <TableHeaderColumn>Notes</TableHeaderColumn>
+            <TableHeaderColumn>Date</TableHeaderColumn>
+            <TableHeaderColumn>Text</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody
@@ -59,9 +58,8 @@ function EventsTableData(props) {
                 // TODO: see comment above handleRowClick in DashboardContainer.js
                 onRowClick={props.onRowClick}
               >
-                <TableRowColumn>{event.type}</TableRowColumn>
-                <TableRowColumn>{event.company}</TableRowColumn>
-                <TableRowColumn>{event.notes}</TableRowColumn>
+                <TableRowColumn>{event.date}</TableRowColumn>
+                <TableRowColumn>{event.text}</TableRowColumn>
               </TableRow>
             );
           })}

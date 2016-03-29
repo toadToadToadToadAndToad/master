@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 function DeleteJobComponent(props) {
@@ -16,6 +15,6 @@ function DeleteJobComponent(props) {
 }
 
 DeleteJobComponent.propTypes = {
-  handleDelete: React.PropTypes.func
-}
+  handleDelete: React.PropTypes.func,
+};
 export default DeleteJobComponent;
