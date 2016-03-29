@@ -39,12 +39,13 @@ const JobData = (props) => (
     <b>Description</b><br /><br />{props.job.description}<br /><br />
     <Divider /><br />
     <b>URL</b><br /><br /><a href={props.job.url}>{props.job.company}</a><br />
+    <Divider /><br />
   </Paper>
   <br /><br />
     <Tabs>
       <Tab label="Notes" >
         <div>
-          <h2 style={styles.headline}>Notes</h2>
+          
           <p>
             Remember to enter on Heart Attack and Vine.
           </p>

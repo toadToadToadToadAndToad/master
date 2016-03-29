@@ -10,6 +10,7 @@ import { toJS } from 'immutable';
 const jobUrl = 'http://localhost:3000/api/jobs/';
 const getJobsUrl = 'http://localhost:3000/api/getjobs/';
 const deleteJobUrl = 'http://localhost:3000/api/jobs/';
+const deleteNoteUrl = 'http://localhost:3000/api/deletenote/';
 
  /*
  * app
@@ -94,12 +95,11 @@ export function addJobSuccess(job) {
   return { type: types.ADD_JOB_SUCCESS, job };
 }
 export function addJob(job) {
+  job.notes = [];
   return (dispatch, getState) => {
     dispatch(dbRequest());
-
     // add the user's db id to the job
     job.idUser = getState().get('app').toJS().dbUserID;
-
     return axios.post(jobUrl, job)
       .then(res => {
         dispatch(addJobSuccess(res.data));
@@ -161,4 +161,52 @@ export function deleteContact(contactID) {
 }
 export function udpateContact(contact) {
   return { type: types.UPDATE_CONTACT, contact };
+}
+
+/*
+ * notes
+ */
+export function addNoteSuccess(text, jobID) {
+  return { type: types.ADD_NOTE_SUCCESS, text, jobID };
+}
+export function addNote(text, jobID) {
+  return (dispatch, getState) => {
+    dispatch(dbRequest());
+    const jobs = getState().get('jobs').toJS();
+    return axios.post('/api/addnote', {text: text, jobID:jobID})
+      .then(response => {
+        // dispatch(addNoteSuccess(text, jobID));
+        jobs.forEach(function(job){
+          if(job.id === jobID){
+            job.notes.push(text.text)
+          }
+        })
+        dispatch(dbSuccess());
+    }).catch(err => {
+        dispatch(dbFailure(err));
+      });
+  }
+}
+export function deleteNoteSuccess(jobID, noteIndex ){
+  return { type: types.DELETE_NOTE, jobID, noteIndex };
+}
+
+export function deleteNote(jobID, noteIndex) {
+  return (dispatch, getState) => {
+    dispatch(dbRequest());
+
+    return axios.delete(deleteNoteUrl.concat(jobID, '/' , noteIndex))
+      .then(res => {
+        console.log(res)
+        dispatch(deleteNoteSuccess(jobID));
+        dispatch(dbSuccess());
+      })
+      .catch(err => {
+        dispatch(dbFailure(err));
+      });
+  };
+}
+
+export function editNote(userID, JobID, note) {
+  return { type: types.EDIT_NOTE, userID, jobID };
 }

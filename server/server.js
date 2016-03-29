@@ -12,6 +12,8 @@ const job = require('./controllers/jobs');
 const user = require('./controllers/user');
 const passport = require('./controllers/auth');
 const userLookup = require('./controllers/userLookup');
+const notes = require('./controllers/notes');
+
 
 // Create a rethinkdb connection, and save it in req._rdbConn
 function* createConnection(next) {
@@ -54,6 +56,8 @@ router.get('/api/getjobs/:idUser', job.getJobs);
 router.delete('/api/jobs/:id', job.deleteJob);
 router.put('/api/jobs/', job.updateJob);
 router.get('/api/me', userLookup.lookup);
+router.post('/api/addnote', notes.addNote)
+router.delete('/api/deletenote/:id/:noteid', notes.deleteNote)
 
 // Google Authentication Routes
 router.get('/auth/google', passport.authenticate('google', {

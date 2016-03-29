@@ -16,6 +16,7 @@ let Job = thinky.createModel('Job', {
     phone: type.number(),
   },
   idUser: type.string(),
+  notes: type.array()
 });
 
 module.exports = Job;
