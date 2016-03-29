@@ -38,13 +38,15 @@ class AppContainer extends Component {
                 style={spinnerStyle}
               />
             </div>
-            <a href="/logout" className="logout">
-              <FontIcon
-                className="material-icons"
-                color="#263238"
-                hoverColor="#ff4081"
-              >exit_to_app</FontIcon>
-            </a>
+            <div className={this.props.dbUserID ? 'show' : 'hide'}>
+              <a href="/logout" className="logout">
+                <FontIcon
+                  className="material-icons"
+                  color="#263238"
+                  hoverColor="#ff4081"
+                  >exit_to_app</FontIcon>
+              </a>
+            </div>
           </div>
         </div>
         <div className="container main">
@@ -68,8 +70,10 @@ AppContainer.childContextTypes = {
 
 const mapStateToProps = (state) => {
   const isWorking = state.get('db').toJS().isWorking;
+  const dbUserID = state.get('app').toJS().dbUserID;
   return {
     isWorking,
+    dbUserID,
   };
 };
 
@@ -77,6 +81,7 @@ AppContainer.propTypes = {
   children: PropTypes.object,
   location: PropTypes.object,
   isWorking: PropTypes.bool,
+  dbUserID: PropTypes.string,
 };
 
 export default connect(mapStateToProps)(AppContainer);
