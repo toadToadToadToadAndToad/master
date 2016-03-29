@@ -82,11 +82,11 @@ class JobViewContainer extends Component {
           value={this.state.text}
         />
         <Notes onNoteClick={this.handleNoteClick} 
-        submitNote={this.handleNote}
-        state={this.state.text}
-        onTextAdd={this.handleText} 
-        job={this.props.job}
-        onDeleteNote={this.handleDeleteNote}
+          submitNote={this.handleNote}
+          state={this.state.text}
+          onTextAdd={this.handleText} 
+          job={this.props.job}
+          onDeleteNote={this.handleDeleteNote}
         />
       </div>
     );

@@ -52,12 +52,10 @@ const JobData = (props) => (
   <br /><br />
     <Tabs>
       <Tab label="Notes" >
-        <div>
-          
+        <div>     
           <p>
             Remember to enter on Heart Attack and Vine.
           </p>
-
         </div>
       </Tab>
       <Tab label="Reminders" >
