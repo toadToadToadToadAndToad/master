@@ -18,10 +18,10 @@ class JobViewContainer extends Component {
       date: '',
       text: '',
     };
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleText = this.handleText.bind(this);
-    this.handleNote = this.handleNote.bind(this);
-    this.handleDeleteNote = this.handleDeleteNote.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+    // this.handleText = this.handleText.bind(this);
+    // this.handleNote = this.handleNote.bind(this);
+    // this.handleDeleteNote = this.handleDeleteNote.bind(this);
     this.postReminder = this.postReminder.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
@@ -36,11 +36,6 @@ class JobViewContainer extends Component {
     event.preventDefault();
     this.props.dispatch(addNote(this.state, this.props.jobID));
     this.setState({ noteTxt: ' ' });
-  }
-
-  handleDelete() {
-    this.props.dispatch(deleteJob(this.props.jobID));
-    browserHistory.push('/dashboard');
   }
 
   handleDeleteNote(index, props){
@@ -58,9 +53,8 @@ class JobViewContainer extends Component {
 
   postReminder(event, dispatch) {
     const reminder = this.state;
-    console.log("This is reminder ", reminder);
-    this.setState({ date: null, text: null });
     this.props.dispatch(addEvent(reminder));
+    this.setState({ date: '', text: '' });
   }
 
   render() {
@@ -77,20 +71,29 @@ class JobViewContainer extends Component {
         <JobData 
           job={this.props.job} 
           postReminder={this.postReminder} 
-          onChange={this.onChange} 
           onDateChange={this.onDateChange}
           onTextChange={this.onTextChange}
           dateVal={this.state.date}
           value={this.state.text}
-
           submitNote={this.handleNote}
           state={this.state.noteTxt}
           onTextAdd={this.handleText} 
           onDeleteNote={this.handleDeleteNote} />
         </div>
+        />
+      </div>
+
     );
   }
 }
+
+// <Notes onNoteClick={this.handleNoteClick} 
+//           submitNote={this.handleNote}
+//           state={this.state.text}
+//           onTextAdd={this.handleText} 
+//           job={this.props.job}
+//           onDeleteNote={this.handleDeleteNote}
+//         />
 
 const mapStateToProps = (state) => {
   let jobID = undefined;
