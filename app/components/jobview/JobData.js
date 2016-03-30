@@ -80,14 +80,14 @@ const JobData = (props) => (
       <Tab label="Reminders" >
         <div>
           <h2 style={styles.headline}>Reminders</h2>
-            <form>
-              <DatePicker hintText="Choose your date" mode="landscape"  dateVal={props.dateVal} onChange={props.onDateChange} />
+              <DatePicker hintText="Choose your date" mode="landscape"   formatDate={props.formatDate} dateVal={props.dateVal} onChange={props.onDateChange} />
               <TextField
                 multiLine={true}
                 hintText="Write your reminder here"
                 rows={2}
                 value={props.value}
                 onChange={props.onTextChange}
+
               />
               <br />
               <RaisedButton
@@ -95,7 +95,6 @@ const JobData = (props) => (
                 primary
                 onMouseDown={props.postReminder}
               />
-            </form>
         </div>
       </Tab>
       <Tab

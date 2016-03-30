@@ -18,10 +18,10 @@ class JobViewContainer extends Component {
       date: '',
       text: '',
     };
-    // this.handleDelete = this.handleDelete.bind(this);
-    // this.handleText = this.handleText.bind(this);
-    // this.handleNote = this.handleNote.bind(this);
-    // this.handleDeleteNote = this.handleDeleteNote.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleText = this.handleText.bind(this);
+    this.handleNote = this.handleNote.bind(this);
+    this.handleDeleteNote = this.handleDeleteNote.bind(this);
     this.postReminder = this.postReminder.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
@@ -40,10 +40,26 @@ class JobViewContainer extends Component {
 
   handleDeleteNote(index, props){
     this.props.dispatch(deleteNote(props.job.id, index))
+    this.setState({ text: e.target.value })
+  }
+
+  handleDelete() {
+    this.props.dispatch(deleteJob(this.props.jobID));
+    browserHistory.push('/dashboard');
+  }
+
+  handleDeleteNote(index, props){
+    console.log(props.job.id,"AND", index)
+    this.props.dispatch(deleteNote(props.job.id, index))
+  }
+
+ formatDate(date) {
+    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
   }
 
   onDateChange(err, value) {
-    const stringDate = value.toString();
+    const newDate = this.formatDate(value);
+    const stringDate = newDate.toString();
     this.setState({ date: stringDate });
   }
 
@@ -78,22 +94,18 @@ class JobViewContainer extends Component {
           submitNote={this.handleNote}
           state={this.state.noteTxt}
           onTextAdd={this.handleText} 
-          onDeleteNote={this.handleDeleteNote} />
-        </div>
+          onDeleteNote={this.handleDeleteNote} 
+          formatDate={this.formatDate}
+          submitNote={this.handleNote}
+          state={this.state.text}
+          onTextAdd={this.handleText} 
+          onDeleteNote={this.handleDeleteNote}
         />
       </div>
 
     );
   }
 }
-
-// <Notes onNoteClick={this.handleNoteClick} 
-//           submitNote={this.handleNote}
-//           state={this.state.text}
-//           onTextAdd={this.handleText} 
-//           job={this.props.job}
-//           onDeleteNote={this.handleDeleteNote}
-//         />
 
 const mapStateToProps = (state) => {
   let jobID = undefined;
