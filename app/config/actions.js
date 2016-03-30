@@ -5,10 +5,11 @@ import { toJS } from 'immutable';
 /*
  * rethinkdb urls
  */
-const jobUrl = 'http://localhost:3000/api/jobs/';
-const getJobsUrl = 'http://localhost:3000/api/getjobs/';
-const deleteJobUrl = 'http://localhost:3000/api/jobs/';
-const deleteNoteUrl = 'http://localhost:3000/api/deletenote/';
+// TODO: these should probably go in a config file
+const jobUrl = '/api/jobs/';
+const getJobsUrl = '/api/getjobs/';
+const deleteJobUrl = '/api/jobs/';
+const deleteNoteUrl = '/api/deletenote/';
 
  /*
  * app
