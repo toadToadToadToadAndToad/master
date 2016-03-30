@@ -63,6 +63,7 @@ class JobViewContainer extends Component {
   }
 
   render() {
+    let notesTable = '';
     return (
       <div>
         <RaisedButton
@@ -82,13 +83,12 @@ class JobViewContainer extends Component {
           value={this.state.text}
         />
         <Notes onNoteClick={this.handleNoteClick} 
-          submitNote={this.handleNote}
-          state={this.state.text}
-          onTextAdd={this.handleText} 
-          job={this.props.job}
-          onDeleteNote={this.handleDeleteNote}
-        />
-      </div>
+        submitNote={this.handleNote}
+        state={this.state.text}
+        onTextAdd={this.handleText} 
+        job={this.props.job}
+        onDeleteNote={this.handleDeleteNote} />
+        </div>
     );
   }
 }
@@ -109,7 +109,7 @@ const mapStateToProps = (state) => {
 
 JobViewContainer.propTypes = {
   jobID: PropTypes.string.isRequired,
-  job: PropTypes.object.isRequired,
+  job: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   postReminder: PropTypes.func,
 };

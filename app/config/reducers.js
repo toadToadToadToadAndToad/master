@@ -80,14 +80,14 @@ function jobs(state = List(), action) {
           job.get("notes").push(action.text.text);
         }
       });
-    case types.DELETE_NOTE_SUCCESS: 
-      state.forEach(function(job){
-        if(job.get("id") === action.jobID){
-          job.get("notes").slice(0, action.noteIndex)
-          .concat(job.get("notes")
-          .slice(action.noteIndex + 1))
-        }
-      });
+    // case types.DELETE_NOTE_SUCCESS: 
+    //   state.forEach(function(job){
+    //     if(job.get("id") === action.jobID){
+    //       job.get("notes").slice(0, action.noteIndex)
+    //       .concat(job.get("notes")
+    //       .slice(action.noteIndex + 1))
+    //     }
+    //   });
     default:
       return state;
   }

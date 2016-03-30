@@ -20,6 +20,7 @@ const Notes = (props) => (
         value={props.state}
         onChange={props.onTextAdd} />
     </form>
+      
       {props.job.notes.map((note, index) => {
         return (
           <Paper zDepth={1} style={styles} 
@@ -28,6 +29,7 @@ const Notes = (props) => (
           </Paper>
         );
       })}
+   
   </div>
 );
 

@@ -21,10 +21,9 @@ module.exports.deleteNote = function*(next){
   let noteIndex = this.params.noteid;
   try{
     let job = yield Job.get(jobID).run();
-      job.notes.slice(0,noteIndex).concat(job.notes.slice(Number(noteIndex) + 1));
+      job.notes.splice(noteIndex, 1)
       yield job.save();
-      console.log("JOBNOTES",job.notes.slice(0,noteIndex).concat(job.notes.slice(Number(noteIndex) + 1)))
-      this.body = "note deleted successfully";
+      this.status = 200;
 
   } catch (e) {
     console.error(e);
