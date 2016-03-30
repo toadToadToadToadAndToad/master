@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import Table from 'material-ui/lib/table/table';
 import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
+import SnackbarComponent from './SnackbarComponent';
 import '../../styles/main.css';
 
 const tableSettings = {
@@ -42,6 +43,7 @@ function EventsTableData(props) {
           <TableRow
             displayRowCheckbox={tableSettings.displayRowCheckbox}
           >
+            <TableHeaderColumn>Google Calendar</TableHeaderColumn>
             <TableHeaderColumn>Date</TableHeaderColumn>
             <TableHeaderColumn>Text</TableHeaderColumn>
           </TableRow>
@@ -58,6 +60,9 @@ function EventsTableData(props) {
                 // TODO: see comment above handleRowClick in DashboardContainer.js
                 onRowClick={props.onRowClick}
               >
+                <TableRowColumn>
+                  <SnackbarComponent />
+                </TableRowColumn>
                 <TableRowColumn>{event.date}</TableRowColumn>
                 <TableRowColumn>{event.text}</TableRowColumn>
               </TableRow>
