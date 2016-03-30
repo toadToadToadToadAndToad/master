@@ -28,7 +28,8 @@ module.exports.addEvent = function(){
     }
   },
   data: this.data,
-  url:"https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=" + accessToken}).then(function(res){
+  url:"https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=" + accessToken})
+  .then(function(res){
     console.log(res);
   }).catch(function(res){
     console.log(res)
