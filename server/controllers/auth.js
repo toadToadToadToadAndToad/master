@@ -8,8 +8,8 @@ const User = require('../../database/models/user');
 passport.use(new GoogleStrategy({
   clientID: tokens.GOOGLE_CLIENT_ID,
   clientSecret: tokens.GOOGLE_CLIENT_SECRET,
-  returnURL: 'http://localhost:3000/auth/google/return',
-  callbackURL: 'http://localhost:3000/auth/google/callback',
+  returnURL: '/auth/google/return',
+  callbackURL: '/auth/google/callback',
 },
 
 // Profile contains all the personal data returned
