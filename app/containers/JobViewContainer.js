@@ -55,16 +55,17 @@ class JobViewContainer extends Component {
     this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
 
-  handleText(e){
-    this.setState({ noteTxt: e.target.value })
+  handleText(e) {
+    this.setState({ noteTxt: e.target.value });
   }
 
-  handleNote(event){
+  handleNote(event) {
     event.preventDefault();
     console.log("NOTE STATE", {noteTxt: this.state.noteTxt})
     this.props.dispatch(addNote({noteTxt: this.state.noteTxt}, this.props.jobID));
     this.setState({ noteTxt: '' });
   }
+
 
   handleDeleteNote(index, props){
     this.props.dispatch(deleteNote(props.job.id, index))
@@ -77,12 +78,8 @@ class JobViewContainer extends Component {
     browserHistory.push('/dashboard');
   }
 
-  handleDeleteNote(index, props){
-    this.props.dispatch(deleteNote(props.job.id, index))
-  }
-
- formatDate(date) {
-    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  formatDate(date) {
+    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
   }
 
   onDateChange(err, value) {
@@ -95,14 +92,13 @@ class JobViewContainer extends Component {
     this.setState({ text: e.target.value });
   }
 
-  postReminder(event, dispatch) {
+  postReminder() {
     const reminder = this.state;
     this.props.dispatch(addEvent(reminder));
     this.setState({ date: '', text: '' });
   }
 
   render() {
-    let notesTable = '';
     return (
       <div>
           <h2>Job View</h2>
@@ -135,6 +131,26 @@ class JobViewContainer extends Component {
             onContactName={this.handleContactName} />
 
           />
+        <RaisedButton
+          containerElement={<Link to="/dashboard" />}
+          label="Dashboard"
+        />
+      <br /><br />
+        <PageHeader>Job View</PageHeader>
+        <DeleteJobComponent handleDelete={this.handleDelete} />
+        <JobData
+          job={this.props.job}
+          postReminder={this.postReminder}
+          onDateChange={this.onDateChange}
+          dateVal={this.state.date}
+          formatDate={this.formatDate}
+          onTextChange={this.onTextChange}
+          value={this.state.text}
+          submitNote={this.handleNote}
+          state={this.state.noteTxt}
+          onTextAdd={this.handleText}
+          onDeleteNote={this.handleDeleteNote}
+        />
       </div>
     );
   }

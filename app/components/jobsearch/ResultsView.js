@@ -5,7 +5,6 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
-import RaisedButton from 'material-ui/lib/raised-button';
 import FontIcon from 'material-ui/lib/font-icon';
 
 const tableSettings = {
@@ -31,11 +30,11 @@ function ResultsViewComponent(props) {
         <TableRowColumn>{job.title}</TableRowColumn>
         <TableRowColumn>{job.type}</TableRowColumn>
         <TableRowColumn>{job.location}</TableRowColumn>
-        <TableRowColumn style={{ width: "20" }}>
+        <TableRowColumn style={{ width: '20' }}>
           <a href={job.url} target="_blank">
             <FontIcon
               className="material-icons"
-              style={{ fontSize: "16", verticalAlign: "-5" }}
+              style={{ fontSize: '16', verticalAlign: '-5' }}
               color="#263238"
               hoverColor="#ff4081"
             >launch</FontIcon>
@@ -67,7 +66,7 @@ function ResultsViewComponent(props) {
             <TableHeaderColumn>Job Title</TableHeaderColumn>
             <TableHeaderColumn>Type</TableHeaderColumn>
             <TableHeaderColumn>Location</TableHeaderColumn>
-            <TableHeaderColumn style={{ width: "20" }}>Link</TableHeaderColumn>
+            <TableHeaderColumn style={{ width: '20' }}>Link</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody

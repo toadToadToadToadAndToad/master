@@ -6,7 +6,6 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import Slider from 'material-ui/lib/slider';
 import RaisedButton from 'material-ui/lib/raised-button';
-//import ReminderComponent from './Reminder';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
@@ -74,12 +73,17 @@ const JobData = (props) => (
             hintText="Add your notes here"
             onEnterKeyDown={props.submitNote}
             value={props.state}
-            onChange={props.onTextAdd}/>
+            onChange={props.onTextAdd} 
+          />
             <br />
             {props.job.notes.map((note, index) => {
               return (
-                <Paper zDepth={1} style={styles.paper}
-                key={index} onClick={props.onDeleteNote.bind(this, index, props)}>
+                <Paper
+                 zDepth={1}
+                 style={styles.paper}
+                 key={index}
+                 onClick={props.onDeleteNote.bind(this, index, props)}
+                >
                   {note}
                 </Paper>
               );
@@ -89,14 +93,19 @@ const JobData = (props) => (
       <Tab label="Reminders" >
         <div>
           <h2 style={styles.headline}>Reminders</h2>
-              <DatePicker hintText="Choose your date" mode="landscape"   formatDate={props.formatDate} dateVal={props.dateVal} onChange={props.onDateChange} />
+              <DatePicker
+                hintText="Choose your date"
+                mode="landscape"
+                formatDate={props.formatDate}
+                dateVal={props.dateVal}
+                onChange={props.onDateChange}
+              />
               <TextField
                 multiLine={true}
                 hintText="Write your reminder here"
                 rows={2}
                 value={props.value}
                 onChange={props.onTextChange}
-
               />
               <br />
               <RaisedButton
