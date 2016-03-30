@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "postinstall": "webpack -p",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "prod": "webpack -p",
     "test": "mocha test/**/*spec.js --compilers js:babel-core/register,css:./test/css-null-compiler.js --require babel-polyfill --require ./test/test-helper.js --recursive",
     "test:watch": "npm run test -- --watch",
