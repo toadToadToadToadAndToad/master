@@ -23,6 +23,13 @@ const styles = {
     marginBottom: 12,
     fontWeight: 400,
   },
+  paper: {
+    height: 100,
+    width: 100,
+    margin: 20,
+    textAlign: 'center',
+    display: 'inline-block',
+  },
 };
 
 function handleActive(tab) {
@@ -52,10 +59,22 @@ const JobData = (props) => (
   <br /><br />
     <Tabs>
       <Tab label="Notes" >
-        <div>     
-          <p>
-            Remember to enter on Heart Attack and Vine.
-          </p>
+        <div>  
+          <h2 style={styles.headline}>My Notes</h2>
+          <TextField id="enterNote"
+            hintText="Add your notes here"
+            onEnterKeyDown={props.submitNote}
+            value={props.state}
+            onChange={props.onTextAdd}/>
+            <br />
+            {props.job.notes.map((note, index) => {
+              return (
+                <Paper zDepth={1} style={styles.paper} 
+                key={index} onClick={props.onDeleteNote.bind(this, index, props)}>
+                  {note} 
+                </Paper>
+              );
+            })}
         </div>
       </Tab>
       <Tab label="Reminders" >
@@ -95,6 +114,8 @@ const JobData = (props) => (
 
 JobData.propTypes = {
   job: PropTypes.object,
+  state: PropTypes.string.isRequired,
+  onTextAdd: PropTypes.func.isRequired,
 };
 
 export default JobData;

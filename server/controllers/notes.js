@@ -4,10 +4,11 @@ const parse = require('co-body');
 
 module.exports.addNote = function*(next){
   let note = yield parse(this);
+  console.log("JKJKJK", note)
   try {
     let job = yield Job.get(note.jobID).run();
     if(job){
-      job.notes.push(note.text.text);
+      job.notes.push(note.text.noteTxt);
       yield job.save();
       this.status = 200;
     }

@@ -77,7 +77,7 @@ function jobs(state = List(), action) {
     case types.ADD_NOTE_SUCCESS:
       state.forEach(function(job){
         if(job.get("id") === action.jobID){
-          job.get("notes").push(action.text.text);
+          job.get("notes").push(action.text.noteTxt);
         }
       });
     // case types.DELETE_NOTE_SUCCESS: 
