@@ -14,6 +14,7 @@ class JobViewContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      noteTxt: '',
       date: '',
       text: '',
     };
@@ -27,13 +28,14 @@ class JobViewContainer extends Component {
   }
 
   handleText(e){
-    this.setState({ text: e.target.value })
+    this.setState({ noteTxt: e.target.value })
+    console.log(this.state.noteTxt)
   }
 
   handleNote(event){
     event.preventDefault();
     this.props.dispatch(addNote(this.state, this.props.jobID));
-    this.setState({ text: ' ' });
+    this.setState({ noteTxt: ' ' });
   }
 
   handleDelete() {
@@ -42,7 +44,6 @@ class JobViewContainer extends Component {
   }
 
   handleDeleteNote(index, props){
-    console.log(props.job.id,"AND", index)
     this.props.dispatch(deleteNote(props.job.id, index))
   }
 
@@ -63,6 +64,7 @@ class JobViewContainer extends Component {
   }
 
   render() {
+    let notesTable = '';
     return (
       <div>
         <RaisedButton
@@ -80,15 +82,12 @@ class JobViewContainer extends Component {
           onTextChange={this.onTextChange}
           dateVal={this.state.date}
           value={this.state.text}
-        />
-        <Notes onNoteClick={this.handleNoteClick} 
+
           submitNote={this.handleNote}
-          state={this.state.text}
+          state={this.state.noteTxt}
           onTextAdd={this.handleText} 
-          job={this.props.job}
-          onDeleteNote={this.handleDeleteNote}
-        />
-      </div>
+          onDeleteNote={this.handleDeleteNote} />
+        </div>
     );
   }
 }
@@ -109,7 +108,7 @@ const mapStateToProps = (state) => {
 
 JobViewContainer.propTypes = {
   jobID: PropTypes.string.isRequired,
-  job: PropTypes.object.isRequired,
+  job: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   postReminder: PropTypes.func,
 };

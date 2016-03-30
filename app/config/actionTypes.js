@@ -33,7 +33,7 @@ export const UPDATE_CONTACT = 'UPDATE_CONTACT';
 export const SET_USERINFO = 'SET_USERINFO';
 
 // notes
-export const ADD_NOTE_SUCCESS = 'ADD_NOTE';
-export const DELETE_NOTE = 'DELETE_NOTE';
+export const ADD_NOTE_SUCCESS = 'ADD_NOTE_SUCCESS';
+export const DELETE_NOTE_SUCCESS = 'DELETE_NOTE_SUCCESS';
 export const EDIT_NOTE = 'EDIT_NOTE';
 
