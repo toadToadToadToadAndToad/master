@@ -1,5 +1,5 @@
 import React from 'react';
-import Snackbar from 'material-ui/lib/Snackbar';
+import Snackbar from 'material-ui/lib/snackbar';
 import RaisedButton from 'material-ui/lib/raised-button';
 import axios from 'axios';
 
