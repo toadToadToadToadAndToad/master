@@ -38,17 +38,28 @@ class JobViewContainer extends Component {
     this.setState({ noteTxt: ' ' });
   }
 
+  handleDeleteNote(index, props){
+    this.props.dispatch(deleteNote(props.job.id, index))
+    this.setState({ text: e.target.value })
+  }
+
   handleDelete() {
     this.props.dispatch(deleteJob(this.props.jobID));
     browserHistory.push('/dashboard');
   }
 
   handleDeleteNote(index, props){
+    console.log(props.job.id,"AND", index)
     this.props.dispatch(deleteNote(props.job.id, index))
   }
 
+ formatDate(date) {
+    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  }
+
   onDateChange(err, value) {
-    const stringDate = value.toString();
+    const newDate = this.formatDate(value);
+    const stringDate = newDate.toString();
     this.setState({ date: stringDate });
   }
 
@@ -58,9 +69,8 @@ class JobViewContainer extends Component {
 
   postReminder(event, dispatch) {
     const reminder = this.state;
-    console.log("This is reminder ", reminder);
-    this.setState({ date: null, text: null });
     this.props.dispatch(addEvent(reminder));
+    this.setState({ date: '', text: '' });
   }
 
   render() {
@@ -77,17 +87,22 @@ class JobViewContainer extends Component {
         <JobData 
           job={this.props.job} 
           postReminder={this.postReminder} 
-          onChange={this.onChange} 
           onDateChange={this.onDateChange}
           onTextChange={this.onTextChange}
           dateVal={this.state.date}
           value={this.state.text}
-
           submitNote={this.handleNote}
           state={this.state.noteTxt}
           onTextAdd={this.handleText} 
-          onDeleteNote={this.handleDeleteNote} />
-        </div>
+          onDeleteNote={this.handleDeleteNote} 
+          formatDate={this.formatDate}
+          submitNote={this.handleNote}
+          state={this.state.text}
+          onTextAdd={this.handleText} 
+          onDeleteNote={this.handleDeleteNote}
+        />
+      </div>
+
     );
   }
 }

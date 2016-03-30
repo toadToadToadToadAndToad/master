@@ -80,20 +80,21 @@ const JobData = (props) => (
       <Tab label="Reminders" >
         <div>
           <h2 style={styles.headline}>Reminders</h2>
-            <DatePicker hintText="Choose your date" mode="landscape"  dateVal={props.date} onChange={props.onDateChange} />
-            <TextField
-              multiLine={true}
-              hintText="Write your reminder here"
-              rows={2}
-              value={props.text}
-              onChange={props.onTextChange}
-            />
-            <br />
-            <RaisedButton
-              label="Post Reminder"
-              primary
-              onMouseDown={props.postReminder}
-            />
+              <DatePicker hintText="Choose your date" mode="landscape"   formatDate={props.formatDate} dateVal={props.dateVal} onChange={props.onDateChange} />
+              <TextField
+                multiLine={true}
+                hintText="Write your reminder here"
+                rows={2}
+                value={props.value}
+                onChange={props.onTextChange}
+
+              />
+              <br />
+              <RaisedButton
+                label="Post Reminder"
+                primary
+                onMouseDown={props.postReminder}
+              />
         </div>
       </Tab>
       <Tab
