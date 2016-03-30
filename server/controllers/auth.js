@@ -8,7 +8,6 @@ const User = require('../../database/models/user');
 passport.use(new GoogleStrategy({
   clientID: tokens.GOOGLE_CLIENT_ID,
   clientSecret: tokens.GOOGLE_CLIENT_SECRET,
-  returnURL: '/auth/google/return',
   callbackURL: 'https://numbersgame.herokuapp.com/auth/google/callback',
 },
 
