@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import '../styles/route-transition.css';
+// import '../styles/route-transition.css';
 import '../styles/main.css';
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';
@@ -48,7 +48,9 @@ class AppContainer extends Component {
                   className="material-icons"
                   color="#263238"
                   hoverColor="#ff4081"
-                >exit_to_app</FontIcon>
+                >
+                  exit_to_app
+                </FontIcon>
               </a>
             </div>
           </div>
