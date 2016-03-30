@@ -24,6 +24,7 @@ module.exports = function(app){
   router.post('/api/addnote', notes.addNote)
   router.delete('/api/deletenote/:id/:noteid', notes.deleteNote)
 
+  //Google Calendar Route
   router.get('/calendar', calendar.addCalendar)
 
   // Google Authentication Routes
@@ -61,7 +62,4 @@ module.exports = function(app){
       this.redirect('/');
     }
   }
-  app.use(passport.initialize());
-  app.use(passport.session());
-
 }
