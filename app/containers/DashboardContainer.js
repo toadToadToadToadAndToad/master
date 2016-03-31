@@ -109,6 +109,7 @@ class DashboardContainer extends Component {
 
         <br /><br /><br />
         {eventsTable}
+        <br /><br /><br />
       </div>
     );
   }

@@ -42,24 +42,30 @@ function handleActive(tab) {
 
 const JobData = (props) => (
   <div>
-  <Paper zDepth={1} style={styles}>
-    <b>Company</b><br /><br />{props.job.company}<br /><br />
-    <Divider /><br />
-    <b>Title</b><br /><br />{props.job.title}<br /><br />
-    <Divider /><br />
-    <b>Location</b><br /><br />{props.job.location}<br /><br />
-    <Divider /><br />
-    <b>Type</b><br /><br />{props.job.type}<br /><br />
-    <Divider /><br />
-    <b>Description</b><br /><br />{props.job.description}<br /><br />
-    <Divider /><br />
-    <b>URL</b><br /><br /><a href={props.job.url}>{props.job.company}</a><br />
-    <Divider /><br />
-  </Paper>
-  <br /><br />
-    <Tabs>
+    <Paper zDepth={1} style={styles} className="jobview-data">
+      <b>Company</b><br /><br />{props.job.company}<br /><br />
+      <Divider /><br />
+      <b>Title</b><br /><br />{props.job.title}<br /><br />
+      <Divider /><br />
+      <b>Location</b><br /><br />{props.job.location}<br /><br />
+      <Divider /><br />
+      <b>Type</b><br /><br />{props.job.type}<br /><br />
+      <Divider /><br />
+      <b>Description</b><br /><br />{props.job.description}<br /><br />
+      <Divider /><br />
+      <b>URL</b><br /><br /><a href={props.job.url}>{props.job.company}</a><br /><br />
+      <Divider />
+      <br />
+      <RaisedButton
+        className="delete-job"
+        label="Delete Job"
+        primary
+        onClick={props.onHandleDelete}
+      />
+    </Paper>
+    <Tabs className="tabs">
       <Tab label="Notes" >
-        <div>  
+        <div>
           <h2 style={styles.headline}>My Notes</h2>
           <TextField id="enterNote"
             hintText="Add your notes here"
@@ -69,9 +75,9 @@ const JobData = (props) => (
             <br />
             {props.job.notes.map((note, index) => {
               return (
-                <Paper zDepth={1} style={styles.paper} 
+                <Paper zDepth={1} style={styles.paper}
                 key={index} onClick={props.onDeleteNote.bind(this, index, props)}>
-                  {note} 
+                  {note}
                 </Paper>
               );
             })}
@@ -117,6 +123,7 @@ JobData.propTypes = {
   job: PropTypes.object,
   state: PropTypes.string.isRequired,
   onTextAdd: PropTypes.func.isRequired,
+  onHandleDelete: PropTypes.func.isRequired,
 };
 
 export default JobData;
