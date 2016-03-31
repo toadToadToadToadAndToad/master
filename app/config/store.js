@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Map } from 'immutable';
 import thunkMiddleware from 'redux-thunk';
