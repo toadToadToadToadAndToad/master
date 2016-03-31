@@ -19,7 +19,7 @@ class JobViewContainer extends Component {
       text: '',
       c_name: '',
       c_email: '',
-      c_phone: ''
+      c_phone: '',
       open: false,
     };
     this.handleDelete = this.handleDelete.bind(this);

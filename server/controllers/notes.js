@@ -4,7 +4,16 @@ const parse = require('co-body');
 
 module.exports.addNote = function*(next){
   let note = yield parse(this);
-
+    try {
+    let job = yield Job.get(note.jobID).run();
+    if(job){
+      job.notes.push(note.text.noteTxt);
+      yield job.save();
+      this.status = 200;
+    }
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 module.exports.deleteNote = function*() {
