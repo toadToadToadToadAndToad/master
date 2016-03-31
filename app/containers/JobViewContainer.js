@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
-
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
@@ -103,10 +102,6 @@ class JobViewContainer extends Component {
     this.handleOpen();
   }
 
-  reminderConfirm() {
-    console.log("Dialog should pop");
-  }
-
   handleOpen() {
     this.setState({ open: true });
   }
@@ -131,6 +126,13 @@ class JobViewContainer extends Component {
             onTextChange={this.onTextChange}
             dateVal={this.state.date}
             value={this.state.text}
+
+            onHandleDelete={this.handleDelete}
+            onDeleteNote={this.handleDeleteNote}
+            handleOpen={this.handleOpen}
+            handleClose={this.handleClose}
+            open={this.state.open}
+
             formatDate={this.formatDate}
             onHandleDelete={this.handleDelete}
 
@@ -148,28 +150,6 @@ class JobViewContainer extends Component {
             onContactName={this.handleContactName} />
 
           />
-        <RaisedButton
-          containerElement={<Link to="/dashboard" />}
-          label="Dashboard"
-        />
-      <br /><br />
-        <PageHeader>Job View</PageHeader>
-        <DeleteJobComponent handleDelete={this.handleDelete} />
-        <JobData
-          job={this.props.job}
-          postReminder={this.postReminder}
-          onDateChange={this.onDateChange}
-          dateVal={this.state.date}
-          formatDate={this.formatDate}
-          onTextChange={this.onTextChange}
-          value={this.state.text}
-          open={this.state.open}
-          handleClose={this.handleClose}
-          submitNote={this.handleNote}
-          state={this.state.noteTxt}
-          onTextAdd={this.handleText}
-          onDeleteNote={this.handleDeleteNote}
-        />
       </div>
     );
   }

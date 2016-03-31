@@ -104,7 +104,6 @@ const JobData = (props) => (
               />
               <TextField
                 hintText="Write your reminder here"
-                errorText="This field is required"
                 required
                 rows={2}
                 value={props.value}
@@ -118,9 +117,9 @@ const JobData = (props) => (
               />
               <Dialog
                 title="Reminder added"
-                action={props.action}
                 modal
                 open={props.open}
+                handleOpen={props.handleOpen}
               >
                 Your reminder has been added to the dashboard.
               <FlatButton
