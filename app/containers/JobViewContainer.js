@@ -7,9 +7,8 @@ import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
 import Notes from '../components/jobview/NotesComponent';
 import FlatButton from 'material-ui/lib/flat-button';
-import { addNote, deleteNote } from '../config/actions';
+import { addNote, deleteNote, deleteJob, addEvent, setEvents, addContact } from '../config/actions';
 import axios from 'axios';
-import { deleteJob, addEvent, setEvents } from '../config/actions';
 
 class JobViewContainer extends Component {
   constructor(props) {
@@ -18,6 +17,9 @@ class JobViewContainer extends Component {
       noteTxt: '',
       date: '',
       text: '',
+      c_name: '',
+      c_email: '',
+      c_phone: ''
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleText = this.handleText.bind(this);
@@ -26,22 +28,47 @@ class JobViewContainer extends Component {
     this.postReminder = this.postReminder.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
+    this.handleContactName = this.handleContactName.bind(this);
+    this.handleContactEmail = this.handleContactEmail.bind(this);
+    this.handleContactPhone = this.handleContactPhone.bind(this);
+    this.handleContact = this.handleContact.bind(this);
+  }
+
+  handleContactName(e){
+    this.setState({ c_name: e.target.value })
+  }
+
+  handleContactEmail(e){
+    this.setState({ c_email: e.target.value })
+  }
+
+  handleContactPhone(e){
+    this.setState({ c_phone: e.target.value })
+  }
+
+  handleContact(event){
+    event.preventDefault();
+    this.props.dispatch(addContact({name:this.state.c_name, 
+      email:this.state.c_email,
+      phone:this.state.c_phone}, 
+      this.props.jobID));
+    this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
 
   handleText(e){
     this.setState({ noteTxt: e.target.value })
-    console.log(this.state.noteTxt)
   }
 
   handleNote(event){
     event.preventDefault();
-    this.props.dispatch(addNote(this.state, this.props.jobID));
-    this.setState({ noteTxt: ' ' });
+    console.log("NOTE STATE", {noteTxt: this.state.noteTxt})
+    this.props.dispatch(addNote({noteTxt: this.state.noteTxt}, this.props.jobID));
+    this.setState({ noteTxt: '' });
   }
 
   handleDeleteNote(index, props){
     this.props.dispatch(deleteNote(props.job.id, index))
-    this.setState({ text: e.target.value })
+    this.setState({ noteTxt: e.target.value })
   }
 
   handleDelete() {
@@ -51,7 +78,6 @@ class JobViewContainer extends Component {
   }
 
   handleDeleteNote(index, props){
-    console.log(props.job.id,"AND", index)
     this.props.dispatch(deleteNote(props.job.id, index))
   }
 
@@ -92,16 +118,22 @@ class JobViewContainer extends Component {
             onTextChange={this.onTextChange}
             dateVal={this.state.date}
             value={this.state.text}
+            formatDate={this.formatDate}
+            onHandleDelete={this.handleDelete}
+
             submitNote={this.handleNote}
             state={this.state.noteTxt}
             onTextAdd={this.handleText}
-            onHandleDelete={this.handleDelete}
             onDeleteNote={this.handleDeleteNote}
-            formatDate={this.formatDate}
-            submitNote={this.handleNote}
-            state={this.state.text}
-            onTextAdd={this.handleText}
-            onDeleteNote={this.handleDeleteNote}
+
+            submitContact={this.handleContact}
+            stateName={this.state.c_name}
+            stateEmail={this.state.c_email}
+            statePhone={this.state.c_phone}
+            onContactPhone={this.handleContactPhone}
+            onContactEmail={this.handleContactEmail}
+            onContactName={this.handleContactName} />
+
           />
       </div>
     );

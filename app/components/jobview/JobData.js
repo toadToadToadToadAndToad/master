@@ -30,15 +30,18 @@ const styles = {
     textAlign: 'center',
     display: 'inline-block',
   },
+  contactPaper: {
+    height: 100,
+    width: 200,
+    margin: 20,
+    textAlign: 'center',
+    display: 'inline-block',
+  },
 };
 
 function handleActive(tab) {
   alert(`A tab with this route property ${tab.props.route} was activated.`);
 }
-
-// let onChange = function (err, value){
-//   console.log(value);
-// };
 
 const JobData = (props) => (
   <div>
@@ -103,16 +106,36 @@ const JobData = (props) => (
               />
         </div>
       </Tab>
-      <Tab
-        label="Contacts"
-        route="/home"
-        onActive={handleActive}
-      >
+      <Tab 
+        label="Contacts" >
         <div>
-          <h2 style={styles.headline}>Contacts</h2>
-          <p>
-            This is a third example tab.
-          </p>
+        <h2 style={styles.headline}>My Contacts</h2>
+          <TextField id="enterContactName"
+            hintText="Contact name"
+            onEnterKeyDown={props.submitContact}
+            value={props.stateName}
+            onChange={props.onContactName}/>
+          
+          <TextField id="enterContactEmail"
+            hintText="Contact email"
+            onEnterKeyDown={props.submitContact}
+            value={props.stateEmail}
+            onChange={props.onContactEmail}/>
+            
+          <TextField id="enterContactEmail"
+            hintText="Contact phone"
+            onEnterKeyDown={props.submitContact}
+            value={props.statePhone}
+            onChange={props.onContactPhone}/>
+
+            {props.job.contacts.map((contact, index) => {
+              return (
+                <Paper zDepth={1} style={styles.contactPaper} 
+                key={index} >
+                  {contact.name} <br /> {contact.email} <br /> {contact.phone}
+                </Paper>
+              );
+            })}
         </div>
       </Tab>
     </Tabs>

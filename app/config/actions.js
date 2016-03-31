@@ -96,6 +96,7 @@ export function addJobSuccess(job) {
 }
 export function addJob(job) {
   job.notes = [];
+  job.contacts = [];
   return (dispatch, getState) => {
     dispatch(dbRequest());
     // add the user's db id to the job
@@ -153,8 +154,20 @@ export function udpateEvent(event) {
 export function setContacts(contacts) {
   return { type: types.SET_CONTACTS, contacts };
 }
-export function addContact(contact) {
-  return { type: types.ADD_CONTACT, contact };
+export function addContactSuccess(contactObj, jobID) {
+  return { type: types.ADD_CONTACT, contactObj, jobID };
+}
+export function addContact(contact, jobID) {
+  return (dispatch, getState) => {
+    dispatch(dbRequest());
+    return axios.post('/api/addcontact', {text: contact, jobID:jobID})
+      .then(response => {
+        dispatch(addContactSuccess(contact, jobID));
+        dispatch(dbSuccess());
+    }).catch(err => {
+        dispatch(dbFailure(err));
+      });
+  }
 }
 export function deleteContact(contactID) {
   return { type: types.DELETE_CONTACT, contactID };
