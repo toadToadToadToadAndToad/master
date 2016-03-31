@@ -8,9 +8,9 @@ module.exports.addContact = function*(next){
   try {
     let job = yield Job.get(contact.jobID).run();
     if(job){
-      job.contacts.push({name: contact.text.c_name, 
-        email:contact.text.c_email,
-        phone: contact.text.c_phone 
+      job.contacts.push({name: contact.text.name, 
+        email:contact.text.email,
+        phone: contact.text.phone 
       });
       yield job.save();
       this.status = 200;

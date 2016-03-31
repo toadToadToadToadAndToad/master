@@ -48,8 +48,11 @@ class JobViewContainer extends Component {
 
   handleContact(event){
     event.preventDefault();
-    this.props.dispatch(addContact(this.state, this.props.jobID));
-    this.setState({ c_name: ' ', c_email: ' ', c_phone: ' ' });
+    this.props.dispatch(addContact({name:this.state.c_name, 
+      email:this.state.c_email,
+      phone:this.state.c_phone}, 
+      this.props.jobID));
+    this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
 
   handleText(e){
@@ -58,13 +61,14 @@ class JobViewContainer extends Component {
 
   handleNote(event){
     event.preventDefault();
-    this.props.dispatch(addNote(this.state, this.props.jobID));
-    this.setState({ noteTxt: ' ' });
+    console.log("NOTE STATE", {noteTxt: this.state.noteTxt})
+    this.props.dispatch(addNote({noteTxt: this.state.noteTxt}, this.props.jobID));
+    this.setState({ noteTxt: '' });
   }
 
   handleDeleteNote(index, props){
     this.props.dispatch(deleteNote(props.job.id, index))
-    this.setState({ text: e.target.value })
+    this.setState({ noteTxt: e.target.value })
   }
 
   handleDelete() {
@@ -74,7 +78,6 @@ class JobViewContainer extends Component {
   }
 
   handleDeleteNote(index, props){
-    console.log(props.job.id,"AND", index)
     this.props.dispatch(deleteNote(props.job.id, index))
   }
 

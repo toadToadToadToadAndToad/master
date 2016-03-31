@@ -88,10 +88,12 @@ function jobs(state = List(), action) {
     //       .slice(action.noteIndex + 1))
     //     }
     //   });
+
     case types.ADD_CONTACT:
+      console.log("SASASA",action.contactObj)
       state.forEach(function(job){
         if(job.get("id") === action.jobID){
-          console.log("SASASA",action.contactObj)
+          console.log("CONTACTS",job.get("contacts"))
           job.get("contacts").push(action.contactObj);
         }
       });
