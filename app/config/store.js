@@ -10,8 +10,8 @@ const store = createStore(
   numbersGameAppReducer,
   Map(),
   compose(
-    applyMiddleware(thunkMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : undefined
+    applyMiddleware(thunkMiddleware)
+    // window.devToolsExtension ? window.devToolsExtension() : undefined
   )
 );
 

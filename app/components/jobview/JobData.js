@@ -7,8 +7,11 @@ import Tab from 'material-ui/lib/tabs/tab';
 import Slider from 'material-ui/lib/slider';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import Dialog from 'material-ui/lib/dialog';
+import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -26,16 +29,18 @@ const styles = {
   },
   paper: {
     height: 100,
-    width: 100,
-    margin: 20,
-    textAlign: 'center',
+    width: 450,
+    marginTop: 20,
+    padding: 20,
+    textAlign: 'left',
     display: 'inline-block',
   },
   contactPaper: {
     height: 100,
-    width: 200,
-    margin: 20,
-    textAlign: 'center',
+    width: 450,
+    marginTop: 20,
+    padding: 20,
+    textAlign: 'left',
     display: 'inline-block',
   },
 };
@@ -70,14 +75,14 @@ const JobData = (props) => (
     <Tabs className="tabs">
       <Tab label="Notes" >
         <div>
-          <h2 style={styles.headline}>My Notes</h2>
+          <br />
           <TextField id="enterNote"
             hintText="Add your notes here"
             onEnterKeyDown={props.submitNote}
             value={props.state}
-            onChange={props.onTextAdd} 
+            onChange={props.onTextAdd}
           />
-            <br />
+            <br /><br />
             {props.job.notes.map((note, index) => {
               return (
                 <Paper
@@ -94,7 +99,7 @@ const JobData = (props) => (
       </Tab>
       <Tab label="Reminders" >
         <div>
-          <h2 style={styles.headline}>Reminders</h2>
+            <br />
               <DatePicker
                 hintText="Choose your date"
                 mode="landscape"
@@ -109,12 +114,19 @@ const JobData = (props) => (
                 value={props.value}
                 onChange={props.onTextChange}
               />
-              <br />
-              <RaisedButton
-                label="Post Reminder"
-                primary
+            <br /><br />
+
+
+              <FloatingActionButton
+                mini
+                className="button-circle"
                 onMouseDown={props.postReminder}
-              />
+                >
+                <ContentAdd />
+              </FloatingActionButton>
+              <span className="button-circle-text">Add Reminder</span>
+
+
               <Dialog
                 title="Reminder added"
                 modal
@@ -130,31 +142,30 @@ const JobData = (props) => (
               </Dialog>
         </div>
       </Tab>
-      <Tab 
+      <Tab
         label="Contacts" >
-        <div>
-        <h2 style={styles.headline}>My Contacts</h2>
+        <div><br />
           <TextField id="enterContactName"
             hintText="Contact name"
             onEnterKeyDown={props.submitContact}
             value={props.stateName}
             onChange={props.onContactName}/>
-          
+
           <TextField id="enterContactEmail"
             hintText="Contact email"
             onEnterKeyDown={props.submitContact}
             value={props.stateEmail}
             onChange={props.onContactEmail}/>
-            
+
           <TextField id="enterContactEmail"
             hintText="Contact phone"
             onEnterKeyDown={props.submitContact}
             value={props.statePhone}
             onChange={props.onContactPhone}/>
-
+          <br /><br />
             {props.job.contacts.map((contact, index) => {
               return (
-                <Paper zDepth={1} style={styles.contactPaper} 
+                <Paper zDepth={1} style={styles.contactPaper}
                 key={index} >
                   {contact.name} <br /> {contact.email} <br /> {contact.phone}
                 </Paper>
