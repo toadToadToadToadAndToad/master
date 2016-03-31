@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/lib/raised-button';
+
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
@@ -20,6 +21,7 @@ class JobViewContainer extends Component {
       c_name: '',
       c_email: '',
       c_phone: ''
+      open: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleText = this.handleText.bind(this);
@@ -32,6 +34,8 @@ class JobViewContainer extends Component {
     this.handleContactEmail = this.handleContactEmail.bind(this);
     this.handleContactPhone = this.handleContactPhone.bind(this);
     this.handleContact = this.handleContact.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   handleContactName(e){
@@ -96,6 +100,19 @@ class JobViewContainer extends Component {
     const reminder = this.state;
     this.props.dispatch(addEvent(reminder));
     this.setState({ date: '', text: '' });
+    this.handleOpen();
+  }
+
+  reminderConfirm() {
+    console.log("Dialog should pop");
+  }
+
+  handleOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   render() {
@@ -146,6 +163,8 @@ class JobViewContainer extends Component {
           formatDate={this.formatDate}
           onTextChange={this.onTextChange}
           value={this.state.text}
+          open={this.state.open}
+          handleClose={this.handleClose}
           submitNote={this.handleNote}
           state={this.state.noteTxt}
           onTextAdd={this.handleText}

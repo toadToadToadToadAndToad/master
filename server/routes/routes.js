@@ -7,8 +7,7 @@ const contacts = require('../controllers/contacts');
 const calendar = require('../controllers/calendar');
 const router = require('koa-router')();
 
-module.exports = function(app){
-
+module.exports = function (app) {
   app.use(router.routes());
 
   // Jobsearch Routes
@@ -26,12 +25,12 @@ module.exports = function(app){
   router.post('/api/addcontact', contacts.addContact);
   router.delete('/api/deletenote/:id/:noteid', notes.deleteNote);
 
-  //Google Calendar Route
-  router.get('/calendar', calendar.addCalendar)
+  // Google Calendar Route
+  router.get('/calendar', calendar.addCalendar);
 
   // Google Authentication Routes
   router.get('/auth/google', passport.authenticate('google', {
-    scope: ['email', 'profile','https://www.googleapis.com/auth/calendar'],
+    scope: ['email', 'profile', 'https://www.googleapis.com/auth/calendar'],
     accessType: 'offline',
     approvalPrompt: 'force',
   }));
@@ -46,6 +45,15 @@ module.exports = function(app){
     this.redirect('/');
   });
 
+  // Authenticating routes
+  function* authed(next) {
+    if (this.req.isAuthenticated()) {
+      yield next;
+    } else {
+      this.redirect('/');
+    }
+  }
+
   router.get('/dashboard', authed, function*(next) {
     yield next;
   });
@@ -55,13 +63,4 @@ module.exports = function(app){
   router.get('/addjob', authed, function*(next) {
     yield next;
   });
-
-  // authenticating routes
-  function* authed(next) {
-    if (this.req.isAuthenticated()) {
-      yield next;
-    } else {
-      this.redirect('/');
-    }
-  }
-}
+};

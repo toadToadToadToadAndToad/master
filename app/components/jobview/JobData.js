@@ -6,7 +6,9 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import Slider from 'material-ui/lib/slider';
 import RaisedButton from 'material-ui/lib/raised-button';
+import FlatButton from 'material-ui/lib/flat-button';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import Dialog from 'material-ui/lib/dialog';
 const injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
@@ -101,8 +103,9 @@ const JobData = (props) => (
                 onChange={props.onDateChange}
               />
               <TextField
-                multiLine={true}
                 hintText="Write your reminder here"
+                errorText="This field is required"
+                required
                 rows={2}
                 value={props.value}
                 onChange={props.onTextChange}
@@ -113,6 +116,19 @@ const JobData = (props) => (
                 primary
                 onMouseDown={props.postReminder}
               />
+              <Dialog
+                title="Reminder added"
+                action={props.action}
+                modal
+                open={props.open}
+              >
+                Your reminder has been added to the dashboard.
+              <FlatButton
+                label="OK"
+                primary
+                onMouseDown={props.handleClose}
+              />
+              </Dialog>
         </div>
       </Tab>
       <Tab 
