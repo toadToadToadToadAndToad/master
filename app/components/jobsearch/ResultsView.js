@@ -20,7 +20,7 @@ const tableSettings = {
   displayRowCheckbox: true,
   adjustForCheckbox: false,
   displaySelectAll: false,
-  height: '300',
+  height: '400',
 };
 
 function ResultsViewComponent(props) {
