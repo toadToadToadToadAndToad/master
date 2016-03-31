@@ -51,9 +51,9 @@ class JobViewContainer extends Component {
 
   handleContact(event){
     event.preventDefault();
-    this.props.dispatch(addContact({name:this.state.c_name, 
+    this.props.dispatch(addContact({name:this.state.c_name,
       email:this.state.c_email,
-      phone:this.state.c_phone}, 
+      phone:this.state.c_phone},
       this.props.jobID));
     this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
@@ -148,8 +148,6 @@ class JobViewContainer extends Component {
             onContactPhone={this.handleContactPhone}
             onContactEmail={this.handleContactEmail}
             onContactName={this.handleContactName} />
-
-          />
       </div>
     );
   }
