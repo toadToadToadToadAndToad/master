@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
+import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/route-transition.css';
 import '../styles/main.css';
@@ -25,12 +25,16 @@ class AppContainer extends Component {
     return { muiTheme: getMuiTheme(customMaterialTheme) };
   }
 
+  goToDashboard() {
+    browserHistory.push('/dashboard');
+  }
+
   render() {
     return (
       <div>
         <div className="app-bar">
           <div className="container">
-            <a href="/dashboard"><h1>Number's Game</h1></a>
+            <h1 onClick={this.goToDashboard}>Number's Game</h1>
             <div className={this.props.isWorking ? 'show' : 'hide'}>
               <CircularProgress
                 size={0.75}

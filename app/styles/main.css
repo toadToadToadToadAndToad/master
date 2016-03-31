@@ -48,6 +48,7 @@ h2 {
 .app-bar h1 {
   font-weight: 300;
   color: #263238;
+  cursor: pointer;
 }
 
 .app-bar {
