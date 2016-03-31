@@ -53,8 +53,15 @@ const JobData = (props) => (
       <Divider /><br />
       <b>Description</b><br /><br />{props.job.description}<br /><br />
       <Divider /><br />
-      <b>URL</b><br /><br /><a href={props.job.url}>{props.job.company}</a><br />
-      <Divider /><br />
+      <b>URL</b><br /><br /><a href={props.job.url}>{props.job.company}</a><br /><br />
+      <Divider />
+      <br />
+      <RaisedButton
+        className="delete-job"
+        label="Delete Job"
+        primary
+        onClick={props.onHandleDelete}
+      />
     </Paper>
     <Tabs className="tabs">
       <Tab label="Notes" >
@@ -116,6 +123,7 @@ JobData.propTypes = {
   job: PropTypes.object,
   state: PropTypes.string.isRequired,
   onTextAdd: PropTypes.func.isRequired,
+  onHandleDelete: PropTypes.func.isRequired,
 };
 
 export default JobData;

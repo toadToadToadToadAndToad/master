@@ -81,11 +81,9 @@ class JobViewContainer extends Component {
       <div>
           <h2>Job View</h2>
           <div className="deleteJob">
-            <FlatButton
-              label="Delete Job"
-              primary
-              onClick={this.handleDelete}
-            />
+            <FlatButton label="New" disabled />
+            <FlatButton label="Pending" primary />
+            <FlatButton label="Closed" primary />
           </div>
           <JobData
             job={this.props.job}
@@ -97,6 +95,7 @@ class JobViewContainer extends Component {
             submitNote={this.handleNote}
             state={this.state.noteTxt}
             onTextAdd={this.handleText}
+            onHandleDelete={this.handleDelete}
             onDeleteNote={this.handleDeleteNote}
             formatDate={this.formatDate}
             submitNote={this.handleNote}
@@ -105,7 +104,6 @@ class JobViewContainer extends Component {
             onDeleteNote={this.handleDeleteNote}
           />
       </div>
-
     );
   }
 }
