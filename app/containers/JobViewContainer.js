@@ -6,6 +6,7 @@ import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
 import DeleteJobComponent from '../components/jobview/DeleteJob';
 import Notes from '../components/jobview/NotesComponent';
+import FlatButton from 'material-ui/lib/flat-button';
 import { addNote, deleteNote } from '../config/actions';
 import axios from 'axios';
 import { deleteJob, addEvent, setEvents } from '../config/actions';
@@ -44,6 +45,7 @@ class JobViewContainer extends Component {
   }
 
   handleDelete() {
+    console.log('bob');
     this.props.dispatch(deleteJob(this.props.jobID));
     browserHistory.push('/dashboard');
   }
@@ -77,30 +79,31 @@ class JobViewContainer extends Component {
     let notesTable = '';
     return (
       <div>
-        <RaisedButton
-          containerElement={<Link to="/dashboard" />}
-          label="Dashboard"
-        />
-      <br /><br />
-        <PageHeader>Job View</PageHeader>
-        <DeleteJobComponent handleDelete={this.handleDelete} />
-        <JobData 
-          job={this.props.job} 
-          postReminder={this.postReminder} 
-          onDateChange={this.onDateChange}
-          onTextChange={this.onTextChange}
-          dateVal={this.state.date}
-          value={this.state.text}
-          submitNote={this.handleNote}
-          state={this.state.noteTxt}
-          onTextAdd={this.handleText} 
-          onDeleteNote={this.handleDeleteNote} 
-          formatDate={this.formatDate}
-          submitNote={this.handleNote}
-          state={this.state.text}
-          onTextAdd={this.handleText} 
-          onDeleteNote={this.handleDeleteNote}
-        />
+          <h2>Job View</h2>
+          <div className="deleteJob">
+            <FlatButton
+              label="Delete Job"
+              primary
+              onClick={this.handleDelete}
+            />
+          </div>
+          <JobData
+            job={this.props.job}
+            postReminder={this.postReminder}
+            onDateChange={this.onDateChange}
+            onTextChange={this.onTextChange}
+            dateVal={this.state.date}
+            value={this.state.text}
+            submitNote={this.handleNote}
+            state={this.state.noteTxt}
+            onTextAdd={this.handleText}
+            onDeleteNote={this.handleDeleteNote}
+            formatDate={this.formatDate}
+            submitNote={this.handleNote}
+            state={this.state.text}
+            onTextAdd={this.handleText}
+            onDeleteNote={this.handleDeleteNote}
+          />
       </div>
 
     );
@@ -129,4 +132,3 @@ JobViewContainer.propTypes = {
 };
 
 export default connect(mapStateToProps)(JobViewContainer);
-
