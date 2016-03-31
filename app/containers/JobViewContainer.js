@@ -19,7 +19,8 @@ class JobViewContainer extends Component {
       text: '',
       c_name: '',
       c_email: '',
-      c_phone: ''
+      c_phone: '',
+      open: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleText = this.handleText.bind(this);
@@ -32,6 +33,8 @@ class JobViewContainer extends Component {
     this.handleContactEmail = this.handleContactEmail.bind(this);
     this.handleContactPhone = this.handleContactPhone.bind(this);
     this.handleContact = this.handleContact.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   handleContactName(e){
@@ -55,16 +58,17 @@ class JobViewContainer extends Component {
     this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
 
-  handleText(e){
-    this.setState({ noteTxt: e.target.value })
+  handleText(e) {
+    this.setState({ noteTxt: e.target.value });
   }
 
-  handleNote(event){
+  handleNote(event) {
     event.preventDefault();
     console.log("NOTE STATE", {noteTxt: this.state.noteTxt})
     this.props.dispatch(addNote({noteTxt: this.state.noteTxt}, this.props.jobID));
     this.setState({ noteTxt: '' });
   }
+
 
   handleDeleteNote(index, props){
     this.props.dispatch(deleteNote(props.job.id, index))
@@ -77,12 +81,8 @@ class JobViewContainer extends Component {
     browserHistory.push('/dashboard');
   }
 
-  handleDeleteNote(index, props){
-    this.props.dispatch(deleteNote(props.job.id, index))
-  }
-
- formatDate(date) {
-    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  formatDate(date) {
+    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
   }
 
   onDateChange(err, value) {
@@ -95,14 +95,22 @@ class JobViewContainer extends Component {
     this.setState({ text: e.target.value });
   }
 
-  postReminder(event, dispatch) {
+  postReminder() {
     const reminder = this.state;
     this.props.dispatch(addEvent(reminder));
     this.setState({ date: '', text: '' });
+    this.handleOpen();
+  }
+
+  handleOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   render() {
-    let notesTable = '';
     return (
       <div>
           <h2>Job View</h2>
@@ -118,6 +126,13 @@ class JobViewContainer extends Component {
             onTextChange={this.onTextChange}
             dateVal={this.state.date}
             value={this.state.text}
+
+            onHandleDelete={this.handleDelete}
+            onDeleteNote={this.handleDeleteNote}
+            handleOpen={this.handleOpen}
+            handleClose={this.handleClose}
+            open={this.state.open}
+
             formatDate={this.formatDate}
             onHandleDelete={this.handleDelete}
 

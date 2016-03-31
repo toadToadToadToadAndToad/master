@@ -13,11 +13,11 @@ let Job = thinky.createModel('Job', {
   url: type.string(),
   contact: type.array(),
   idUser: type.string(),
-  notes: type.array()
+  notes: type.array(),
 });
 
 module.exports = Job;
 
-// user require required here to avoid circular reference
+// User required here to avoid circular reference
 const User = require('./user');
 Job.belongsTo(User, 'user', 'idUser', 'id');

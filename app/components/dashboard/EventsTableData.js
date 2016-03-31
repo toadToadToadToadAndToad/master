@@ -33,7 +33,6 @@ function EventsTableData(props) {
         fixedFooter={tableSettings.fixedFooter}
         selectable={tableSettings.selectable}
         multiSelectable={tableSettings.multiSelectable}
-        // TODO: see comment above handleRowClick in DashboardContainer.js
         onCellClick={props.onRowClick}
       >
         <TableHeader

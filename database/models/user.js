@@ -15,6 +15,6 @@ let User = thinky.createModel('User', {
 
 module.exports = User;
 
-// job require required here to avoid circular reference
+// Job required here to avoid circular reference
 const Job = require('./job');
 User.hasMany(Job, 'jobs', 'id', 'idUser');

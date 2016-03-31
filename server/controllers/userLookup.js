@@ -1,6 +1,8 @@
 'use strict';
+
 const User = require('../../database/models/user');
-// decoding cookie and retrieving user from DB
+
+// Decoding cookie and retrieving user from DB
 module.exports.lookup = function*() {
   const cookie = this.req.headers.cookie.split('=')[1].split(';')[0];
   const cookieBuffer = new Buffer(cookie, 'base64');
