@@ -89,3 +89,14 @@ h2 {
 .deleteJob {
   left: 160px;
 }
+
+.jobview-data {
+  float: left;
+  width: 45%;
+  margin-bottom: 100px;
+}
+
+.tabs {
+  float: right;
+  width: 45%;
+}
