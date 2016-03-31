@@ -11,10 +11,7 @@ let Job = thinky.createModel('Job', {
   type: type.string(),
   description: type.string(),
   url: type.string(),
-  contact: {
-    email: type.string(),
-    phone: type.number(),
-  },
+  contact: type.array(),
   idUser: type.string(),
   notes: type.array()
 });

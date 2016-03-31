@@ -3,6 +3,7 @@ const user = require('../controllers/user');
 const passport = require('../controllers/auth');
 const userLookup = require('../controllers/userLookup');
 const notes = require('../controllers/notes');
+const contacts = require('../controllers/contacts');
 const calendar = require('../controllers/calendar');
 const router = require('koa-router')();
 
@@ -21,8 +22,9 @@ module.exports = function(app){
   router.delete('/api/jobs/:id', job.deleteJob);
   router.put('/api/jobs/', job.updateJob);
   router.get('/api/me', userLookup.lookup);
-  router.post('/api/addnote', notes.addNote)
-  router.delete('/api/deletenote/:id/:noteid', notes.deleteNote)
+  router.post('/api/addnote', notes.addNote);
+  router.post('/api/addcontact', contacts.addContact);
+  router.delete('/api/deletenote/:id/:noteid', notes.deleteNote);
 
   //Google Calendar Route
   router.get('/calendar', calendar.addCalendar)

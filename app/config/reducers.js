@@ -88,6 +88,13 @@ function jobs(state = List(), action) {
     //       .slice(action.noteIndex + 1))
     //     }
     //   });
+    case types.ADD_CONTACT:
+      state.forEach(function(job){
+        if(job.get("id") === action.jobID){
+          console.log("SASASA",action.contactObj)
+          job.get("contacts").push(action.contactObj);
+        }
+      });
     default:
       return state;
   }
