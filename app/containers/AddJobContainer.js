@@ -77,7 +77,7 @@ class AddJobContainer extends Component {
 
     return (
       <div>
-        <h1>Add Job</h1>
+        <h2>Add Job</h2>
         <form
           className="job-form"
         >
