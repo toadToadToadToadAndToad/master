@@ -105,7 +105,6 @@ class JobViewContainer extends Component {
     let notesTable = '';
     return (
       <div>
-<<<<<<< 223a2655dbf82d3dc3953e95d3334a587e62ea90
           <h2>Job View</h2>
           <div className="deleteJob">
             <FlatButton label="New" disabled />
@@ -119,18 +118,22 @@ class JobViewContainer extends Component {
             onTextChange={this.onTextChange}
             dateVal={this.state.date}
             value={this.state.text}
+            formatDate={this.formatDate}
+            onHandleDelete={this.handleDelete}
 
             submitNote={this.handleNote}
             state={this.state.noteTxt}
             onTextAdd={this.handleText}
-            onHandleDelete={this.handleDelete}
             onDeleteNote={this.handleDeleteNote}
 
-            formatDate={this.formatDate}
-            submitNote={this.handleNote}
-            state={this.state.text}
-            onTextAdd={this.handleText}
-            onDeleteNote={this.handleDeleteNote}
+            submitContact={this.handleContact}
+            stateName={this.state.c_name}
+            stateEmail={this.state.c_email}
+            statePhone={this.state.c_phone}
+            onContactPhone={this.handleContactPhone}
+            onContactEmail={this.handleContactEmail}
+            onContactName={this.handleContactName} />
+
           />
       </div>
     );

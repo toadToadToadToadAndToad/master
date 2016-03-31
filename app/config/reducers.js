@@ -80,6 +80,7 @@ function jobs(state = List(), action) {
           job.get("notes").push(action.text.noteTxt);
         }
       });
+      return state;
     // case types.DELETE_NOTE_SUCCESS: 
     //   state.forEach(function(job){
     //     if(job.get("id") === action.jobID){
@@ -90,13 +91,12 @@ function jobs(state = List(), action) {
     //   });
 
     case types.ADD_CONTACT:
-      console.log("SASASA",action.contactObj)
       state.forEach(function(job){
         if(job.get("id") === action.jobID){
-          console.log("CONTACTS",job.get("contacts"))
           job.get("contacts").push(action.contactObj);
         }
       });
+      return state;
     default:
       return state;
   }
