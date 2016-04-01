@@ -1,8 +1,8 @@
 # Number's Game
 
-Numbers Game makes job hunting enjoyable and easy by allowing you to compile jobs from other sites, and keep track of jobs in your pipeline. 
+Numbers Game makes the job search organized and systematic by allowing you to compile jobs from different sites, and keep track of jobs in your pipeline. 
 
-Currently, there are no comprehensive web apps to help job seekers organize their job search.  While many job websites have features where you can save interesting jobs or jobs you’ve applied to, there is no site to help aggregate this information across sites.  Numbers Game intends to solve this problem by being a place where a job seeker can search for jobs, save them, and keep track of job-related deadlines and interview information. The name “Numbers Game” comes from the idea from sales, that consistently applying to a certain quantity of jobs will help you actually find one.  Our app will also provide user feedback to make sure they are meeting their job search targets.  
+Currently, there are no comprehensive web apps to help job seekers organize their job search.  Number's Game intends to solve this problem by being a place where a job seeker can search for jobs, save them, and keep track of job-related deadlines and interview information. The name “Numbers Game” comes from the idea from sales, that consistently applying to a certain quantity of jobs will help you actually find one.  
 
 ## Team
 
