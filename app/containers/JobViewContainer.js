@@ -148,6 +148,7 @@ class JobViewContainer extends Component {
             onContactPhone={this.handleContactPhone}
             onContactEmail={this.handleContactEmail}
             onContactName={this.handleContactName}
+          />
       </div>
     );
   }

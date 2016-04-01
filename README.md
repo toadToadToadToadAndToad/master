@@ -1,10 +1,12 @@
 # Number's Game
 
-Numbers Game makes job hunting enjoyable and easy by allowing you to compile jobs from other sites, and keep track of jobs in your pipeline.
+Numbers Game makes job hunting enjoyable and easy by allowing you to compile jobs from other sites, and keep track of jobs in your pipeline. 
+
+Currently, there are no comprehensive web apps to help job seekers organize their job search.  While many job websites have features where you can save interesting jobs or jobs you’ve applied to, there is no site to help aggregate this information across sites.  Numbers Game intends to solve this problem by being a place where a job seeker can search for jobs, save them, and keep track of job-related deadlines and interview information. The name “Numbers Game” comes from the idea from sales, that consistently applying to a certain quantity of jobs will help you actually find one.  Our app will also provide user feedback to make sure they are meeting their job search targets.  
 
 ## Team
 
-  - __Product Owner__: EMichael Dziedzic
+  - __Product Owner__: Michael Dziedzic
   - __Scrum Master__: Aimee Rosato
   - __Development Team Members__: Ian Akers, Tim Dang, Fanny Vasquez
 
@@ -28,11 +30,43 @@ node server/server.js
 
 ## Requirements
 
-- Every npm Module
+```sh
+"axios": "^0.9.1",
+"co-body": "^4.0.0",
+"google-auth-library": "^0.9.7",
+"googleapis": "^4.0.0",
+"immutable": "^3.7.6",
+"kcors": "^1.1.0",
+"koa": "^1.2.0",
+"koa-passport": "^1.3.0",
+"koa-router": "^5.4.0",
+"koa-session": "^3.3.1",
+"koa-spa": "^0.1.3",
+"material-ui": "^0.15.0-alpha.1",
+"passport-google": "^0.3.0",
+"passport-google-oauth": "^1.0.0",
+"path": "^0.12.7",
+"react": "^0.14.6",
+"react-addons-css-transition-group": "^0.14.6",
+"react-addons-test-utils": "^0.14.7",
+"react-bootstrap": "^0.28.3",
+"react-dom": "^0.14.6",
+"react-redux": "^4.4.1",
+"react-router": "^2.0.0-rc5",
+"react-router-redux": "^4.0.0",
+"react-tap-event-plugin": "^0.2.2",
+"redux": "^3.3.1",
+"redux-immutable": "^3.0.6",
+"redux-thunk": "^2.0.1",
+"request": "^2.69.0",
+"rethinkdb": "^2.2.2",
+"superagent": "^1.8.2",
+"thinky": "^2.2.5"
+```
 
 ## Development
 
-Development for this project was completed during Hack Reactor's Thesis project sprint. It took several intensive weeks and five dedicated Toads to deliver the working product you see here.
+Development for this project was completed during Hack Reactor's Thesis project sprint. It took several intensive weeks and five dedicated developers to deliver the working product you see here.
 
 ### Installing Dependencies
 
