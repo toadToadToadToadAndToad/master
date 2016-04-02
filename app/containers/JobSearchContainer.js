@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import SearchBar from '../components/jobsearch/SearchBar';
 import ResultsViewComponent from '../components/jobsearch/ResultsView';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
-import PageHeader from 'react-bootstrap/lib/PageHeader';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import { addJob, dbRequest, dbSuccess, dbFailure } from '../config/actions';
@@ -40,9 +38,9 @@ class JobSearchContainer extends Component {
     console.log(html);
     html = html.replace('\n\n', ' ');
     html = html.replace('\n', ' ');
-    var tmp = document.createElement("DIV");
+    const tmp = document.createElement('DIV');
     tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
+    return tmp.textContent || tmp.innerText || '';
   }
 
   handleKeyChange(e) {
@@ -62,8 +60,6 @@ class JobSearchContainer extends Component {
   handleSearchSubmit(keyword, location) {
     this.setState({ data: [] });
     this.setState({ jobsSelected: {} });
-    // TODO add loading spinner
-    // TODO incorporate variable from SiteSelection
     let githubParams = '/api/jobs/github/' + keyword.replace(/ /g, '+');
     if (location.length) {
       githubParams += '/' + location.replace(/ /g, '+');
@@ -96,7 +92,7 @@ class JobSearchContainer extends Component {
       .catch((response) => console.log('error', response));
   }
 
-  handleRowClick(row, col) {
+  handleRowClick(row) {
     const job = this.state.data[row];
 
     if (this.state.jobsSelected[job.id]) {
@@ -125,7 +121,6 @@ class JobSearchContainer extends Component {
 
   handleClose() {
     browserHistory.push('/dashboard');
-    // this.setState({ open: false });
   }
 
   render() {

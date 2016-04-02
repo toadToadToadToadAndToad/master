@@ -1,8 +1,7 @@
-import { List, Map, fromJS } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import reducer from '../../../app/config/reducers';
 
 describe('reducer', () => {
-
   it('handles SET_STATE', () => {
     const initialState = Map();
     const action = {
@@ -144,5 +143,4 @@ describe('reducer', () => {
       },
     }));
   });
-
 });

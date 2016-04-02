@@ -2,11 +2,11 @@
 const Job = require('../../database/models/job');
 const parse = require('co-body');
 
-module.exports.addNote = function*(next){
-  let note = yield parse(this);
-    try {
-    let job = yield Job.get(note.jobID).run();
-    if(job){
+module.exports.addNote = function*(next) {
+  const note = yield parse(this);
+  try {
+    const job = yield Job.get(note.jobID).run();
+    if (job) {
       job.notes.push(note.text.noteTxt);
       yield job.save();
       this.status = 200;

@@ -17,13 +17,16 @@ module.exports.list = function*() {
     const unformattedJobs = yield axios.get('https://jobs.github.com/positions.json' + queryString);
     jobs = unformattedJobs.data;
   }
+
   // format the querey and result from usajobs
   if (this.params.source === 'usajobs') {
     let queryString = '?Keyword=' + this.params.keywords;
     if (this.params.city) {
       queryString += '&LocationName=' + this.params.city;
     }
-    const unformattedJobs = yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
+    const unformattedJobs =
+      yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
+
     // matching object keys with github's results
     if (!!unformattedJobs.data.JobData) {
       jobs = unformattedJobs.data.JobData.map((object) => {

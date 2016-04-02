@@ -5,7 +5,7 @@ import zIndex from 'material-ui/lib/styles/zIndex';
 
 export default {
   spacing: Spacing,
-  zIndex: zIndex,
+  zIndex,
   fontFamily: 'Fira Sans, sans-serif',
   palette: {
     primary1Color: Colors.pinkA200,

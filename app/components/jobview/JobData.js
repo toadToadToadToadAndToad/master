@@ -4,7 +4,6 @@ import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
-import Slider from 'material-ui/lib/slider';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
@@ -45,10 +44,6 @@ const styles = {
   },
 };
 
-function handleActive(tab) {
-  alert(`A tab with this route property ${tab.props.route} was activated.`);
-}
-
 const JobData = (props) => (
   <div>
     <Paper zDepth={1} style={styles} className="jobview-data">
@@ -86,10 +81,10 @@ const JobData = (props) => (
             {props.job.notes.map((note, index) => {
               return (
                 <Paper
-                 zDepth={1}
-                 style={styles.paper}
-                 key={index}
-                 onClick={props.onDeleteNote.bind(this, index, props)}
+                  zDepth={1}
+                  style={styles.paper}
+                  key={index}
+                  onClick={props.onDeleteNote.bind(this, index, props)}
                 >
                   {note}
                 </Paper>
@@ -116,12 +111,11 @@ const JobData = (props) => (
               />
             <br /><br />
 
-
               <FloatingActionButton
                 mini
                 className="button-circle"
                 onMouseDown={props.postReminder}
-                >
+              >
                 <ContentAdd />
               </FloatingActionButton>
               <span className="button-circle-text">Add Reminder</span>
@@ -142,31 +136,32 @@ const JobData = (props) => (
               </Dialog>
         </div>
       </Tab>
-      <Tab
-        label="Contacts" >
+      <Tab label="Contacts" >
         <div><br />
           <TextField id="enterContactName"
             hintText="Contact name"
             onEnterKeyDown={props.submitContact}
             value={props.stateName}
-            onChange={props.onContactName}/>
-
+            onChange={props.onContactName}
+          />
           <TextField id="enterContactEmail"
             hintText="Contact email"
             onEnterKeyDown={props.submitContact}
             value={props.stateEmail}
-            onChange={props.onContactEmail}/>
-
+            onChange={props.onContactEmail}
+          />
           <TextField id="enterContactEmail"
             hintText="Contact phone"
             onEnterKeyDown={props.submitContact}
             value={props.statePhone}
-            onChange={props.onContactPhone}/>
+            onChange={props.onContactPhone}
+          />
           <br /><br />
             {props.job.contacts.map((contact, index) => {
               return (
                 <Paper zDepth={1} style={styles.contactPaper}
-                key={index} >
+                  key={index}
+                >
                   {contact.name} <br /> {contact.email} <br /> {contact.phone}
                 </Paper>
               );

@@ -48,7 +48,7 @@ class AppContainer extends Component {
                   className="material-icons"
                   color="#263238"
                   hoverColor="#ff4081"
-                  >exit_to_app</FontIcon>
+                >exit_to_app</FontIcon>
               </a>
             </div>
           </div>

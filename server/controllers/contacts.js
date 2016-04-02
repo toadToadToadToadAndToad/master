@@ -2,15 +2,15 @@
 const Job = require('../../database/models/job');
 const parse = require('co-body');
 
-module.exports.addContact = function*(next){
-  let contact = yield parse(this);
-  console.log(contact)
+module.exports.addContact = function*(next) {
+  const contact = yield parse(this);
   try {
-    let job = yield Job.get(contact.jobID).run();
-    if(job){
-      job.contacts.push({name: contact.text.name, 
-        email:contact.text.email,
-        phone: contact.text.phone 
+    const job = yield Job.get(contact.jobID).run();
+    if (job) {
+      job.contacts.push({
+        name: contact.text.name,
+        email: contact.text.email,
+        phone: contact.text.phone,
       });
       yield job.save();
       this.status = 200;
@@ -18,4 +18,4 @@ module.exports.addContact = function*(next){
   } catch (e) {
     console.error(e);
   }
-}
+};

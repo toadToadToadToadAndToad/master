@@ -32,7 +32,7 @@ class AddJobContainer extends Component {
   }
 
   handleTextInput(event, id) {
-    var update = {};
+    const update = {};
     update[event.target.id] = event.target.value;
     this.setState(update);
   }
@@ -60,7 +60,7 @@ class AddJobContainer extends Component {
       type: jobTypes[this.state.type - 1],
       url: this.state.url,
       description: this.state.description,
-    }
+    };
 
     this.props.dispatch(addJob(job));
     this.handleOpen();
@@ -119,8 +119,7 @@ class AddJobContainer extends Component {
             onChange={this.handleTextInput}
           />
         </form>
-        <div
-          className="addJobButton-aj">
+        <div className="addJobButton-aj">
             <FloatingActionButton
               mini
               className="button-circle"

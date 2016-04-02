@@ -4,21 +4,15 @@ import { Map } from 'immutable';
 import thunkMiddleware from 'redux-thunk';
 
 import numbersGameAppReducer from './reducers';
-import { rehydrateDb, setEvents } from './actions';
 
 const store = createStore(
   numbersGameAppReducer,
   Map(),
   compose(
     applyMiddleware(thunkMiddleware)
+    // uncomment to use redux dev tool in google chrome
     // window.devToolsExtension ? window.devToolsExtension() : undefined
   )
 );
-
-// store.dispatch(setEvents([
-//   { date: 'Monday', text: 'Be sure to wear pants.' },
-//   { date: 'Tuesday', text: 'Bring toad demo.' },
-//   { date: 'Wednesday', text: 'Microsoft' }, { date: 'Thurs', text: 'hi' }, { date: 'Fro', text: 'again' }
-// ]));
 
 export default store;
