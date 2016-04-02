@@ -11,6 +11,7 @@ passport.use(new GoogleStrategy({
   returnURL: 'http://localhost:3000/auth/google/return',
   callbackURL: 'http://localhost:3000/auth/google/callback',
 },
+
 // Profile contains all the personal data returned
 (accessToken, refreshToken, profile, done) => {
   const userInfo = {

@@ -3,7 +3,7 @@
 const thinky = require('../thinkylocal');
 const type = thinky.type;
 
-let User = thinky.createModel('User', {
+const User = thinky.createModel('User', {
   id: type.string(),
   username: type.string(),
   email: type.string(),

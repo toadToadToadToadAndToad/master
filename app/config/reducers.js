@@ -66,10 +66,9 @@ function jobs(state = List(), action) {
     case types.ADD_JOB_SUCCESS:
       return state.update(jobs => jobs.push(Map(action.job)));
     case types.DELETE_JOB_SUCCESS:
-      var idx;
-      state.forEach(function(job, i) {
-        // Note: job is a Map object, so needed to use job.get("id") to access id
-        if (job.get("id") === action.jobID){
+      const idx;
+      state.forEach((job, i) => {
+        if (job.get('id') === action.jobID) {
           idx = i;
         }
       });
@@ -81,15 +80,6 @@ function jobs(state = List(), action) {
         }
       });
       return state;
-    // case types.DELETE_NOTE_SUCCESS: 
-    //   state.forEach(function(job){
-    //     if(job.get("id") === action.jobID){
-    //       job.get("notes").slice(0, action.noteIndex)
-    //       .concat(job.get("notes")
-    //       .slice(action.noteIndex + 1))
-    //     }
-    //   });
-
     case types.ADD_CONTACT:
       state.forEach(function(job){
         if(job.get("id") === action.jobID){
@@ -112,8 +102,6 @@ function events(state = List(), action) {
     case types.ADD_EVENT:
       console.log("Inside of add_event in reducer ", action.event);
       return state.update(events => events.push(Map(action.event)));
-    // case types.UPDATE_EVENT:
-    // case types.DELETE_EVENT:
     default:
       return state;
   }
@@ -135,29 +123,12 @@ function contacts(state = List(), action) {
   }
 }
 
-/*
- * notes
- */
-function notes(state = List(), action) {
-  switch (action.type) {
-    case types.ADD_NOTE_SUCCESS:
-      //return
-    case types.DELETE_NOTE:
-      //return
-    case types.EDIT_NOTE:
-      //return
-    default:
-      return state;
-  }
-}
-
 const numbersGameAppReducer = combineReducers({
   app,
   db,
   jobs,
   events,
   contacts,
-  // notes
 });
 
 export default numbersGameAppReducer;

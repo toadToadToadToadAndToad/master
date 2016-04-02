@@ -1,30 +1,14 @@
 'use strict';
 
-const r = require ('rethinkdb');
-const chai = require ('chai');
-const User = require ('../../../database/models/user');
-const Job = require ('../../../database/models/job');
-const thinky = require ('../../../database/thinkylocal.js');
+const chai = require('chai');
+const User = require('../../../database/models/user');
+const Job = require('../../../database/models/job');
 
-let expect = chai.expect;
+const expect = chai.expect;
 
 describe('Database Model Testing', () => {
-  // Did NOT end up needed these for tests below, but may need for future db tests
-  // beforeEach((done) => {
-  //   let connection = null;
-  //   r.connect({ host: 'localhost', port: 28015, db: 'test', }, (err, conn) => {
-  //     if (err) throw err;
-  //     connection = conn;
-  //   });
-  //   done();
-  // });
-
-  // afterEach(() => {
-  //   r.dbDrop('test');
-  // });
-
   it('should create a user', () => {
-    var user = new User({});
+    const user = new User({});
     expect(user).to.be.a('object');
   });
 
@@ -32,7 +16,7 @@ describe('Database Model Testing', () => {
     const username = 'bsmith';
     const email = 'bsmith@io.io';
     const password = 'fjalskdjf';
-    const user = new User ({ username, email, password });
+    const user = new User({ username, email, password });
     expect(user.username).to.equal('bsmith');
     expect(user.email).to.equal('bsmith@io.io');
     expect(user.password).to.equal('fjalskdjf');

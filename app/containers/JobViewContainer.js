@@ -1,14 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/lib/raised-button';
-import PageHeader from 'react-bootstrap/lib/PageHeader';
 import JobData from '../components/jobview/JobData';
-import DeleteJobComponent from '../components/jobview/DeleteJob';
-import Notes from '../components/jobview/NotesComponent';
 import FlatButton from 'material-ui/lib/flat-button';
-import { addNote, deleteNote, deleteJob, addEvent, setEvents, addContact } from '../config/actions';
-import axios from 'axios';
+import { addNote, deleteNote, deleteJob, addEvent, addContact } from '../config/actions';
 
 class JobViewContainer extends Component {
   constructor(props) {
@@ -37,24 +32,35 @@ class JobViewContainer extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  handleContactName(e){
-    this.setState({ c_name: e.target.value })
+  onTextChange(e) {
+    this.setState({ text: e.target.value });
   }
 
-  handleContactEmail(e){
-    this.setState({ c_email: e.target.value })
+  onDateChange(err, value) {
+    const newDate = this.formatDate(value);
+    const stringDate = newDate.toString();
+    this.setState({ date: stringDate });
   }
 
-  handleContactPhone(e){
-    this.setState({ c_phone: e.target.value })
+  handleContactName(e) {
+    this.setState({ c_name: e.target.value });
   }
 
-  handleContact(event){
+  handleContactEmail(e) {
+    this.setState({ c_email: e.target.value });
+  }
+
+  handleContactPhone(e) {
+    this.setState({ c_phone: e.target.value });
+  }
+
+  handleContact(event) {
     event.preventDefault();
-    this.props.dispatch(addContact({name:this.state.c_name,
-      email:this.state.c_email,
-      phone:this.state.c_phone},
-      this.props.jobID));
+    this.props.dispatch(addContact({
+      name: this.state.c_name,
+      email: this.state.c_email,
+      phone: this.state.c_phone,
+    }, this.props.jobID));
     this.setState({ c_name: '', c_email: '', c_phone: '' });
   }
 
@@ -64,15 +70,14 @@ class JobViewContainer extends Component {
 
   handleNote(event) {
     event.preventDefault();
-    console.log("NOTE STATE", {noteTxt: this.state.noteTxt})
-    this.props.dispatch(addNote({noteTxt: this.state.noteTxt}, this.props.jobID));
+    this.props.dispatch(addNote({ noteTxt: this.state.noteTxt }, this.props.jobID));
     this.setState({ noteTxt: '' });
   }
 
 
-  handleDeleteNote(index, props){
-    this.props.dispatch(deleteNote(props.job.id, index))
-    this.setState({ noteTxt: e.target.value })
+  handleDeleteNote(index, props) {
+    this.props.dispatch(deleteNote(props.job.id, index));
+    this.setState({ noteTxt: e.target.value });
   }
 
   handleDelete() {
@@ -83,16 +88,6 @@ class JobViewContainer extends Component {
 
   formatDate(date) {
     return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-  }
-
-  onDateChange(err, value) {
-    const newDate = this.formatDate(value);
-    const stringDate = newDate.toString();
-    this.setState({ date: stringDate });
-  }
-
-  onTextChange(e) {
-    this.setState({ text: e.target.value });
   }
 
   postReminder() {

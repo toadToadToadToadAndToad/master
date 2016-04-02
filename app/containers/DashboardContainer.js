@@ -1,18 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
-import RaisedButton from 'material-ui/lib/raised-button';
-import PageHeader from 'react-bootstrap/lib/PageHeader';
 import axios from 'axios';
 import { initializeUser, setCurrentJob } from '../config/actions';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
-
-const style = {
-  marginRight: 20,
-};
 
 class DashboardContainer extends Component {
   constructor() {
@@ -25,11 +19,11 @@ class DashboardContainer extends Component {
     // store. if not then this is the first visit to the dashboard
     // after the user logs in and some setup needs to be
     // done (initializeUser() which in turn rehydrates the redux
-    // store from the db with the user's data)
+    // store from the db with the user's data).
     if (!this.props.app.dbUserID) {
       const context = this;
       // retrieve cookie to get the user's db id
-      axios.get('/api/me').then(function(result) {
+      axios.get('/api/me').then(result => {
         context.props.dispatch(initializeUser(result.data[0].id));
       });
     }
@@ -53,17 +47,16 @@ class DashboardContainer extends Component {
     browserHistory.push('/jobview');
   }
 
-  goToJobSearch(event) {
+  goToJobSearch() {
     browserHistory.push('/jobsearch');
   }
 
-  goToAddJob(event) {
+  goToAddJob() {
     browserHistory.push('/addjob');
   }
 
   render() {
     // only show the table of job data if it is not empty
-    console.log("Inside of dashboard render ", this.props.events);
     let jobsTable = '';
     if (this.props.jobs.length) {
       jobsTable = (
@@ -86,27 +79,25 @@ class DashboardContainer extends Component {
     return (
       <div>
         {jobsTable}<br /><br />
-
-      <div className="addJobButtons">
-        <FloatingActionButton
-          mini
-          className="button-circle"
-          onMouseDown={this.goToJobSearch}
+        <div className="addJobButtons">
+          <FloatingActionButton
+            mini
+            className="button-circle"
+            onMouseDown={this.goToJobSearch}
           >
-          <ContentAdd />
-        </FloatingActionButton>
-        <span className="button-circle-text">Job Search</span>
-        &nbsp;&nbsp;
-        <FloatingActionButton
-          mini
-          className="button-circle"
-          onMouseDown={this.goToAddJob}
+            <ContentAdd />
+          </FloatingActionButton>
+          <span className="button-circle-text">Job Search</span>
+          &nbsp;&nbsp;
+          <FloatingActionButton
+            mini
+            className="button-circle"
+            onMouseDown={this.goToAddJob}
           >
-          <ContentAdd />
-        </FloatingActionButton>
-        <span className="button-circle-text">Add Job</span>
-      </div>
-
+            <ContentAdd />
+          </FloatingActionButton>
+          <span className="button-circle-text">Add Job</span>
+        </div>
         <br /><br /><br />
         {eventsTable}
         <br /><br /><br />

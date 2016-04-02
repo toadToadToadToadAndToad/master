@@ -1,12 +1,10 @@
 import axios from 'axios';
 import * as types from './actionTypes';
-import store from './store';
 import { toJS } from 'immutable';
 
 /*
  * rethinkdb urls
  */
-// TODO: these should probably go in a config file
 const jobUrl = 'http://localhost:3000/api/jobs/';
 const getJobsUrl = 'http://localhost:3000/api/getjobs/';
 const deleteJobUrl = 'http://localhost:3000/api/jobs/';
@@ -53,35 +51,6 @@ export function rehydrateDb(userId) {
         dispatch(dbSuccess());
       })
       .catch(err => dispatch(dbFailure(err)));
-
-    // work in progress
-    // or just get all of the user info at once!
-    // should really have a server-side redux store
-    // TODO: this needs to be finished, one way or another
-    // return axios.get(userUrl)
-    //   .then(res => {
-    //     dispatch(setJobs(res.data.jobs));
-    //     dispatch(setEvents(res.data.events));
-    //     dispatch(setContacts(res.data.contacts));
-    //     dispatch(setUserInfo(res.data.userInfo));
-    //     dispatch(dbSuccess());
-    //   })
-    //   .catch(err => dispatch(dbFailure(err)));
-    //
-    // or can do it this way...
-    //
-    // return axios.get(jobUrl)
-    //   .then(res => dispatch(setJobs(res.data)))
-    //   .then(axios.get(eventUrl))
-    //   .then(res => dispatch(setEvents(res.data)))
-    //   .then(axios.get(contactUrl))
-    //   .then(res => dispatch(setContacts(res.data)))
-    //   .then(axios.get(userInfoUrl))
-    //   .then(res => {
-    //     dispatch(setUserInfo(res.data));
-    //     dispatch(dbSuccess());
-    //   })
-    //   .catch(err => dispatch(dbFailure(err)));
   };
 }
 
@@ -99,6 +68,7 @@ export function addJob(job) {
   job.contacts = [];
   return (dispatch, getState) => {
     dispatch(dbRequest());
+
     // add the user's db id to the job
     job.idUser = getState().get('app').toJS().dbUserID;
     return axios.post(jobUrl, job)
@@ -115,13 +85,13 @@ export function deleteJobSuccess(jobID) {
   return { type: types.DELETE_JOB_SUCCESS, jobID };
 }
 export function deleteJob(jobID) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(dbRequest());
 
     return axios.delete(deleteJobUrl.concat(jobID))
       .then(res => {
         dispatch(deleteJobSuccess(jobID));
-        dispatch(dbSuccess());
+        dispatch(dbSuccess(res));
       })
       .catch(err => {
         dispatch(dbFailure(err));
@@ -158,16 +128,16 @@ export function addContactSuccess(contactObj, jobID) {
   return { type: types.ADD_CONTACT, contactObj, jobID };
 }
 export function addContact(contact, jobID) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(dbRequest());
-    return axios.post('/api/addcontact', {text: contact, jobID:jobID})
+    return axios.post('/api/addcontact', { text: contact, jobID })
       .then(response => {
         dispatch(addContactSuccess(contact, jobID));
-        dispatch(dbSuccess());
-    }).catch(err => {
+        dispatch(dbSuccess(response));
+      }).catch(err => {
         dispatch(dbFailure(err));
       });
-  }
+  };
 }
 export function deleteContact(contactID) {
   return { type: types.DELETE_CONTACT, contactID };
@@ -183,36 +153,33 @@ export function addNoteSuccess(text, jobID) {
   return { type: types.ADD_NOTE_SUCCESS, text, jobID };
 }
 export function addNote(text, jobID) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(dbRequest());
-    return axios.post('/api/addnote', {text: text, jobID:jobID})
+    return axios.post('/api/addnote', { text, jobID })
       .then(response => {
         dispatch(addNoteSuccess(text, jobID));
-        dispatch(dbSuccess());
-    }).catch(err => {
+        dispatch(dbSuccess(response));
+      }).catch(err => {
         dispatch(dbFailure(err));
       });
-  }
+  };
 }
-export function deleteNoteSuccess(jobID, noteIndex ){
+export function deleteNoteSuccess(jobID, noteIndex) {
   return { type: types.DELETE_NOTE_SUCCESS, jobID, noteIndex };
 }
-
 export function deleteNote(jobID, noteIndex) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(dbRequest());
-    return axios.delete(deleteNoteUrl.concat(jobID, '/' , noteIndex))
+    return axios.delete(deleteNoteUrl.concat(jobID, '/', noteIndex))
       .then(res => {
-        console.log(res)
         dispatch(deleteNoteSuccess(jobID, noteIndex));
-        dispatch(dbSuccess());
+        dispatch(dbSuccess(res));
       })
       .catch(err => {
         dispatch(dbFailure(err));
       });
   };
 }
-
-export function editNote(userID, JobID, note) {
+export function editNote(userID, jobID) {
   return { type: types.EDIT_NOTE, userID, jobID };
 }
