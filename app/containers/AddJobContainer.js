@@ -31,7 +31,7 @@ class AddJobContainer extends Component {
     this.setState({ type: value });
   }
 
-  handleTextInput(event, id) {
+  handleTextInput(event) {
     const update = {};
     update[event.target.id] = event.target.value;
     this.setState(update);

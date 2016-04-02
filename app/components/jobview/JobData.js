@@ -110,7 +110,6 @@ const JobData = (props) => (
                 onChange={props.onTextChange}
               />
             <br /><br />
-
               <FloatingActionButton
                 mini
                 className="button-circle"
@@ -119,8 +118,6 @@ const JobData = (props) => (
                 <ContentAdd />
               </FloatingActionButton>
               <span className="button-circle-text">Add Reminder</span>
-
-
               <Dialog
                 title="Reminder added"
                 modal
@@ -159,10 +156,12 @@ const JobData = (props) => (
           <br /><br />
             {props.job.contacts.map((contact, index) => {
               return (
-                <Paper zDepth={1} style={styles.contactPaper}
+                <Paper
+                  zDepth={1}
+                  style={styles.contactPaper}
                   key={index}
                 >
-                  {contact.name} <br /> {contact.email} <br /> {contact.phone}
+                {contact.name} <br /> {contact.email} <br /> {contact.phone}
                 </Paper>
               );
             })}

@@ -2,34 +2,27 @@ body {
   font-family: 'Fira Sans', sans-serif;
   color: #263238;
 }
-
 a, a:hover {
   text-decoration: none;
 }
-
 .show {
   display: block;
 }
-
 .hide {
   display: none;
 }
-
 .sign-in {
   margin: 0 auto;
 }
-
 .container {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 40px;
 }
-
 .main {
   top: 100px;
 }
-
 .app-bar {
   z-index: 100;
   position: fixed;
@@ -39,66 +32,52 @@ a, a:hover {
   left: 0;
   background-color: rgba(85, 112, 125, 0.95);
   box-shadow: 10px 0 10px rgba(0, 0, 0, .5);
-
 }
-
 .app-bar h1 {
   font-weight: 300;
   color: #263238;
   cursor: pointer;
 }
-
 .app-bar {
   float: left;
 }
-
 .logout {
   position: absolute;
   top: 8px;
   right: 0;
   margin-right: 40px;
 }
-
 .addJobButtons {
   float: right;
 }
-
 .addJobButton-aj {
   margin-left: 400px;
 }
-
 .button-circle {
   margin-left: 20px;
   margin-right: 9px;
 }
-
 .button-circle-text {
   vertical-align: 9px;
   color: #9e9e9e;
 }
-
-.jobType,
-.deleteJob {
+.jobType, .deleteJob {
   position: absolute;
   top: 3px;
   left: 100px;
 }
-
 .deleteJob {
   left: 160px;
 }
-
 .jobview-data {
   float: left;
   width: 45%;
   margin-bottom: 100px;
 }
-
 .tabs {
   float: right;
   width: 45%;
 }
-
 .delete-job {
   bottom: 0;
   left: 0;

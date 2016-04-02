@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-// import '../styles/route-transition.css';
 import '../styles/main.css';
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';

@@ -24,17 +24,17 @@ passport.use(new GoogleStrategy({
   User.filter({
     userID: userToBeSaved.userID,
   }).limit(1).run()
-  .then((user, err) => {
-    if (err) {
-      console.error('ERROR', err);
-    } else if (user.length !== 0) {
-      console.log('User already exists.');
-      return;
-    } else {
-      console.log('Saving new user.');
-      userToBeSaved.save();
-    }
-  });
+    .then((user, err) => {
+      if (err) {
+        console.error('ERROR', err);
+      } else if (user.length !== 0) {
+        console.log('User already exists.');
+        return;
+      } else {
+        console.log('Saving new user.');
+        userToBeSaved.save();
+      }
+    });
   return done(null, userInfo);
 }
 ));

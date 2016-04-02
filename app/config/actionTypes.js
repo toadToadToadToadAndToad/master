@@ -36,4 +36,3 @@ export const SET_USERINFO = 'SET_USERINFO';
 export const ADD_NOTE_SUCCESS = 'ADD_NOTE_SUCCESS';
 export const DELETE_NOTE_SUCCESS = 'DELETE_NOTE_SUCCESS';
 export const EDIT_NOTE = 'EDIT_NOTE';
-

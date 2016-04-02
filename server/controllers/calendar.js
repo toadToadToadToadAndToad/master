@@ -1,30 +1,40 @@
 const axios = require('axios');
 const parse = require('co-body');
 
-
-const formatDate = function(date){
-  const split = date.split("/");
-  return split[2] + "-" + split[0] + "-" + split[1];
-}
-
-module.exports.addEvent = function*() {
+module.exports.addCalendar = function() {
   const accessToken = this.req.user.accessToken;
-  const body = yield parse(this);
-  const date = formatDate(body.data.date);
-  try {
-    axios({
-      method: 'post',
-      url:'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token='
-        + accessToken,
-      data: {
-        start:{
-          date
-        },
-        end: {
-          date
-        },
-        summary: body.data.text,
-      }
+  axios({
+    method: 'post',
+    url: 'https://www.googleapis.com/calendar/v3/calendars?access_token=' + accessToken,
+    data: {
+      summary: 'Numbers Game',
+    },
+  }).then(res => {
+    console.log(res);
+  }).catch(res => {
+    console.log(res);
+  });
+};
+
+module.exports.addEvent = function() {
+  const accessToken = this.req.user.accessToken;
+  axios({
+    method: 'post',
+    data: {
+      end: {
+        date: '2016-04-02',
+      },
+      start: {
+        date: '2016-04-01',
+      },
+    },
+    data: this.data,
+    url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=' + accessToken,
+  })
+    .then(res => {
+      console.log(res);
+    }).catch(res => {
+      console.log(res);
     });
   this.status = 200;
   } catch (e){

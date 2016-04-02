@@ -4,7 +4,7 @@ const User = require('../../database/models/user');
 const parse = require('co-body');
 const http = require('http');
 
-module.exports.deleteUser = function* (next) {
+module.exports.deleteUser = function*(next) {
   try {
     const user = yield parse(this);
     if ((user === null) || (user.id === null)) {
