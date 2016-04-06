@@ -1,6 +1,7 @@
 import React from 'react';
 import Snackbar from 'material-ui/lib/Snackbar';
 import RaisedButton from 'material-ui/lib/raised-button';
+import axios from 'axios';
 
 class SnackbarComponent extends React.Component {
 
@@ -9,13 +10,23 @@ class SnackbarComponent extends React.Component {
     this.state = {
       open: false,
     };
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   handleTouchTap() {
     this.setState({
       open: true,
     });
+    const data = {
+        text: this.props.reminder.text,
+        date: this.props.reminder.date
+      };
+    axios.post("/api/calendar", {
+      data
+    })
   }
+
 
   handleRequestClose() {
     this.setState({
@@ -23,15 +34,19 @@ class SnackbarComponent extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div>
         <RaisedButton
           label="Add to my calendar"
+          onTouchTap={this.handleTouchTap}
         />
         <Snackbar
+          open={this.state.open}
           message="Event added to your calendar"
           autoHideDuration={4000}
+
         />
       </div>
     );

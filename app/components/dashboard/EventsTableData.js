@@ -33,7 +33,7 @@ function EventsTableData(props) {
         fixedFooter={tableSettings.fixedFooter}
         selectable={tableSettings.selectable}
         multiSelectable={tableSettings.multiSelectable}
-        onCellClick={props.onRowClick}
+
       >
         <TableHeader
           adjustForCheckbox={tableSettings.adjustForCheckbox}
@@ -57,10 +57,10 @@ function EventsTableData(props) {
               <TableRow
                 key={index}
                 // TODO: see comment above handleRowClick in DashboardContainer.js
-                onRowClick={props.onRowClick}
+
               >
                 <TableRowColumn>
-                  <SnackbarComponent />
+                  <SnackbarComponent reminder={event} />
                 </TableRowColumn>
                 <TableRowColumn>{event.date}</TableRowColumn>
                 <TableRowColumn>{event.text}</TableRowColumn>

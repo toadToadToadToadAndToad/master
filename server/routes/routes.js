@@ -26,7 +26,7 @@ module.exports = function (app) {
   router.delete('/api/deletenote/:id/:noteid', notes.deleteNote);
 
   // Google Calendar Route
-  router.get('/calendar', calendar.addCalendar);
+  router.post('/api/calendar', calendar.addEvent);
 
   // Google Authentication Routes
   router.get('/auth/google', passport.authenticate('google', {
