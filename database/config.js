@@ -1,3 +1,7 @@
+const fs = require('fs');
+
+const caCert = fs.readFileSync(__dirname + '/public-key.crt').toString().trim();
+
 module.exports = {
   rethinkdb: {
     database: 'jobs',
