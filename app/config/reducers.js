@@ -66,8 +66,8 @@ function jobs(state = List(), action) {
     case types.ADD_JOB_SUCCESS:
       return state.update(jobs => jobs.push(Map(action.job)));
     case types.DELETE_JOB_SUCCESS:
-      const idx;
-      state.forEach((job, i) => {
+      var idx;
+      state.forEach(function(job, i) {
         if (job.get('id') === action.jobID) {
           idx = i;
         }
