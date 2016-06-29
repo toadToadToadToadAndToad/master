@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../styles/main.css';
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';
-import FontIcon from 'material-ui/lib/font-icon';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import FontIcon from 'material-ui/FontIcon';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const spinnerStyle = {
   position: 'absolute',

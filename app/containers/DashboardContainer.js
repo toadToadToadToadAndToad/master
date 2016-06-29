@@ -5,8 +5,8 @@ import JobsTableData from '../components/dashboard/JobsTableData';
 import EventsTableData from '../components/dashboard/EventsTableData';
 import axios from 'axios';
 import { initializeUser, setCurrentJob } from '../config/actions';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class DashboardContainer extends Component {
   constructor() {

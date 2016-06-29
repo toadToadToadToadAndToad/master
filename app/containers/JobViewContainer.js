@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import JobData from '../components/jobview/JobData';
-import FlatButton from 'material-ui/lib/flat-button';
+import FlatButton from 'material-ui/FlatButton';
 import { addNote, deleteNote, deleteJob, addEvent, addContact } from '../config/actions';
 
 class JobViewContainer extends Component {
@@ -108,42 +108,42 @@ class JobViewContainer extends Component {
   render() {
     return (
       <div>
-          <h2>Job View</h2>
-          <div className="deleteJob">
-            <FlatButton label="New" disabled />
-            <FlatButton label="Pending" primary />
-            <FlatButton label="Closed" primary />
-          </div>
-          <JobData
-            job={this.props.job}
-            postReminder={this.postReminder}
-            onDateChange={this.onDateChange}
-            onTextChange={this.onTextChange}
-            dateVal={this.state.date}
-            value={this.state.text}
+        <h2>Job View</h2>
+        <div className="deleteJob">
+          <FlatButton label="New" disabled />
+          <FlatButton label="Pending" primary />
+          <FlatButton label="Closed" primary />
+        </div>
+        <JobData
+          job={this.props.job}
+          postReminder={this.postReminder}
+          onDateChange={this.onDateChange}
+          onTextChange={this.onTextChange}
+          dateVal={this.state.date}
+          value={this.state.text}
 
-            onHandleDelete={this.handleDelete}
-            onDeleteNote={this.handleDeleteNote}
-            handleOpen={this.handleOpen}
-            handleClose={this.handleClose}
-            open={this.state.open}
+          onHandleDelete={this.handleDelete}
+          onDeleteNote={this.handleDeleteNote}
+          handleOpen={this.handleOpen}
+          handleClose={this.handleClose}
+          open={this.state.open}
 
-            formatDate={this.formatDate}
-            onHandleDelete={this.handleDelete}
+          formatDate={this.formatDate}
+          onHandleDelete={this.handleDelete}
 
-            submitNote={this.handleNote}
-            state={this.state.noteTxt}
-            onTextAdd={this.handleText}
-            onDeleteNote={this.handleDeleteNote}
+          submitNote={this.handleNote}
+          state={this.state.noteTxt}
+          onTextAdd={this.handleText}
+          onDeleteNote={this.handleDeleteNote}
 
-            submitContact={this.handleContact}
-            stateName={this.state.c_name}
-            stateEmail={this.state.c_email}
-            statePhone={this.state.c_phone}
-            onContactPhone={this.handleContactPhone}
-            onContactEmail={this.handleContactEmail}
-            onContactName={this.handleContactName}
-          />
+          submitContact={this.handleContact}
+          stateName={this.state.c_name}
+          stateEmail={this.state.c_email}
+          statePhone={this.state.c_phone}
+          onContactPhone={this.handleContactPhone}
+          onContactEmail={this.handleContactEmail}
+          onContactName={this.handleContactName}
+        />
       </div>
     );
   }

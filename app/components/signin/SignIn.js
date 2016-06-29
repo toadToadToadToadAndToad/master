@@ -1,5 +1,5 @@
 import React from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/RaisedButton';
 import '../../styles/main.css';
 
 function SignIn() {

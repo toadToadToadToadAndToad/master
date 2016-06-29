@@ -1,6 +1,6 @@
 import React from 'react';
-import Snackbar from 'material-ui/lib/snackbar';
-import RaisedButton from 'material-ui/lib/raised-button';
+import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 
 class SnackbarComponent extends React.Component {
@@ -19,21 +19,19 @@ class SnackbarComponent extends React.Component {
       open: true,
     });
     const data = {
-        text: this.props.reminder.text,
-        date: this.props.reminder.date
-      };
-    axios.post("/api/calendar", {
-      data
-    })
+      text: this.props.reminder.text,
+      date: this.props.reminder.date,
+    };
+    axios.post('/api/calendar', {
+      data,
+    });
   }
-
 
   handleRequestClose() {
     this.setState({
       open: false,
     });
   }
-
 
   render() {
     return (
@@ -52,5 +50,9 @@ class SnackbarComponent extends React.Component {
     );
   }
 }
+
+SnackbarComponent.propTypes = {
+  reminder: PropTypes.obj.isRequired,
+};
 
 export default SnackbarComponent;

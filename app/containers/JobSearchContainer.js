@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import SearchBar from '../components/jobsearch/SearchBar';
 import ResultsViewComponent from '../components/jobsearch/ResultsView';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import { addJob, dbRequest, dbSuccess, dbFailure } from '../config/actions';
 
 class JobSearchContainer extends Component {
@@ -113,39 +113,40 @@ class JobSearchContainer extends Component {
     const actions =
       [
         <FlatButton
-          label = "OK"
+          label="OK"
           primary
-          onMouseDown = { this.handleClose }
-        />
+          onMouseDown={this.handleClose}
+        />,
       ];
 
     return (
       <div>
         <h2>Job Search</h2>
         <SearchBar
-          keywords={ this.state.keywords }
-          location={ this.state.location }
+          keywords={this.state.keywords}
+          location={this.state.location}
           onHandleSearch={this.handleSearch} onHandleLocationChange={this.handleLocationChange}
-          onHandleKeyChange={ this.handleKeyChange }
-          isWorking={ this.props.isWorking }
+          onHandleKeyChange={this.handleKeyChange}
+          isWorking={this.props.isWorking}
         />
         <br /><br />
-        <div className={this.state.data.length > 0
+        <div
+          className={this.state.data.length > 0
             ? 'show'
             : 'hide'}
         >
-            <ResultsViewComponent
-              data={this.state.data}
-              onRowClick={this.handleRowClick}
-              onHandleSubmit={this.handleSubmit}
-            /><br /><br />
-            <div className="addJobButtons">
-              <FloatingActionButton mini className="button-circle" onMouseDown={this.saveJobsToStore}>
-                  <ContentAdd />
-              </FloatingActionButton>
-                <span className="button-circle-text">Add Jobs</span>
-                <br /><br /><br /><br />
-            </div>
+          <ResultsViewComponent
+            data={this.state.data}
+            onRowClick={this.handleRowClick}
+            onHandleSubmit={this.handleSubmit}
+          /><br /><br />
+          <div className="addJobButtons">
+            <FloatingActionButton mini className="button-circle" onMouseDown={this.saveJobsToStore}>
+              <ContentAdd />
+            </FloatingActionButton>
+            <span className="button-circle-text">Add Jobs</span>
+            <br /><br /><br /><br />
+          </div>
         </div>
         <Dialog title="Jobs Added!" actions={actions} modal open={this.state.open}>
             The selected jobs have been added to your dashboard.

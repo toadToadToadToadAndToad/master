@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import TextField from 'material-ui/lib/text-field';
+import React, { PropTypes } from 'react';
+import TextField from 'material-ui/TextField';
 
 function SearchBar(props) {
   return (
