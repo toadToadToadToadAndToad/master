@@ -84,7 +84,7 @@ const JobData = (props) => (
                 zDepth={1}
                 style={styles.paper}
                 key={index}
-                onClick={props.onDeleteNote(index, props)}
+                onClick={props.onDeleteNote.bind(this, index, props)}
               >
                 {note}
               </Paper>
