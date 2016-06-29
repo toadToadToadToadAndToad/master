@@ -51,8 +51,4 @@ class SnackbarComponent extends React.Component {
   }
 }
 
-SnackbarComponent.propTypes = {
-  reminder: PropTypes.obj.isRequired,
-};
-
 export default SnackbarComponent;
