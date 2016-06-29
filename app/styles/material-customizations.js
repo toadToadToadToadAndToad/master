@@ -18,7 +18,7 @@ export default {
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
     borderColor: Colors.grey300,
-    disabledColor: fade(darkBlack, 0.3),
+    disabledColor: fade(Colors.darkBlack, 0.3),
     pickerHeaderColor: Colors.cyan500,
   },
 };
