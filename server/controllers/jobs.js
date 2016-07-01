@@ -25,7 +25,11 @@ module.exports.list = function*() {
       queryString += '&LocationName=' + this.params.city;
     }
     const unformattedJobs =
-      yield axios.get('https://data.usajobs.gov/api/jobs' + queryString);
+      yield axios.request({
+        method: 'get',
+        url: 'https://data.usajobs.gov/api/search' + queryString,
+        headers: { 'Authorization-Key:': 'd6ofgumlbQCMXrWPB63mSLd3fbZyLyXjiI5Rx+GzHa4=' },
+      });
 
     // matching object keys with github's results
     if (!!unformattedJobs.data.JobData) {
