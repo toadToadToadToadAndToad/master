@@ -158,25 +158,43 @@ const JobData = (props) => (
           <TextField
             id="enterContactName"
             hintText="Contact name"
-            onEnterKeyDown={props.submitContact}
             value={props.stateName}
             onChange={props.onContactName}
           />
           <TextField
             id="enterContactEmail"
             hintText="Contact email"
-            onEnterKeyDown={props.submitContact}
             value={props.stateEmail}
             onChange={props.onContactEmail}
           />
           <TextField
             id="enterContactEmail"
             hintText="Contact phone"
-            onEnterKeyDown={props.submitContact}
             value={props.statePhone}
             onChange={props.onContactPhone}
           />
           <br /><br />
+          <FloatingActionButton
+            mini
+            className="button-circle"
+            onMouseDown={props.submitContact}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
+          <span className="button-circle-text">Add Contact</span>
+          <Dialog
+            title="Contact Added"
+            modal
+            open={props.open}
+            handleOpen={props.handleOpen}
+          >
+            A contact has been added to the job.
+            <FlatButton
+              label="OK"
+              primary
+              onMouseDown={props.handleClose}
+            />
+          </Dialog>
             {props.job.contacts.map((contact, index) =>
               (
               <Paper
