@@ -18,7 +18,6 @@ function SearchBar(props) {
       <RaisedButton
         label="Search"
         primary
-        style={style}
         onMouseDown={props.onHandleSearch}
       />
     </div>
