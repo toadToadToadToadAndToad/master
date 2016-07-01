@@ -1,6 +1,6 @@
 body {
   font-family: 'Fira Sans', sans-serif;
-  color: #263238;
+  color: #191919;
 }
 a, a:hover {
   text-decoration: none;
@@ -30,12 +30,12 @@ a, a:hover {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(85, 112, 125, 0.95);
+  background-color: #191919;
   box-shadow: 10px 0 10px rgba(0, 0, 0, .5);
 }
 .app-bar h1 {
   font-weight: 300;
-  color: #263238;
+  color: #F9e784;
   cursor: pointer;
 }
 .app-bar {

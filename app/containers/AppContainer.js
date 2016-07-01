@@ -37,7 +37,7 @@ class AppContainer extends Component {
             <div className={this.props.isWorking ? 'show' : 'hide'}>
               <CircularProgress
                 size={0.75}
-                color="#263238"
+                color="#f2e8b8"
                 style={spinnerStyle}
               />
             </div>
@@ -45,8 +45,8 @@ class AppContainer extends Component {
               <a href="/logout" className="logout">
                 <FontIcon
                   className="material-icons"
-                  color="#263238"
-                  hoverColor="#ff4081"
+                  color="#ef8f65"
+                  hoverColor="#f9e784"
                 >
                   exit_to_app
                 </FontIcon>
