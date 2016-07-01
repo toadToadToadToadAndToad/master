@@ -28,20 +28,19 @@ module.exports.list = function*() {
       yield axios.request({
         method: 'get',
         url: 'https://data.usajobs.gov/api/search' + queryString,
-        headers: { 'Authorization-Key:': 'd6ofgumlbQCMXrWPB63mSLd3fbZyLyXjiI5Rx+GzHa4=' },
-      });
-
+        headers: { 'Authorization-Key': process.env.authkey },
+      }).catch((error) => console.log(error));
     // matching object keys with github's results
-    if (!!unformattedJobs.data.JobData) {
-      jobs = unformattedJobs.data.JobData.map((object) => {
+    if (!!unformattedJobs.data.SearchResult.SearchResultItems) {
+      jobs = unformattedJobs.data.SearchResult.SearchResultItems.map((object) => {
         return {
-          id: object.DocumentID,
-          title: object.JobTitle,
-          company: object.OrganizationName,
-          url: object.ApplyOnlineURL,
-          description: object.JobSummary,
-          location: object.Locations,
-          type: object.WorkSchedule,
+          id: object.MatchedObjectDescriptor.PositionID,
+          title: object.MatchedObjectDescriptor.PositionTitle,
+          company: object.MatchedObjectDescriptor.OrganizationName,
+          url: object.MatchedObjectDescriptor.PositionURI,
+          description: object.MatchedObjectDescriptor.QualificationSummary,
+          location: object.MatchedObjectDescriptor.PositionLocation[0].LocationName,
+          type: object.MatchedObjectDescriptor.PositionOfferingType[0].Name,
         };
       });
     }

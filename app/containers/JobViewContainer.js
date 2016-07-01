@@ -81,7 +81,6 @@ class JobViewContainer extends Component {
   }
 
   handleDelete() {
-    console.log('bob');
     this.props.dispatch(deleteJob(this.props.jobID));
     browserHistory.push('/dashboard');
   }
