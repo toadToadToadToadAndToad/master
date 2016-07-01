@@ -73,11 +73,31 @@ const JobData = (props) => (
           <TextField
             id="enterNote"
             hintText="Add your notes here"
-            onEnterKeyDown={props.submitNote}
-            value={props.state}
+            value={props.noteVal}
             onChange={props.onTextAdd}
           />
           <br /><br />
+          <FloatingActionButton
+            mini
+            className="button-circle"
+            onMouseDown={props.submitNote}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
+          <span className="button-circle-text">Add Note</span>
+          <Dialog
+            title="Note Added"
+            modal
+            open={props.open}
+            handleOpen={props.handleOpen}
+          >
+            Your node has been added to the job.
+            <FlatButton
+              label="OK"
+              primary
+              onMouseDown={props.handleClose}
+            />
+          </Dialog>
             {props.job.notes.map((note, index) =>
               (
               <Paper
@@ -176,7 +196,7 @@ const JobData = (props) => (
 
 JobData.propTypes = {
   job: PropTypes.object,
-  state: PropTypes.string.isRequired,
+  noteVal: PropTypes.string.isRequired,
   onTextAdd: PropTypes.func.isRequired,
   onHandleDelete: PropTypes.func.isRequired,
   submitNote: PropTypes.func.isRequired,

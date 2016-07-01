@@ -91,7 +91,7 @@ class JobViewContainer extends Component {
   }
 
   postReminder() {
-    const reminder = this.state;
+    const reminder = this.noteVal;
     this.props.dispatch(addEvent(reminder));
     this.setState({ date: '', text: '' });
     this.handleOpen();
@@ -132,7 +132,7 @@ class JobViewContainer extends Component {
           onHandleDelete={this.handleDelete}
 
           submitNote={this.handleNote}
-          state={this.state.noteTxt}
+          noteVal={this.state.noteTxt}
           onTextAdd={this.handleText}
           onDeleteNote={this.handleDeleteNote}
 
