@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import SearchBar from '../components/jobsearch/SearchBar';
 import ResultsViewComponent from '../components/jobsearch/ResultsView';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import { addJob, dbRequest, dbSuccess, dbFailure } from '../config/actions';
 
 class JobSearchContainer extends Component {
@@ -29,13 +29,11 @@ class JobSearchContainer extends Component {
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   // this method cleans up job descriptions that
   // come back from the api with html tags
   strip(html) {
-    console.log(html);
     html = html.replace('\n\n', ' ');
     html = html.replace('\n', ' ');
     const tmp = document.createElement('DIV');
@@ -70,31 +68,22 @@ class JobSearchContainer extends Component {
     }
 
     this.props.dispatch(dbRequest());
-    axios.get(githubParams)
-      .then((response) => {
-        const nextState = this.state.data.slice();
-        response.data.forEach(
-          (job) => nextState.push(job)
-        );
-        this.setState({ data: nextState });
-        this.props.dispatch(dbSuccess());
-      })
-      .catch((err) => this.props.dispatch(dbFailure(err)));
+    axios.get(githubParams).then((response) => {
+      const nextState = this.state.data.slice();
+      response.data.forEach((job) => nextState.push(job));
+      this.setState({ data: nextState });
+      this.props.dispatch(dbSuccess());
+    }).catch((err) => this.props.dispatch(dbFailure(err)));
 
-    axios.get(usajobsParams)
-      .then((response) => {
-        const nextState = this.state.data.slice();
-        response.data.forEach(
-          (job) => nextState.push(job)
-        );
-        this.setState({ data: nextState });
-      })
-      .catch((response) => console.log('error', response));
+    axios.get(usajobsParams).then((response) => {
+      const nextState = this.state.data.slice();
+      response.data.forEach((job) => nextState.push(job));
+      this.setState({ data: nextState });
+    }).catch((response) => console.log('error', response));
   }
 
   handleRowClick(row) {
     const job = this.state.data[row];
-
     if (this.state.jobsSelected[job.id]) {
       delete this.state.jobsSelected[job.id];
     } else {
@@ -103,12 +92,9 @@ class JobSearchContainer extends Component {
   }
 
   saveJobsToStore() {
-    console.log(this.state.jobsSelected);
     for (const jobID in this.state.jobsSelected) {
       if (this.state.jobsSelected.hasOwnProperty(jobID)) {
-        this.state.jobsSelected[jobID].description =
-          this.strip(this.state.jobsSelected[jobID].description)
-          .slice(0, 500).concat('...');
+        this.state.jobsSelected[jobID].description = this.strip(this.state.jobsSelected[jobID].description).slice(0, 500).concat('...');
         this.props.dispatch(addJob(this.state.jobsSelected[jobID]));
       }
     }
@@ -124,13 +110,14 @@ class JobSearchContainer extends Component {
   }
 
   render() {
-    const actions = [
-      <FlatButton
-        label="OK"
-        primary
-        onMouseDown={this.handleClose}
-      />,
-    ];
+    const actions =
+      [
+        <FlatButton
+          label="OK"
+          primary
+          onMouseDown={this.handleClose}
+        />,
+      ];
 
     return (
       <div>
@@ -138,37 +125,31 @@ class JobSearchContainer extends Component {
         <SearchBar
           keywords={this.state.keywords}
           location={this.state.location}
-          onHandleSearch={this.handleSearch}
-          onHandleLocationChange={this.handleLocationChange}
+          onHandleSearch={this.handleSearch} onHandleLocationChange={this.handleLocationChange}
           onHandleKeyChange={this.handleKeyChange}
           isWorking={this.props.isWorking}
         />
         <br /><br />
-        <div className={this.state.data.length > 0 ? 'show' : 'hide'}>
+        <div
+          className={this.state.data.length > 0
+            ? 'show'
+            : 'hide'}
+        >
           <ResultsViewComponent
             data={this.state.data}
             onRowClick={this.handleRowClick}
             onHandleSubmit={this.handleSubmit}
           /><br /><br />
           <div className="addJobButtons">
-            <FloatingActionButton
-              mini
-              className="button-circle"
-              onMouseDown={this.saveJobsToStore}
-            >
+            <FloatingActionButton mini className="button-circle" onMouseDown={this.saveJobsToStore}>
               <ContentAdd />
             </FloatingActionButton>
             <span className="button-circle-text">Add Jobs</span>
             <br /><br /><br /><br />
           </div>
         </div>
-        <Dialog
-          title="Jobs Added!"
-          actions={actions}
-          modal
-          open={this.state.open}
-        >
-          The selected jobs have been added to your dashboard.
+        <Dialog title="Jobs Added!" actions={actions} modal open={this.state.open}>
+            The selected jobs have been added to your dashboard.
         </Dialog>
       </div>
     );
@@ -177,9 +158,7 @@ class JobSearchContainer extends Component {
 
 const mapStateToProps = (state) => {
   const isWorking = state.get('db').toJS().isWorking;
-  return {
-    isWorking,
-  };
+  return { isWorking };
 };
 
 JobSearchContainer.propTypes = {

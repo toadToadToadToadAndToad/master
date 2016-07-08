@@ -1,9 +1,16 @@
+const fs = require('fs');
+
+const caCert = fs.readFileSync(__dirname + '/public-key.crt').toString().trim();
+
 module.exports = {
   rethinkdb: {
-    host: 'localhost',
-    port: 28015,
-    authKey: '',
-    db: 'jobs',
+    database: 'jobs',
+    authKey: 'WXDkgpygPhK57JELT22QmbYEw7sq9DnpRuSswcSiF4',
+    host: 'aws-us-east-1-portal.12.dblayer.com',
+    port: 10419,
+    ssl: {
+      ca: caCert,
+    },
   },
   koa: {
     port: 3000,

@@ -1,10 +1,5 @@
 import React, { PropTypes } from 'react';
-import Table from 'material-ui/lib/table/table';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import TableBody from 'material-ui/lib/table/table-body';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import SnackbarComponent from './SnackbarComponent';
 import '../../styles/main.css';
 
@@ -52,21 +47,21 @@ function EventsTableData(props) {
           stripedRows={tableSettings.stripedRows}
           displayRowCheckbox={tableSettings.displayRowCheckbox}
         >
-          {props.events.map((event, index) => {
-            return (
-              <TableRow
-                key={index}
-                // TODO: see comment above handleRowClick in DashboardContainer.js
+          {props.events.map((event, index) =>
+            (
+            <TableRow
+              key={index}
+              // TODO: see comment above handleRowClick in DashboardContainer.js
 
-              >
-                <TableRowColumn>
-                  <SnackbarComponent reminder={event} />
-                </TableRowColumn>
-                <TableRowColumn>{event.date}</TableRowColumn>
-                <TableRowColumn>{event.text}</TableRowColumn>
-              </TableRow>
-            );
-          })}
+            >
+              <TableRowColumn>
+                <SnackbarComponent reminder={event} />
+              </TableRowColumn>
+              <TableRowColumn>{event.date}</TableRowColumn>
+              <TableRowColumn>{event.text}</TableRowColumn>
+            </TableRow>
+            )
+          )}
         </TableBody>
       </Table>
     </div>

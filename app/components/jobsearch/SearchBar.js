@@ -1,23 +1,25 @@
-import React, { Component, PropTypes } from 'react';
-import TextField from 'material-ui/lib/text-field';
+import React, { PropTypes } from 'react';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 function SearchBar(props) {
   return (
     <div>
-      <form onSubmit={props.onHandleSearch}>
-        <TextField
-          value={props.keywords}
-          onChange={props.onHandleKeyChange}
-          onEnterKeyDown={props.onHandleSearch}
-          hintText="Keywords"
-        />&nbsp;&nbsp;&nbsp;&nbsp;
-        <TextField
-          value={props.location}
-          onChange={props.onHandleLocationChange}
-          onEnterKeyDown={props.onHandleSearch}
-          hintText="Location"
-        />
-      </form>
+      <TextField
+        value={props.keywords}
+        onChange={props.onHandleKeyChange}
+        hintText="Keywords"
+      />&nbsp;&nbsp;&nbsp;&nbsp;
+      <TextField
+        value={props.location}
+        onChange={props.onHandleLocationChange}
+        hintText="Location"
+      />
+      <RaisedButton
+        label="Search"
+        primary
+        onMouseDown={props.onHandleSearch}
+      />
     </div>
   );
 }

@@ -2,12 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import '../styles/route-transition.css';
 import '../styles/main.css';
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import customMaterialTheme from '../styles/material-customizations';
-import FontIcon from 'material-ui/lib/font-icon';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import FontIcon from 'material-ui/FontIcon';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const spinnerStyle = {
   position: 'absolute',
@@ -38,7 +37,7 @@ class AppContainer extends Component {
             <div className={this.props.isWorking ? 'show' : 'hide'}>
               <CircularProgress
                 size={0.75}
-                color="#263238"
+                color="#f2e8b8"
                 style={spinnerStyle}
               />
             </div>
@@ -46,9 +45,11 @@ class AppContainer extends Component {
               <a href="/logout" className="logout">
                 <FontIcon
                   className="material-icons"
-                  color="#263238"
-                  hoverColor="#ff4081"
-                >exit_to_app</FontIcon>
+                  color="#ef8f65"
+                  hoverColor="#f9e784"
+                >
+                  exit_to_app
+                </FontIcon>
               </a>
             </div>
           </div>

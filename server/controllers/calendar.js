@@ -1,11 +1,12 @@
+
 const axios = require('axios');
 const parse = require('co-body');
 
 
-const formatDate = function(date){
-  const split = date.split("/");
-  return split[2] + "-" + split[0] + "-" + split[1];
-}
+const formatDate = function(date) {
+  const split = date.split('/');
+  return split[2] + '-' + split[0] + '-' + split[1];
+};
 
 module.exports.addEvent = function*() {
   const accessToken = this.req.user.accessToken;
@@ -14,20 +15,20 @@ module.exports.addEvent = function*() {
   try {
     axios({
       method: 'post',
-      url:'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token='
+      url: 'https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token='
         + accessToken,
       data: {
-        start:{
-          date
+        start: {
+          date,
         },
         end: {
-          date
+          date,
         },
         summary: body.data.text,
-      }
+      },
     });
-  this.status = 200;
-  } catch (e){
+    this.status = 200;
+  } catch (e) {
     console.log(e);
   }
 };

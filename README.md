@@ -1,6 +1,6 @@
 # Number's Game
 
-Number's Game makes the job search organized and systematic by allowing you to compile jobs from different sites, and keep track of jobs in your pipeline. 
+Number's Game makes the job search organized and systematic by allowing you to compile jobs from different sites, and keep track of jobs in your pipeline.
 
 Currently, there are no comprehensive web apps to help job seekers organize their job search.  Number's Game intends to solve this problem by being a place where a job seeker can search for jobs, save them, and keep track of job-related deadlines and interview information. The name “Number's Game” comes from the idea from sales, that consistently applying to a certain quantity of jobs will help you actually find one.  
 
@@ -32,9 +32,17 @@ node server/server.js
 
 ```sh
 "axios": "^0.9.1",
+"babel-core": "^6.4.5",
+"babel-loader": "^6.2.1",
+"babel-polyfill": "^6.7.2",
+"babel-preset-es2015": "^6.6.0",
+"babel-preset-react": "^6.3.13",
+"babel-preset-stage-3": "^6.5.0",
+"css-loader": "^0.23.1",
 "co-body": "^4.0.0",
 "google-auth-library": "^0.9.7",
 "googleapis": "^4.0.0",
+"html-webpack-plugin": "^2.15.0",
 "immutable": "^3.7.6",
 "kcors": "^1.1.0",
 "koa": "^1.2.0",
@@ -60,8 +68,10 @@ node server/server.js
 "redux-thunk": "^2.0.1",
 "request": "^2.69.0",
 "rethinkdb": "^2.2.2",
+"style-loader": "^0.13.0",
 "superagent": "^1.8.2",
-"thinky": "^2.2.5"
+"thinky": "^2.2.5",
+"webpack": "^1.12.11"
 ```
 
 ## Development

@@ -11,6 +11,7 @@ module.exports = {
     "no-console": 0,
     "strict": 0,
     "func-names": 0,
+    "space-before-function-paren": ["error", "never"],
   },
   "ecmaFeatures": {
     "arrowFunctions": true,

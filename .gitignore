@@ -4,5 +4,4 @@ dist
 *.log
 bower_components
 rethinkdb_data
-server/config.js
 coverage

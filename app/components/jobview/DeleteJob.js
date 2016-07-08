@@ -1,15 +1,15 @@
 import React from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/RaisedButton';
 
 function DeleteJobComponent(props) {
   return (
     <div className="delete-job">
-        <RaisedButton
-          onMouseDown={props.handleDelete}
-          label="Delete Job"
-          primary
-          type="submit"
-        />
+      <RaisedButton
+        onMouseDown={props.handleDelete}
+        label="Delete Job"
+        primary
+        type="submit"
+      />
     </div>
   );
 }

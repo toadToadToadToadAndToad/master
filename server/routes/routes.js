@@ -7,10 +7,10 @@ const contacts = require('../controllers/contacts');
 const calendar = require('../controllers/calendar');
 const router = require('koa-router')();
 
-module.exports = function (app) {
+module.exports = function(app) {
   app.use(router.routes());
 
-  // Jobsearch Routes
+  // Job Search Routes
   router.get('/api/jobs/:source/:keywords/:city', job.list);
   router.get('/api/jobs/:source/:keywords', job.list);
 

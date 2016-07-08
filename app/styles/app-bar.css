@@ -1,8 +1,8 @@
 .app-bar {
   z-index: 100;
   position: fixed;
-  width: 55%;
+  width: 60%;
   top: 0;
   left: 0;
-  box-shadow: 5px 0 5px rgba(0, 0, 0, .2);
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0);
 }

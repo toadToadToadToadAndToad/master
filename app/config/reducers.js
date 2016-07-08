@@ -1,6 +1,5 @@
 import { Map, List } from 'immutable';
 import { combineReducers } from 'redux-immutable';
-
 import * as types from './actionTypes';
 
 /*
@@ -74,16 +73,16 @@ function jobs(state = List(), action) {
       });
       return state.delete(idx);
     case types.ADD_NOTE_SUCCESS:
-      state.forEach(function(job){
-        if(job.get("id") === action.jobID){
-          job.get("notes").push(action.text.noteTxt);
+      state.forEach((job) => {
+        if (job.get('id') === action.jobID) {
+          job.get('notes').push(action.text.noteTxt);
         }
       });
       return state;
     case types.ADD_CONTACT:
-      state.forEach(function(job){
-        if(job.get("id") === action.jobID){
-          job.get("contacts").push(action.contactObj);
+      state.forEach((job) => {
+        if (job.get('id') === action.jobID) {
+          job.get('contacts').push(action.contactObj);
         }
       });
       return state;
@@ -100,7 +99,7 @@ function events(state = List(), action) {
     case types.SET_EVENTS:
       return List(action.events.map((event) => Map(event)));
     case types.ADD_EVENT:
-      console.log("Inside of add_event in reducer ", action.event);
+      console.log('Inside of add_event in reducer ', action.event);
       return state.update(events => events.push(Map(action.event)));
     default:
       return state;

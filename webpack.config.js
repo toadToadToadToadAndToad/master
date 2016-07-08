@@ -10,8 +10,6 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: [
     'babel-polyfill',
-    // 'webpack-dev-server/client?http://localhost:8080',
-    // 'webpack/hot/only-dev-server',
     './app/index.js',
   ],
   output: {
@@ -20,18 +18,14 @@ module.exports = {
   },
   devtool: 'eval',
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        // loader: 'react-hot!babel-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
-      },
-    ],
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader',
+    }],
   },
   devServer: {
     contentBase: '/dist',

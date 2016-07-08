@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import TextField from 'material-ui/lib/text-field';
-import SelectField from 'material-ui/lib/select-field';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
-import Dialog from 'material-ui/lib/dialog';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import FlatButton from 'material-ui/FlatButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import Dialog from 'material-ui/Dialog';
 import { addJob } from '../config/actions';
 
 class AddJobContainer extends Component {
@@ -31,7 +31,7 @@ class AddJobContainer extends Component {
     this.setState({ type: value });
   }
 
-  handleTextInput(event, id) {
+  handleTextInput(event) {
     const update = {};
     update[event.target.id] = event.target.value;
     this.setState(update);
@@ -120,13 +120,13 @@ class AddJobContainer extends Component {
           />
         </form>
         <div className="addJobButton-aj">
-            <FloatingActionButton
-              mini
-              className="button-circle"
-              onMouseDown={this.saveJobsToStore}
-            >
-              <ContentAdd />
-            </FloatingActionButton>
+          <FloatingActionButton
+            mini
+            className="button-circle"
+            onMouseDown={this.saveJobsToStore}
+          >
+            <ContentAdd />
+          </FloatingActionButton>
           <span className="button-circle-text">Add Job</span>
           <br /><br /><br /><br />
         </div>

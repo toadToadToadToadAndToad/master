@@ -8,8 +8,7 @@ const User = require('../../database/models/user');
 passport.use(new GoogleStrategy({
   clientID: tokens.GOOGLE_CLIENT_ID,
   clientSecret: tokens.GOOGLE_CLIENT_SECRET,
-  returnURL: 'http://localhost:3000/auth/google/return',
-  callbackURL: 'http://localhost:3000/auth/google/callback',
+  callbackURL: '/auth/google/callback',
 },
 
 // Profile contains all the personal data returned
@@ -25,17 +24,17 @@ passport.use(new GoogleStrategy({
   User.filter({
     userID: userToBeSaved.userID,
   }).limit(1).run()
-  .then((user, err) => {
-    if (err) {
-      console.error('ERROR', err);
-    } else if (user.length !== 0) {
-      console.log('User already exists.');
-      return;
-    } else {
-      console.log('Saving new user.');
-      userToBeSaved.save();
-    }
-  });
+    .then((user, err) => {
+      if (err) {
+        console.error('ERROR', err);
+      } else if (user.length !== 0) {
+        console.log('User already exists.');
+        return;
+      } else {
+        console.log('Saving new user.');
+        userToBeSaved.save();
+      }
+    });
   return done(null, userInfo);
 }
 ));
